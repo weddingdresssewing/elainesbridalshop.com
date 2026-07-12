@@ -194,6 +194,79 @@
   if (form) {
     var submitBtn = form.querySelector("button[type=submit]");
     var submitLabel = submitBtn.textContent;
+
+    /* --- photo upload (max 3, client-side downscaled, sent as email attachments) --- */
+    var MAX_PHOTOS = 3;
+    var photos = [];   // File objects (compressed)
+    var photoInput = document.getElementById("photoInput");
+    var photoZone = document.getElementById("photoZone");
+    var photoPreviews = document.getElementById("photoPreviews");
+
+    function zhUI() { return document.documentElement.lang === "zh-CN"; }
+
+    // Downscale to ≤1600px JPEG so phone photos don't blow the attachment limit
+    function compressImage(file) {
+      return new Promise(function (resolve) {
+        if (!/^image\//.test(file.type) || file.type === "image/gif") return resolve(file);
+        var url = URL.createObjectURL(file);
+        var img = new Image();
+        img.onload = function () {
+          var MAX = 1600;
+          var scale = Math.min(1, MAX / Math.max(img.width, img.height));
+          var c = document.createElement("canvas");
+          c.width = Math.round(img.width * scale);
+          c.height = Math.round(img.height * scale);
+          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
+          c.toBlob(function (b) {
+            URL.revokeObjectURL(url);
+            if (b && b.size < file.size) {
+              resolve(new File([b], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: "image/jpeg" }));
+            } else { resolve(file); }
+          }, "image/jpeg", 0.82);
+        };
+        img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
+        img.src = url;
+      });
+    }
+
+    function renderPreviews() {
+      photoPreviews.innerHTML = "";
+      photos.forEach(function (f, i) {
+        var d = document.createElement("div");
+        d.className = "upload__thumb";
+        var img = document.createElement("img");
+        img.src = URL.createObjectURL(f);
+        img.alt = f.name;
+        var x = document.createElement("button");
+        x.type = "button";
+        x.textContent = "×";
+        x.setAttribute("aria-label", "Remove photo");
+        x.addEventListener("click", function () { photos.splice(i, 1); renderPreviews(); });
+        d.appendChild(img); d.appendChild(x);
+        photoPreviews.appendChild(d);
+      });
+    }
+
+    photoZone.addEventListener("click", function () { photoInput.click(); });
+    photoInput.addEventListener("change", function () {
+      var files = Array.prototype.slice.call(photoInput.files || []);
+      photoInput.value = "";
+      if (!files.length) return;
+      if (photos.length + files.length > MAX_PHOTOS) {
+        window.alert(zhUI() ? "最多上传 " + MAX_PHOTOS + " 张照片。" : "You can upload up to " + MAX_PHOTOS + " photos.");
+        files = files.slice(0, MAX_PHOTOS - photos.length);
+      }
+      files.forEach(function (f) {
+        if (f.size > 20 * 1024 * 1024) {
+          window.alert(zhUI() ? "「" + f.name + "」太大了(超过 20MB),请换一张。" : '"' + f.name + '" is too large (over 20MB) — please choose a smaller photo.');
+          return;
+        }
+        compressImage(f).then(function (out) {
+          if (photos.length < MAX_PHOTOS) { photos.push(out); renderPreviews(); }
+        });
+      });
+    });
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
@@ -206,34 +279,37 @@
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
+      submitBtn.textContent = zhUI() ? "发送中…" : "Sending…";
 
-      var payload = {
-        Name: document.getElementById("name").value,
-        email: document.getElementById("email").value,   // lowercase "email" sets reply-to
-        "Wedding date": document.getElementById("date").value,
-        "Interested in": document.getElementById("service").value,
-        Message: document.getElementById("message").value,
-        _subject: "New fitting inquiry — Elaine's Bridal Shop website",
-        _template: "table",
-        _captcha: "false"
-      };
+      // multipart FormData so photos ride along as email attachments
+      var fd = new FormData();
+      fd.append("Name", document.getElementById("name").value);
+      fd.append("email", document.getElementById("email").value);   // lowercase "email" sets reply-to
+      fd.append("Wedding date", document.getElementById("date").value);
+      fd.append("Interested in", document.getElementById("service").value);
+      fd.append("Message", document.getElementById("message").value);
+      fd.append("_subject", "New fitting inquiry — Elaine's Bridal Shop website");
+      fd.append("_template", "table");
+      fd.append("_captcha", "false");
+      photos.forEach(function (f) { fd.append("attachment", f, f.name); });
 
       fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload)
+        headers: { "Accept": "application/json" },
+        body: fd
       })
         .then(function (r) { return r.json(); })
         .then(function () {
           success.hidden = false;
           form.reset();
-          submitBtn.textContent = "Sent ✓";
+          photos = [];
+          renderPreviews();
+          submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
         })
         .catch(function () {
           submitBtn.disabled = false;
           submitBtn.textContent = submitLabel;
-          window.alert("Sorry — something went wrong. Please email " + FORM_EMAIL + " directly.");
+          window.alert((zhUI() ? "抱歉,出了点问题。请直接发邮件至 " : "Sorry — something went wrong. Please email ") + FORM_EMAIL);
         });
     });
   }

@@ -103,6 +103,8 @@
     "opt.4": "定制添加(袖子、肩带)",
     "opt.custom": "定制婚纱——免费咨询",
     "opt.5": "还不确定",
+    "lbl.photos": "照片(选填)",
+    "photos.btn": "最多上传 3 张照片——你的婚纱(正面、背面、侧面)或心仪的款式",
     "btn.submit": "提交预约申请",
     "contact.hint": "想直接发短信或邮件?可联系 Chloe(415)734-1832,或把婚纱的正面、背面和侧面照片发到 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>,更快拿到报价。",
     "contact.success": "谢谢你——我们已收到你的预约申请,会尽快与你联系。♥",
