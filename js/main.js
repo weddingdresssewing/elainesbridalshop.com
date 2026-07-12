@@ -195,6 +195,14 @@
     var submitBtn = form.querySelector("button[type=submit]");
     var submitLabel = submitBtn.textContent;
 
+    // Hidden iframe target for the native FormSubmit POST. Created once at init
+    // so its initial about:blank "load" can't race a submission's load event.
+    var fsFrame = document.createElement("iframe");
+    fsFrame.name = "fsFrame";
+    fsFrame.setAttribute("title", "hidden form target");
+    fsFrame.style.display = "none";
+    document.body.appendChild(fsFrame);
+
     /* --- photo upload (max 3, client-side downscaled, sent as email attachments) --- */
     var MAX_PHOTOS = 3;
     var photos = [];   // File objects (compressed)
@@ -281,36 +289,59 @@
       submitBtn.disabled = true;
       submitBtn.textContent = zhUI() ? "发送中…" : "Sending…";
 
-      // multipart FormData so photos ride along as email attachments
-      var fd = new FormData();
-      fd.append("Name", document.getElementById("name").value);
-      fd.append("email", document.getElementById("email").value);   // lowercase "email" sets reply-to
-      fd.append("Wedding date", document.getElementById("date").value);
-      fd.append("Interested in", document.getElementById("service").value);
-      fd.append("Message", document.getElementById("message").value);
-      fd.append("_subject", "New fitting inquiry — Elaine's Bridal Shop website");
-      fd.append("_template", "table");
-      fd.append("_captcha", "false");
-      photos.forEach(function (f) { fd.append("attachment", f, f.name); });
+      // Submit to FormSubmit's NATIVE endpoint via a hidden iframe: the /ajax/
+      // endpoint silently drops file attachments, the native one emails them.
+      var nf = document.createElement("form");
+      nf.action = "https://formsubmit.co/" + FORM_EMAIL;
+      nf.method = "POST";
+      nf.enctype = "multipart/form-data";
+      nf.target = "fsFrame";
+      nf.style.display = "none";
+      function hiddenField(name, value) {
+        var i = document.createElement("input");
+        i.type = "hidden"; i.name = name; i.value = value;
+        nf.appendChild(i);
+      }
+      hiddenField("Name", document.getElementById("name").value);
+      hiddenField("email", document.getElementById("email").value);   // lowercase "email" sets reply-to
+      hiddenField("Wedding date", document.getElementById("date").value);
+      hiddenField("Interested in", document.getElementById("service").value);
+      hiddenField("Message", document.getElementById("message").value);
+      hiddenField("_subject", "New fitting inquiry — Elaine's Bridal Shop website");
+      hiddenField("_template", "table");
+      hiddenField("_captcha", "false");
+      photos.forEach(function (f, i) {
+        var fi = document.createElement("input");
+        fi.type = "file";
+        fi.name = i === 0 ? "attachment" : "attachment" + (i + 1);
+        var dt = new DataTransfer();
+        dt.items.add(f);
+        fi.files = dt.files;
+        nf.appendChild(fi);
+      });
+      document.body.appendChild(nf);
 
-      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: fd
-      })
-        .then(function (r) { return r.json(); })
-        .then(function () {
-          success.hidden = false;
-          form.reset();
-          photos = [];
-          renderPreviews();
-          submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
-        })
-        .catch(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitLabel;
-          window.alert((zhUI() ? "抱歉,出了点问题。请直接发邮件至 " : "Sorry — something went wrong. Please email ") + FORM_EMAIL);
-        });
+      var settled = false;
+      function finishOk() {
+        if (settled) return; settled = true;
+        nf.remove();
+        success.hidden = false;
+        form.reset();
+        photos = [];
+        renderPreviews();
+        submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
+      }
+      fsFrame.addEventListener("load", finishOk, { once: true });
+      // safety net: if the iframe never fires load (offline etc.), restore the button
+      setTimeout(function () {
+        if (settled) return; settled = true;
+        nf.remove();
+        submitBtn.disabled = false;
+        submitBtn.textContent = submitLabel;
+        window.alert((zhUI() ? "抱歉,出了点问题。请直接发邮件至 " : "Sorry — something went wrong. Please email ") + FORM_EMAIL);
+      }, 20000);
+
+      nf.submit();
     });
   }
 
