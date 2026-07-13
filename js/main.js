@@ -279,10 +279,20 @@
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
+      function submitLabelNow() {
+        return zhUI() ? "提交预约申请" : "Request an Appointment";
+      }
+      function restoreButtonSoon() {
+        setTimeout(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = submitLabelNow();
+        }, 2500);
+      }
+
       if (!FORM_EMAIL) {                       // demo fallback (no email configured)
         success.hidden = false;
-        submitBtn.disabled = true;
         form.reset();
+        restoreButtonSoon();
         return;
       }
 
@@ -310,15 +320,21 @@
       hiddenField("_subject", "New fitting inquiry — Elaine's Bridal Shop website");
       hiddenField("_template", "table");
       hiddenField("_captcha", "false");
-      photos.forEach(function (f, i) {
-        var fi = document.createElement("input");
-        fi.type = "file";
-        fi.name = i === 0 ? "attachment" : "attachment" + (i + 1);
-        var dt = new DataTransfer();
-        dt.items.add(f);
-        fi.files = dt.files;
-        nf.appendChild(fi);
-      });
+      // Attach photos; on ancient browsers without DataTransfer, send the form
+      // without them rather than dying mid-submit.
+      try {
+        photos.forEach(function (f, i) {
+          var fi = document.createElement("input");
+          fi.type = "file";
+          fi.name = i === 0 ? "attachment" : "attachment" + (i + 1);
+          var dt = new DataTransfer();
+          dt.items.add(f);
+          fi.files = dt.files;
+          nf.appendChild(fi);
+        });
+      } catch (err) {
+        hiddenField("Note", "(bride attached " + photos.length + " photo(s) but her browser could not upload them)");
+      }
       document.body.appendChild(nf);
 
       var settled = false;
@@ -330,6 +346,7 @@
         photos = [];
         renderPreviews();
         submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
+        restoreButtonSoon();
       }
       fsFrame.addEventListener("load", finishOk, { once: true });
       // safety net: if the iframe never fires load (offline etc.), restore the button
@@ -371,10 +388,17 @@
       if (!fbForm.checkValidity()) { fbForm.reportValidity(); return; }
       var zh = document.documentElement.lang === "zh-CN";
 
+      function fbRestoreSoon() {
+        setTimeout(function () {
+          fbBtn.disabled = false;
+          fbBtn.textContent = document.documentElement.lang === "zh-CN" ? "发送反馈" : "Send Feedback";
+        }, 2500);
+      }
+
       if (!FORM_EMAIL) {                      // demo fallback
         fbSuccess.hidden = false;
-        fbBtn.disabled = true;
         fbForm.reset(); fbRating = 0; paintStars();
+        fbRestoreSoon();
         return;
       }
 
@@ -401,6 +425,7 @@
           fbSuccess.hidden = false;
           fbForm.reset(); fbRating = 0; paintStars();
           fbBtn.textContent = zh ? "已发送 ✓" : "Sent ✓";
+          fbRestoreSoon();
         })
         .catch(function () {
           fbBtn.disabled = false;
