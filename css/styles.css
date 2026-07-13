@@ -463,6 +463,18 @@ em { font-style: italic; }
   aspect-ratio: 3 / 4;
   scroll-snap-align: start;
 }
+.custom__credit {
+  margin-top: 1.2rem;
+  font-size: .72rem;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: .75;
+}
+.custom__credit a {
+  color: var(--gold);
+  border-bottom: 1px solid var(--line);
+}
+.custom__credit a:hover { color: var(--charcoal); }
 
 /* ============================================================
    Gallery
