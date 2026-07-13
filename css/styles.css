@@ -142,7 +142,7 @@ em { font-style: italic; }
   color: var(--ivory);
   transition: color .4s var(--ease);
 }
-.nav__links { display: flex; align-items: center; gap: 1.9rem; }
+.nav__links { display: flex; align-items: center; gap: 1.5rem; }
 .nav__links a {
   font-size: .78rem;
   letter-spacing: .18em;
@@ -963,8 +963,11 @@ em { font-style: italic; }
     height: 100vh; width: min(78vw, 320px);
     background: var(--charcoal);
     flex-direction: column;
-    justify-content: center;
-    gap: 2rem;
+    /* top-anchored + scrollable: centered flex clips items on short screens */
+    justify-content: flex-start;
+    padding: 5.5rem 0 3rem;
+    overflow-y: auto;
+    gap: 1.7rem;
     transform: translateX(100%);
     transition: transform .5s var(--ease);
     box-shadow: -20px 0 60px rgba(0,0,0,.3);
