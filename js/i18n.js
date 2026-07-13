@@ -11,6 +11,7 @@
     "nav.services": "服务项目",
     "nav.process": "服务流程",
     "nav.custom": "定制婚纱",
+    "nav.feedback": "意见反馈",
     "nav.gallery": "作品",
     "nav.showcase": "视频",
     "nav.book": "预约试衣",
