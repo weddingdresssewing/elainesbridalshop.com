@@ -62,7 +62,7 @@
     /* gallery */
     "gallery.eyebrow": "作品集",
     "gallery.title": "近期作品,<br />近距离欣赏。",
-    "gallery.note": "点击任意图片可放大查看。",
+    "gallery.note": "左右滑动浏览,点击任意图片可放大查看。",
     "gallery.consent": "文中真实新娘的照片,均已征得本人同意后展示。",
 
     /* showcase */

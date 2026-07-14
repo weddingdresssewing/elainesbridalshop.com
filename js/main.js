@@ -67,16 +67,26 @@
   var items = []; // { full, el }
   GALLERY.forEach(function (n) {
     var fig = document.createElement("figure");
-    fig.className = "gallery__item reveal";
+    fig.className = "gallery__item";
     var img = document.createElement("img");
+    // NOTE: no loading="lazy" here — in the horizontal strip the items are
+    // 0-wide until the image loads, so a lazy image never "intersects" and
+    // never loads (chicken-and-egg). Eager is required for this layout.
     img.src = "assets/images/thumb/gown-" + n + ".jpg";
-    img.loading = "lazy";
     img.alt = "Wedding dress alterations by Elaine's Bridal Shop";
     fig.appendChild(img);
     grid.appendChild(fig);
     items.push({ full: "assets/images/full/gown-" + n + ".jpg", el: fig });
-    if (typeof io !== "undefined") io.observe(fig);
   });
+
+  /* ---------- Gallery arrows (desktop) ---------- */
+  var galPrev = document.getElementById("galPrev");
+  var galNext = document.getElementById("galNext");
+  function galScroll(dir) {
+    grid.scrollBy({ left: dir * grid.clientWidth * 0.8, behavior: "smooth" });
+  }
+  if (galPrev) galPrev.addEventListener("click", function () { galScroll(-1); });
+  if (galNext) galNext.addEventListener("click", function () { galScroll(1); });
 
   /* ---------- Lightbox ---------- */
   var lb = document.getElementById("lightbox");
