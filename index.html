@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elaine's Bridal Shop — Wedding Dress Alterations &amp; Tailoring · Sacramento</title>
-  <meta name="description" content="Elaine's Bridal Shop — an in-home studio in Sacramento, CA specializing in expert wedding-dress alterations and tailoring. Where your dream dress awaits." />
+  <title>Sacramento Wedding Dress Alterations | Elaine's Bridal Shop</title>
+  <meta name="description" content="Private one-on-one wedding dress alterations in Sacramento, CA by Elaine, a bridal seamstress with 40+ years of sewing experience. Send dress photos for an estimate and request a fitting." />
 
   <!-- SEO: canonical + social sharing -->
   <link rel="canonical" href="https://elainesbridalshop.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Elaine's Bridal Shop" />
-  <meta property="og:title" content="Elaine's Bridal Shop — Wedding Dress Alterations &amp; Tailoring · Sacramento" />
-  <meta property="og:description" content="Expert wedding-dress alterations from a private in-home studio in Sacramento, CA. Over 40 years of professional sewing experience. Where your dream dress awaits." />
+  <meta property="og:title" content="Sacramento Wedding Dress Alterations | Elaine's Bridal Shop" />
+  <meta property="og:description" content="Private one-on-one wedding dress alterations in Sacramento, CA by Elaine, a bridal seamstress with 40+ years of sewing experience. Send dress photos for an estimate." />
   <meta property="og:url" content="https://elainesbridalshop.com/" />
   <meta property="og:image" content="https://elainesbridalshop.com/assets/images/og-image-bottom.jpg" />
   <meta property="og:image:width" content="978" />
@@ -24,6 +24,7 @@
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://elainesbridalshop.com/#business",
     "name": "Elaine's Bridal Shop",
     "description": "Expert wedding-dress alterations and tailoring from a private in-home studio in Sacramento, CA. Over 40 years of professional sewing experience.",
     "slogan": "Where Your Dream Dress Awaits",
@@ -43,6 +44,10 @@
     "areaServed": { "@type": "City", "name": "Sacramento" },
     "knowsLanguage": ["English", "Chinese"],
     "sameAs": ["https://www.instagram.com/elainebridalsac"],
+    "contactPoint": [
+      { "@type": "ContactPoint", "telephone": "+1-415-734-1832", "contactType": "customer service", "availableLanguage": ["English", "Chinese"] },
+      { "@type": "ContactPoint", "telephone": "+1-415-813-9302", "contactType": "customer service", "availableLanguage": ["English", "Chinese"] }
+    ],
     "makesOffer": [
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Precision tailoring — sides, princess seams, zippers" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bodice shortening and adjustments" } },
@@ -62,8 +67,7 @@
   <link rel="shortcut icon" href="/favicon.ico" />
   <link rel="stylesheet" href="css/styles.css" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
-  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
 <body>
 
@@ -75,17 +79,15 @@
         <span class="nav__brand-text">Elaine's&nbsp;Bridal&nbsp;Shop</span>
       </a>
       <nav class="nav__links" id="navLinks">
-        <a href="#about" data-i18n="nav.about">The Seamstress</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#services" data-i18n="nav.services">Alterations</a>
         <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="#showcase" data-i18n="nav.showcase">In Motion</a>
-        <a href="#process" data-i18n="nav.process">How It Works</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
         <a href="#custom" data-i18n="nav.custom">Custom Gowns</a>
-        <a href="#contact" class="nav__cta" data-book data-i18n="nav.book">Book a Fitting</a>
-        <a href="#feedback" data-i18n="nav.feedback">Feedback</a>
+        <a href="#contact" class="nav__cta" data-book data-i18n="nav.book">Request a Fitting</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu">
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -98,12 +100,13 @@
     </div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <p class="eyebrow eyebrow--light" data-i18n="hero.eyebrow">Bridal Alterations &amp; Tailoring</p>
-      <h1 class="hero__title" data-i18n="hero.title">Your dream gown,<br /><em>fitted to perfection.</em></h1>
-      <p class="hero__sub" data-i18n="hero.sub">A private seamstress devoted to wedding-dress alterations. Your gown taken in, let out, and fitted to your exact shape, one stitch at a time. For the bride who refuses to settle.</p>
+      <p class="eyebrow eyebrow--light" data-i18n="hero.eyebrow">Sacramento Wedding Dress Alterations</p>
+      <h1 class="hero__title" data-i18n="hero.title">Your wedding gown,<br /><em>fitted by Elaine.</em></h1>
+      <p class="hero__sub" data-i18n="hero.sub">Private, one-on-one wedding dress alterations in Sacramento by a seamstress with 40+ years of professional sewing experience. Send your dress photos for an estimate, then request a fitting when you are ready.</p>
       <div class="hero__actions">
-        <a href="#contact" class="btn btn--solid" data-book data-i18n="hero.book">Book a Fitting</a>
-        <a href="#gallery" class="btn btn--ghost" data-i18n="hero.gallery">View the Gallery</a>
+        <a href="#contact" class="btn btn--solid" data-i18n="hero.estimate">Send Photos for an Estimate</a>
+        <a href="#contact" class="btn btn--ghost" data-book data-i18n="hero.request">Request a Fitting</a>
+        <a href="#gallery" class="btn btn--text" data-i18n="hero.gallery">View Real Gown Work</a>
       </div>
     </div>
     <a href="#about" class="hero__scroll" aria-label="Scroll down">
@@ -111,27 +114,54 @@
     </a>
   </section>
 
-  <!-- ===== Intro strip ===== -->
-  <section class="strip reveal">
-    <p class="strip__text" data-i18n="strip.text">
-      Sacramento brides trust us with the most important dress they will ever wear.
-      We take in, let out, hem, and re-shape your designer gown until it fits as though
-      it were <em>made for you</em> —and only you.
-    </p>
+  <!-- ===== Trust strip ===== -->
+  <section class="trust-strip" aria-label="Why brides trust Elaine">
+    <div class="trust-strip__inner">
+      <p data-i18n="trust.1"><strong>40+ years</strong><span>Sewing experience</span></p>
+      <p data-i18n="trust.2"><strong>11 years</strong><span>Sacramento bridal shop experience</span></p>
+      <p data-i18n="trust.3"><strong>Private</strong><span>One-on-one fittings</span></p>
+      <p data-i18n="trust.4"><strong>Photos first</strong><span>Estimate before you visit</span></p>
+      <p data-i18n="trust.5"><strong>EN / 中文</strong><span>Bilingual support</span></p>
+    </div>
+  </section>
+
+  <!-- ===== Quick start ===== -->
+  <section class="quick-start" id="start">
+    <div class="quick-start__head reveal">
+      <p class="eyebrow" data-i18n="qs.eyebrow">How to Start</p>
+      <h2 class="section-title" data-i18n="qs.title">Send photos first.<br />Then come in with confidence.</h2>
+    </div>
+    <div class="quick-start__grid">
+      <article class="reveal">
+        <span>01</span>
+        <h3 data-i18n="qs.h1">Send your date and dress photos</h3>
+        <p data-i18n="qs.p1">Include front, back, and side photos of the gown hanging up, plus your wedding date.</p>
+      </article>
+      <article class="reveal">
+        <span>02</span>
+        <h3 data-i18n="qs.h2">Receive a preliminary estimate</h3>
+        <p data-i18n="qs.p2">We review your photos and reply within two business days whenever possible.</p>
+      </article>
+      <article class="reveal">
+        <span>03</span>
+        <h3 data-i18n="qs.h3">Request a private fitting</h3>
+        <p data-i18n="qs.p3">Come to Elaine's in-home studio in Sacramento 95828 when you are ready.</p>
+      </article>
+    </div>
   </section>
 
   <!-- ===== About / The Seamstress ===== -->
   <section class="about" id="about">
     <div class="about__grid">
       <div class="about__media reveal">
-        <img src="assets/images/full/gown-06.jpg" alt="The seamstress working at her sewing machine" />
+        <img src="assets/images/full/gown-06.jpg" alt="Elaine sewing a wedding gown at her machine in the Sacramento studio" width="1800" height="1346" loading="lazy" />
         <div class="about__media-accent"></div>
       </div>
       <div class="about__body reveal">
-        <p class="eyebrow" data-i18n="about.eyebrow">The Seamstress</p>
-        <h2 class="section-title" data-i18n="about.title">The art of<br />the perfect fit.</h2>
-        <p data-i18n="about.p1">After 11 years perfecting gowns at one of Sacramento's premier bridal shops, Elaine wanted to create a more personal, one-on-one experience for her brides. Today, she works from her private in-home studio, bringing over 40 years of professional sewing experience directly to your dress.</p>
-        <p data-i18n="about.p2">Her business began at a single sewing table with a pair of shears and an absolute unwillingness to let any bride wear a gown that doesn't truly fit her. Elaine only takes on a limited number of brides because a gown that moves with you, holds you, and photographs like a dream simply cannot be rushed. From your first fitting to the final pressing, she personally guides every hem, and your dress never leaves her hands.</p>
+        <p class="eyebrow" data-i18n="about.eyebrow">Meet Elaine</p>
+        <h2 class="section-title" data-i18n="about.title">A bridal seamstress trusted with<br />once-in-a-lifetime gowns.</h2>
+        <p data-i18n="about.p1">Elaine brings more than 40 years of professional sewing experience to every wedding dress she alters. After 11 years perfecting gowns at one of Sacramento's premier bridal shops, she opened a private in-home studio for brides who want careful, one-on-one attention.</p>
+        <p data-i18n="about.p2">Your gown stays in Elaine's hands from fitting to finishing. She accepts a limited number of brides so each dress has the time, precision, and calm attention it deserves.</p>
         <a href="#contact" class="link-arrow" data-i18n="about.link">Begin your fitting <span>&rarr;</span></a>
       </div>
     </div>
@@ -140,31 +170,33 @@
   <!-- ===== Services ===== -->
   <section class="services" id="services">
     <div class="services__head reveal">
-      <p class="eyebrow" data-i18n="services.eyebrow">What We Do</p>
-      <h2 class="section-title" data-i18n="services.title">Perfectly fitted for<br />the walk down the aisle.</h2>
+      <p class="eyebrow" data-i18n="services.eyebrow">Alteration Services</p>
+      <h2 class="section-title" data-i18n="services.title">Alterations we handle<br />every week.</h2>
+      <p class="services__lede" data-i18n="services.lede">Whether your gown feels too loose, too tight, too long, or almost right, we shape each detail around your body and wedding day.</p>
     </div>
     <div class="services__grid">
       <article class="service reveal">
         <span class="service__num">01</span>
-        <h3 data-i18n="svc1.h">Precision Tailoring</h3>
-        <p data-i18n="svc1.p">Taking in sides, princess seams, and zippers for a flawless contour.</p>
+        <h3 data-i18n="svc1.h">Fit &amp; Shaping</h3>
+        <p data-i18n="svc1.p">Taking in or letting out sides, princess seams, zippers, and bodices for a smooth, secure fit.</p>
       </article>
       <article class="service reveal">
         <span class="service__num">02</span>
-        <h3 data-i18n="svc2.h">Bodice Adjustments</h3>
-        <p data-i18n="svc2.p">Expertly shortening and adjusting bodices.</p>
+        <h3 data-i18n="svc2.h">Hems &amp; Bustles</h3>
+        <p data-i18n="svc2.p">Adjusting length, layers, trains, and reception bustles so you can walk, dance, and photograph comfortably.</p>
       </article>
       <article class="service reveal">
         <span class="service__num">03</span>
-        <h3 data-i18n="svc3.h">Hemming &amp; Bustling</h3>
-        <p data-i18n="svc3.p">Perfect length adjustments and creating beautiful, secure bustles for your reception.</p>
+        <h3 data-i18n="svc3.h">Bodice, Straps &amp; Support</h3>
+        <p data-i18n="svc3.p">Shortening bodices, adjusting shoulders, securing straps, and refining neckline fit and support.</p>
       </article>
       <article class="service reveal">
         <span class="service__num">04</span>
-        <h3 data-i18n="svc4.h">Custom Additions</h3>
-        <p data-i18n="svc4.p">Crafting and adding custom sleeves (including elegant drape sleeves and long sleeves) as well as customizing shoulders and straps.</p>
+        <h3 data-i18n="svc4.h">Sleeves &amp; Custom Details</h3>
+        <p data-i18n="svc4.p">Adding sleeves, straps, modesty panels, shoulder details, or custom touches that make the gown feel more like you.</p>
       </article>
     </div>
+    <p class="services__cta reveal" data-i18n="services.cta">Not sure what your dress needs? <a href="#contact">Send photos for an estimate.</a></p>
   </section>
 
   <!-- ===== Gallery ===== -->
@@ -201,10 +233,10 @@
   <section class="process" id="process">
     <div class="process__intro reveal">
       <p class="eyebrow" data-i18n="process.eyebrow">How It Works</p>
-      <h2 class="section-title" data-i18n="process.title">A clear, unhurried<br />path to the perfect fit.</h2>
-      <p class="process__lede" data-i18n="process.lede">We keep every step transparent — from your very first message to your final fitting. Here is exactly how we'll work together.</p>
+      <h2 class="section-title" data-i18n="process.title">A clear path from first message<br />to final fitting.</h2>
+      <p class="process__lede" data-i18n="process.lede">We keep the process simple, transparent, and calm, so your dress is ready well before the wedding day.</p>
       <div class="process__photo">
-        <img src="assets/images/full/gown-01.jpg" alt="The seamstress hand-finishing a gown on the dress form" />
+        <img src="assets/images/full/gown-01.jpg" alt="Elaine hand-finishing a wedding gown beside the dress form in her Sacramento studio" width="978" height="1800" loading="lazy" />
         <div class="process__photo-accent"></div>
       </div>
       <a href="#contact" class="link-arrow" data-i18n="process.link">Request a quote <span>&rarr;</span></a>
@@ -221,6 +253,13 @@
       <li class="pstep reveal">
         <span class="pstep__num">02</span>
         <div class="pstep__content">
+          <h3 data-i18n="p3.h">Send Photos for an Estimate</h3>
+          <p data-i18n="p3.p">Send photos of the <strong>entire dress hanging up</strong>, showing the front, back, and sides, along with a list of the specific alterations you have in mind. We'll provide an estimated quote from your photos, and confirm the exact price at your first fitting before any work begins.</p>
+        </div>
+      </li>
+      <li class="pstep reveal">
+        <span class="pstep__num">03</span>
+        <div class="pstep__content">
           <h3 data-i18n="p2.h">The Fitting Process</h3>
           <p data-i18n="p2.p">Most gowns are completed in <strong>two visits</strong>:</p>
           <ul class="pstep__visits">
@@ -230,17 +269,10 @@
         </div>
       </li>
       <li class="pstep reveal">
-        <span class="pstep__num">03</span>
-        <div class="pstep__content">
-          <h3 data-i18n="p3.h">Getting a Quote</h3>
-          <p data-i18n="p3.p">For an estimate, send photos of the <strong>entire dress hanging up</strong> — showing the front, back, and sides — along with a list of the specific alterations you have in mind. We'll provide an estimated quote from your photos, and confirm the exact price during your first visit.</p>
-        </div>
-      </li>
-      <li class="pstep reveal">
         <span class="pstep__num">04</span>
         <div class="pstep__content">
           <h3 data-i18n="p4.h">Location</h3>
-          <p data-i18n="p4.p">We are located in the <strong>95828 area of Sacramento, California</strong>, and see brides by appointment. Please keep this in mind as you plan for your fitting visits.</p>
+          <p data-i18n="p4.p">We are located in the <strong>95828 area of Sacramento, California</strong>, and see brides by appointment. The exact address is provided after your appointment is confirmed.</p>
         </div>
       </li>
     </ol>
@@ -263,7 +295,7 @@
           <li data-i18n="cv.i4"><span>04</span>If you decide to customize your wedding dress with us, we will take your detailed measurements and collect a 50% deposit of the quoted price. Your gown is crafted to the measurements taken. Once it arrives, we will schedule a final fitting, and if any adjustments are needed, additional alteration services are available to refine the fit.</li>
         </ol>
         <p class="custom__tip" data-i18n="cv.tip">Already have dresses you love? We highly recommend bringing pictures of them. Ideally, send them to us when you make your first appointment.</p>
-        <p class="custom__note" data-i18n="cv.note">Preview videos are an in-studio experience. Book a visit to see yours in person.</p>
+        <p class="custom__note" data-i18n="cv.note">Preview videos are a style visualization tool for consultation, and an in-studio experience. Final design, construction, fit, and alterations are confirmed in person.</p>
         <a href="#contact" class="btn btn--solid" data-i18n="cv.cta">Book a Free Consultation</a>
       </div>
       <div class="custom__demos reveal">
@@ -284,11 +316,21 @@
   <section class="contact" id="contact">
     <div class="contact__grid">
       <div class="contact__intro reveal">
-        <p class="eyebrow" data-i18n="contact.eyebrow">Book a Fitting</p>
-        <h2 class="section-title" data-i18n="contact.title">Let's begin<br />your gown.</h2>
-        <p data-i18n="contact.p">Appointments are private and by request. For the fastest quote, include photos of your dress hanging up (front, back, and sides) along with the alterations you have in mind. We'll be in touch within two business days.</p>
+        <p class="eyebrow" data-i18n="contact.eyebrow">Get Started</p>
+        <h2 class="section-title" data-i18n="contact.title">Request a fitting or send<br />photos for an estimate.</h2>
+        <p data-i18n="contact.p">Tell us your wedding date and what you need changed. For the fastest estimate, include photos of the full gown hanging up from the front, back, and sides. We will reply within two business days.</p>
+        <div class="contact__checklist reveal">
+          <h3 data-i18n="contact.checkTitle">For the fastest reply, include:</h3>
+          <ul>
+            <li data-i18n="contact.check1">Your wedding date</li>
+            <li data-i18n="contact.check2">Front, back, and side photos of the gown</li>
+            <li data-i18n="contact.check3">A photo of the dress on you, if available</li>
+            <li data-i18n="contact.check4">Your alteration wish list</li>
+            <li data-i18n="contact.check5">Your preferred fitting timeframe</li>
+          </ul>
+        </div>
         <ul class="contact__details">
-          <li data-i18n="contact.studio"><span>Studio</span>In-home studio · Sacramento, CA 95828 · By appointment only</li>
+          <li data-i18n="contact.studio"><span>Studio</span>Private in-home studio · Sacramento, CA 95828 · Exact address provided after your appointment is confirmed</li>
           <li data-i18n="contact.email"><span>Email</span><a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a></li>
           <li><span>Chloe</span><a href="tel:+14157341832">(415) 734-1832</a></li>
           <li><span>Elaine</span><a href="tel:+14158139302">(415) 813-9302</a></li>
@@ -296,9 +338,15 @@
         </ul>
       </div>
       <form class="contact__form reveal" id="contactForm" novalidate>
-        <div class="field">
-          <label for="name" data-i18n="lbl.name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Your name" data-i18n-ph="ph.name" />
+        <div class="field-row">
+          <div class="field">
+            <label for="name" data-i18n="lbl.name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" data-i18n-ph="ph.name" />
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="lbl.phone">Phone (for text replies)</label>
+            <input type="tel" id="phone" name="phone" required placeholder="(916) 555-1234" autocomplete="tel" />
+          </div>
         </div>
         <div class="field-row">
           <div class="field">
@@ -313,11 +361,11 @@
         <div class="field">
           <label for="service" data-i18n="lbl.service">I'm interested in</label>
           <select id="service" name="service">
-            <option data-i18n="opt.1">Precision tailoring</option>
-            <option data-i18n="opt.2">Bodice adjustments</option>
-            <option data-i18n="opt.3">Hemming &amp; bustling</option>
-            <option data-i18n="opt.4">Custom additions (sleeves, straps)</option>
-            <option data-i18n="opt.custom">Custom gown — free consultation</option>
+            <option data-i18n="opt.1">Fit &amp; shaping</option>
+            <option data-i18n="opt.2">Hems &amp; bustles</option>
+            <option data-i18n="opt.3">Bodice, straps &amp; support</option>
+            <option data-i18n="opt.4">Sleeves &amp; custom details</option>
+            <option data-i18n="opt.custom">Custom gown (free consultation)</option>
             <option data-i18n="opt.5">Not sure yet</option>
           </select>
         </div>
@@ -334,18 +382,23 @@
           </button>
           <div class="upload__previews" id="photoPreviews"></div>
         </div>
-        <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Request an Appointment</button>
+        <label class="contact__consent">
+          <input type="checkbox" id="textConsent" name="textConsent" />
+          <span data-i18n="contact.textConsent">You may text me about my estimate and appointment.</span>
+        </label>
+        <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Send My Fitting Request</button>
         <p class="contact__hint" data-i18n="contact.hint">Prefer to text or email? Reach Chloe at (415) 734-1832, or send photos of your dress — front, back &amp; sides — to <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a> for a faster estimate.</p>
-        <p class="contact__success" id="formSuccess" hidden data-i18n="contact.success">Thank you — your request has been received. We'll be in touch soon. ♥</p>
+        <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Thank you. We received your request and will reply within two business days. Your appointment is not confirmed until we contact you with available times.</p>
+        <p class="contact__error" id="formError" hidden role="status" data-i18n="contact.error">Sorry, something went wrong sending your request. Please text Chloe at <a href="sms:+14157341832">(415) 734-1832</a> or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
       </form>
     </div>
   </section>
 
   <!-- ===== Feedback ===== -->
-  <section class="feedback reveal" id="feedback">
-    <p class="eyebrow" data-i18n="fb.eyebrow">Feedback</p>
-    <h2 class="section-title" data-i18n="fb.title">Help us do<br />even better.</h2>
-    <p class="feedback__lede" data-i18n="fb.lede">Worked with Elaine? Tell us about your experience — a sentence or two helps us improve, and helps future brides too.</p>
+  <section class="feedback reveal" id="reviews">
+    <p class="eyebrow" data-i18n="fb.eyebrow">Kind Words</p>
+    <h2 class="section-title" data-i18n="fb.title">Trusted with<br />once-in-a-lifetime gowns.</h2>
+    <p class="feedback__lede" data-i18n="fb.lede">Reviews from real brides are on their way. Worked with Elaine? Share a sentence or two below. It helps us improve, and helps future brides too.</p>
     <form class="feedback__form" id="feedbackForm" novalidate>
       <div class="feedback__stars" id="fbStars" role="radiogroup" aria-label="Rating">
         <button type="button" data-star="1" aria-label="1 star">★</button>
@@ -391,6 +444,7 @@
         <a href="#services" data-i18n="footer.services">Services</a>
         <a href="#custom" data-i18n="footer.custom">Custom Gowns</a>
         <a href="#gallery" data-i18n="footer.gallery">Gallery</a>
+        <a href="#reviews" data-i18n="footer.feedback">Leave Feedback</a>
         <a href="#contact" data-i18n="footer.contact">Contact</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> Elaine's Bridal Shop. <span data-i18n="footer.rights">All rights reserved.</span></p>

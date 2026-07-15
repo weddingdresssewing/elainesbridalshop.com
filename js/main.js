@@ -15,7 +15,23 @@
   /* ---------- Data ---------- */
   // Gallery photos, in display order: photos with people first, then gowns on the form.
   // gown-06 is the hero image, so it's intentionally left out of the gallery.
-  var GALLERY = ["01", "05", "07", "03", "09", "20", "16", "10", "22", "18", "14", "02", "04", "08"];
+  // Gallery photos in display order. Each has a specific alt + bilingual caption.
+  var GALLERY = [
+    { id: "01", alt: "Elaine hand-sewing a wedding gown hem beside the dress form in her Sacramento studio", en: "Hand-finishing a gown, stitch by stitch.", zh: "一针一线,手工精修婚纱。" },
+    { id: "05", alt: "Elaine guiding wedding gown fabric through her sewing machine", en: "Precision work at the machine.", zh: "缝纫机前的精准作业。" },
+    { id: "07", alt: "Pinning a lace wedding gown during a private fitting", en: "Pinning the fit during a private fitting.", zh: "私人试衣中细致定位。" },
+    { id: "03", alt: "Elaine reviewing finished wedding gowns hanging on the studio rack", en: "Gowns ready for their brides.", zh: "整装待发的婚纱。" },
+    { id: "09", alt: "Bride wearing her altered asymmetric wedding gown after the final fitting", en: "Final fit, ready for the aisle.", zh: "最终试衣,准备走上红毯。" },
+    { id: "20", alt: "Strapless lace wedding gown after alterations, on the dress form", en: "Lace gown, altered and pressed.", zh: "蕾丝婚纱,改制熨烫完成。" },
+    { id: "16", alt: "Fitted lace wedding gown with train after alterations", en: "Shaped through the bodice and hem.", zh: "上身与下摆重新塑形。" },
+    { id: "10", alt: "A-line wedding gown after hem and bodice alterations", en: "Hem and bodice adjustments complete.", zh: "下摆与上身调整完成。" },
+    { id: "22", alt: "Beaded wedding gown on the dress form after tailoring", en: "Beadwork preserved through every alteration.", zh: "改制全程保留珠绣细节。" },
+    { id: "18", alt: "Mermaid wedding gown with sweetheart neckline after alterations", en: "A mermaid silhouette, refined.", zh: "鱼尾轮廓,精细修身。" },
+    { id: "14", alt: "Ruched mermaid wedding gown after fitting alterations", en: "Ruching realigned for a clean line.", zh: "褶皱重整,线条利落。" },
+    { id: "02", alt: "Finished mermaid wedding gown displayed in the studio", en: "Ready for pickup in the studio.", zh: "工作室里等待新娘的成品。" },
+    { id: "04", alt: "Elaine's serger and thread station in the Sacramento studio", en: "The tools behind every clean seam.", zh: "每一道干净缝线背后的工具。" },
+    { id: "08", alt: "Designer wedding gowns in garment bags awaiting alterations", en: "Brides' gowns in our care.", zh: "新娘们托付的婚纱。" }
+  ];
   var VIDEOS = [1, 2, 3, 4];       // showcase-1 … showcase-4
 
   /* ---------- Year ---------- */
@@ -31,19 +47,27 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobile menu ---------- */
+  /* ---------- Mobile menu (accessible) ---------- */
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
-  function closeMenu() {
-    toggle.classList.remove("open");
-    links.classList.remove("open");
+  function menuIsOpen() { return links.classList.contains("open"); }
+  function setMenu(open, refocus) {
+    toggle.classList.toggle("open", open);
+    links.classList.toggle("open", open);
+    nav.classList.toggle("menu-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    if (!open && refocus) toggle.focus();
   }
-  toggle.addEventListener("click", function () {
-    toggle.classList.toggle("open");
-    links.classList.toggle("open");
-  });
+  toggle.addEventListener("click", function () { setMenu(!menuIsOpen()); });
   links.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") closeMenu();
+    if (e.target.tagName === "A") setMenu(false);
+  });
+  document.addEventListener("click", function (e) {
+    if (menuIsOpen() && !links.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && menuIsOpen()) setMenu(false, true);
   });
 
   /* ---------- Reveal on scroll ---------- */
@@ -62,21 +86,27 @@
     revealEls.forEach(function (el) { el.classList.add("is-visible"); });
   }
 
-  /* ---------- Build gallery ---------- */
+  /* ---------- Build gallery (buttons = keyboard accessible) ---------- */
   var grid = document.getElementById("galleryGrid");
-  var items = []; // { full, el }
-  GALLERY.forEach(function (n) {
-    var fig = document.createElement("figure");
-    fig.className = "gallery__item";
+  var items = []; // { full, alt, el }
+  GALLERY.forEach(function (g) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "gallery__item";
+    btn.setAttribute("aria-label", "View larger: " + g.en);
     var img = document.createElement("img");
     // NOTE: no loading="lazy" here — in the horizontal strip the items are
     // 0-wide until the image loads, so a lazy image never "intersects" and
     // never loads (chicken-and-egg). Eager is required for this layout.
-    img.src = "assets/images/thumb/gown-" + n + ".jpg";
-    img.alt = "Wedding dress alterations by Elaine's Bridal Shop";
-    fig.appendChild(img);
-    grid.appendChild(fig);
-    items.push({ full: "assets/images/full/gown-" + n + ".jpg", el: fig });
+    img.src = "assets/images/thumb/gown-" + g.id + ".jpg";
+    img.alt = g.alt;
+    var cap = document.createElement("span");
+    cap.className = "gallery__caption";
+    cap.innerHTML = '<span class="i18n-en">' + g.en + '</span><span class="i18n-zh">' + g.zh + '</span>';
+    btn.appendChild(img);
+    btn.appendChild(cap);
+    grid.appendChild(btn);
+    items.push({ full: "assets/images/full/gown-" + g.id + ".jpg", alt: g.alt, el: btn });
   });
 
   /* ---------- Gallery arrows (desktop) ---------- */
@@ -97,13 +127,16 @@
   var lbList = [];   // currently navigable items (the visible ones)
   var current = 0;
 
+  var lastGalleryTrigger = null;   // focus returns here on close
+
   function showImage(idx) {
     if (!lbList.length) return;
     current = (idx + lbList.length) % lbList.length;
     lbImg.src = lbList[current].full;
-    lbImg.alt = "Wedding gown";
+    lbImg.alt = lbList[current].alt || "Wedding gown";
   }
   function openLightbox(el) {
+    lastGalleryTrigger = el;
     lbList = items.filter(function (it) { return !it.el.classList.contains("hide"); });
     var idx = 0;
     for (var k = 0; k < lbList.length; k++) { if (lbList[k].el === el) { idx = k; break; } }
@@ -111,11 +144,14 @@
     lb.classList.add("open");
     lb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    lbClose.focus();
   }
   function closeLightbox() {
     lb.classList.remove("open");
     lb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    lbImg.removeAttribute("src");
+    if (lastGalleryTrigger) { lastGalleryTrigger.focus(); lastGalleryTrigger = null; }
   }
 
   grid.addEventListener("click", function (e) {
@@ -135,49 +171,54 @@
     else if (e.key === "ArrowRight") showImage(current + 1);
   });
 
-  /* ---------- Video grids (showcase + custom-gown demos) ---------- */
-  function buildVideoGrid(gridId, prefix, list) {
+  /* ---------- Video grids (showcase + custom-gown demos) ----------
+     Cards are <button> with a poster <img> only — no inline <video> element,
+     so nothing video-related loads until a card is actually opened. */
+  function buildVideoGrid(gridId, prefix, list, labelPrefix) {
     var grid = document.getElementById(gridId);
     if (!grid) return;
-    list.forEach(function (v) {
-      var card = document.createElement("div");
+    list.forEach(function (v, i) {
+      var src = "assets/video/" + prefix + "-" + v + ".mp4";
+      var poster = "assets/video/" + prefix + "-" + v + "-poster.jpg";
+      var card = document.createElement("button");
+      card.type = "button";
       card.className = "video-card";
-      var video = document.createElement("video");
-      video.src = "assets/video/" + prefix + "-" + v + ".mp4";
-      video.poster = "assets/video/" + prefix + "-" + v + "-poster.jpg";
-      video.preload = "none";
-      video.playsInline = true;
-      video.setAttribute("playsinline", "");
-      var play = document.createElement("div");
+      card.setAttribute("aria-label", "Play " + labelPrefix + " video " + (i + 1));
+      var img = document.createElement("img");
+      img.className = "poster";
+      img.src = poster;
+      img.alt = "";
+      img.loading = "lazy";
+      var play = document.createElement("span");
       play.className = "video-card__play";
-      card.appendChild(video);
+      play.setAttribute("aria-hidden", "true");
+      card.appendChild(img);
       card.appendChild(play);
       grid.appendChild(card);
-
-      // click → enlarge in the video lightbox
-      card.addEventListener("click", function () { openVideoLightbox(video); });
+      card.addEventListener("click", function () { openVideoLightbox(src, poster, card); });
     });
   }
-  buildVideoGrid("showcaseGrid", "showcase", VIDEOS);
-  buildVideoGrid("customGrid", "custom", [8, 9, 7, 6, 1, 4]);
+  buildVideoGrid("showcaseGrid", "showcase", VIDEOS, "gown fitting");
+  buildVideoGrid("customGrid", "custom", [8, 9, 7, 6, 1, 4], "custom gown preview");
 
   /* ---------- Video lightbox (click a video to enlarge) ---------- */
   var vlb = document.getElementById("vLightbox");
   var vlbVideo = document.getElementById("vlbVideo");
   var vlbClose = document.getElementById("vlbClose");
+  var lastVideoTrigger = null;
 
-  function openVideoLightbox(sourceVideo) {
-    // stop any inline videos first
-    document.querySelectorAll(".video-card video").forEach(function (v) { v.pause(); });
-    vlbVideo.src = sourceVideo.getAttribute("src");
-    vlbVideo.poster = sourceVideo.getAttribute("poster") || "";
+  function openVideoLightbox(src, poster, trigger) {
+    lastVideoTrigger = trigger || null;
+    vlbVideo.src = src;
+    vlbVideo.poster = poster || "";
     // show the poster while the video buffers, instead of a black box
-    vlbVideo.style.background = vlbVideo.poster
-      ? "#000 center / contain no-repeat url('" + vlbVideo.poster + "')"
+    vlbVideo.style.background = poster
+      ? "#000 center / contain no-repeat url('" + poster + "')"
       : "#000";
     vlb.classList.add("open");
     vlb.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
+    vlbClose.focus();
     vlbVideo.play();
   }
   function closeVideoLightbox() {
@@ -187,6 +228,7 @@
     vlb.classList.remove("open");
     vlb.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+    if (lastVideoTrigger) { lastVideoTrigger.focus(); lastVideoTrigger = null; }
   }
   vlbClose.addEventListener("click", closeVideoLightbox);
   vlb.addEventListener("click", function (e) { if (e.target === vlb) closeVideoLightbox(); });
@@ -322,12 +364,15 @@
         i.type = "hidden"; i.name = name; i.value = value;
         nf.appendChild(i);
       }
+      var consentEl = document.getElementById("textConsent");
       hiddenField("Name", document.getElementById("name").value);
+      hiddenField("Phone", document.getElementById("phone").value);
+      hiddenField("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
       hiddenField("email", document.getElementById("email").value);   // lowercase "email" sets reply-to
       hiddenField("Wedding date", document.getElementById("date").value);
       hiddenField("Interested in", document.getElementById("service").value);
       hiddenField("Message", document.getElementById("message").value);
-      hiddenField("_subject", "New fitting inquiry — Elaine's Bridal Shop website");
+      hiddenField("_subject", "New fitting request — Elaine's Bridal Shop website");
       hiddenField("_template", "table");
       hiddenField("_captcha", "false");
       // Attach photos; on ancient browsers without DataTransfer, send the form
@@ -347,10 +392,12 @@
       }
       document.body.appendChild(nf);
 
+      var formError = document.getElementById("formError");
       var settled = false;
       function finishOk() {
         if (settled) return; settled = true;
         nf.remove();
+        if (formError) formError.hidden = true;
         success.hidden = false;
         form.reset();
         photos = [];
@@ -359,13 +406,14 @@
         restoreButtonSoon();
       }
       fsFrame.addEventListener("load", finishOk, { once: true });
-      // safety net: if the iframe never fires load (offline etc.), restore the button
+      // safety net: if the iframe never fires load (offline etc.), show the
+      // on-page error (with text/email fallbacks) and restore the button
       setTimeout(function () {
         if (settled) return; settled = true;
         nf.remove();
         submitBtn.disabled = false;
-        submitBtn.textContent = submitLabel;
-        window.alert((zhUI() ? "抱歉,出了点问题。请直接发邮件至 " : "Sorry — something went wrong. Please email ") + FORM_EMAIL);
+        submitBtn.textContent = submitLabelNow();
+        if (formError) formError.hidden = false;
       }, 20000);
 
       nf.submit();
@@ -445,17 +493,32 @@
     });
   }
 
-  /* ---------- Online booking (Calendly) ----------
-     If BOOKING_URL is set, every [data-book] button opens the Calendly popup.
-     If it's empty, the buttons keep their default behavior (scroll to contact). */
+  /* ---------- Online booking (Calendly, lazy-loaded) ----------
+     Nothing Calendly-related loads unless BOOKING_URL is set AND a booking
+     button is actually clicked. When it's empty, the buttons keep their
+     default behavior (scroll to contact). */
+  function loadCalendly() {
+    return new Promise(function (resolve, reject) {
+      if (window.Calendly) return resolve();
+      var css = document.createElement("link");
+      css.rel = "stylesheet";
+      css.href = "https://assets.calendly.com/assets/external/widget.css";
+      document.head.appendChild(css);
+      var s = document.createElement("script");
+      s.src = "https://assets.calendly.com/assets/external/widget.js";
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = reject;
+      document.head.appendChild(s);
+    });
+  }
   if (BOOKING_URL) {
     document.querySelectorAll("[data-book]").forEach(function (el) {
       el.addEventListener("click", function (e) {
-        if (window.Calendly && typeof Calendly.initPopupWidget === "function") {
-          e.preventDefault();
-          Calendly.initPopupWidget({ url: BOOKING_URL });
-        }
-        // else: fall through to the default #contact scroll
+        e.preventDefault();
+        loadCalendly()
+          .then(function () { Calendly.initPopupWidget({ url: BOOKING_URL }); })
+          .catch(function () { window.location.hash = "#contact"; });
       });
     });
   }
