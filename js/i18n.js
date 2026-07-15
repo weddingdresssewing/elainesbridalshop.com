@@ -129,7 +129,7 @@
     "opt.custom": "定制婚纱——免费咨询",
     "opt.5": "还不确定",
     "lbl.photos": "婚纱照片",
-    "sms.btn": "<strong>把婚纱照片短信发给 Chloe</strong><br />正面、背面、侧面——最快拿到估价的方式",
+    "sms.btn": "<strong>把资料和照片短信发给 Chloe</strong><br />已帮您带上表单信息——附上照片即可(正面、背面、侧面)",
     "contact.textConsent": "可以通过短信联系我确认估价和预约。",
     "btn.submit": "提交试衣申请",
     "contact.hint": "想直接联系我们?短信或致电 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",

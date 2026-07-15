@@ -347,6 +347,33 @@
         .then(function (ok) { if (ok) showSuccess(); else showError(); })
         .catch(showError);
     });
+
+    /* --- Text-your-photos button carries the filled form ---
+       Tapping it opens SMS to Chloe pre-filled with whatever the bride typed
+       (name, date, needs, message) so her details + photos arrive together. */
+    var smsBtn = document.querySelector(".sms-photos");
+    if (smsBtn) {
+      var SMS_NUMBER = "+14157341832";
+      function buildSmsHref() {
+        var zh = zhUI();
+        function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+        var lines = [zh ? "您好!我想咨询婚纱改制估价。" : "Hi! I'd like a wedding dress alteration estimate."];
+        if (v("name"))    lines.push((zh ? "姓名:" : "Name: ") + v("name"));
+        if (v("phone"))   lines.push((zh ? "电话:" : "Phone: ") + v("phone"));
+        if (v("email"))   lines.push((zh ? "邮箱:" : "Email: ") + v("email"));
+        if (v("date"))    lines.push((zh ? "婚礼日期:" : "Wedding date: ") + v("date"));
+        if (v("service")) lines.push((zh ? "需求:" : "Needs: ") + v("service"));
+        if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
+        lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
+        return "sms:" + SMS_NUMBER + "?&body=" + encodeURIComponent(lines.join("\n"));
+      }
+      // keep the href current as she types / switches language / just before tapping
+      form.addEventListener("input", function () { smsBtn.href = buildSmsHref(); });
+      smsBtn.addEventListener("click", function () { smsBtn.href = buildSmsHref(); });
+      var lt = document.getElementById("langToggle");
+      if (lt) lt.addEventListener("click", function () { setTimeout(function () { smsBtn.href = buildSmsHref(); }, 0); });
+      smsBtn.href = buildSmsHref();
+    }
   }
 
   /* ---------- Feedback form (stars + FormSubmit, same free pipe) ---------- */
