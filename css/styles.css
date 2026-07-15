@@ -423,6 +423,7 @@ em { font-style: italic; }
 .about__media { position: relative; }
 .about__media img {
   width: 100%;
+  height: auto;   /* width/height attrs otherwise pin the height and defeat aspect-ratio */
   aspect-ratio: 4 / 5;
   object-fit: cover;
   position: relative; z-index: 2;
@@ -793,6 +794,7 @@ em { font-style: italic; }
 .process__photo { position: relative; max-width: 22rem; margin-bottom: 2rem; }
 .process__photo img {
   width: 100%;
+  height: auto;   /* width/height attrs otherwise pin the height and defeat aspect-ratio */
   aspect-ratio: 4 / 5;
   object-fit: cover;
   position: relative; z-index: 2;
