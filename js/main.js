@@ -13,7 +13,7 @@
   // Get a key in 2 min: go to https://web3forms.com, enter weddingdresssewing@gmail.com,
   // and paste the emailed access key below. Until it's set, the form uses FormSubmit,
   // which is currently slow/broken for browser submissions (hangs on the Origin header).
-  var WEB3FORMS_KEY      = "";
+  var WEB3FORMS_KEY      = "6811e452-3852-4e8e-822f-51a45c275905";
   var BOOKING_URL        = "";   // free: Calendly free tier OR Google Calendar appointment schedule
   var INSTAGRAM_URL      = "https://www.instagram.com/elainebridalsac";
 
