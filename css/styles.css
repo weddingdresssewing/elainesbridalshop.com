@@ -991,7 +991,9 @@ em { font-style: italic; }
   .gallery__item { height: clamp(260px, 40vw, 380px); }
 }
 
-@media (max-width: 760px) {
+/* The full 7-link nav needs ~1200px; below that, use the slide-in menu
+   (it used to switch at 760px, which left 760–1200px colliding with the brand) */
+@media (max-width: 1199px) {
   .nav__links {
     position: fixed;
     top: 0; right: 0;
@@ -1016,6 +1018,9 @@ em { font-style: italic; }
   .nav__toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--ivory); }
   .nav__toggle.open span:nth-child(2) { opacity: 0; }
   .nav__toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--ivory); }
+}
+
+@media (max-width: 760px) {
 
   .about__grid { grid-template-columns: 1fr; }
   .about__media { max-width: 26rem; }
