@@ -912,7 +912,8 @@ em { font-style: italic; }
 .contact__form { background: var(--cream); padding: clamp(1.8rem, 4vw, 2.8rem); }
 .field { margin-bottom: 1.3rem; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
-.field label {
+.field label,
+.field__label {
   display: block;
   font-size: .7rem;
   letter-spacing: .18em;
@@ -920,6 +921,29 @@ em { font-style: italic; }
   color: var(--ink);
   margin-bottom: .55rem;
 }
+
+/* Tap-to-text photos callout (replaces the old in-form photo upload) */
+.sms-photos {
+  display: flex;
+  align-items: center;
+  gap: .95rem;
+  padding: 1rem 1.15rem;
+  background: var(--cream);
+  border: 1px solid var(--gold-soft);
+  border-radius: 4px;
+  color: var(--charcoal);
+  transition: background .25s var(--ease), border-color .25s var(--ease);
+}
+.sms-photos:hover { background: var(--sand); border-color: var(--gold); }
+.sms-photos svg { flex-shrink: 0; color: var(--gold-dark); }
+.sms-photos span { font-size: .92rem; line-height: 1.5; }
+.sms-photos strong {
+  font-family: var(--serif);
+  font-size: 1.12rem;
+  font-weight: 500;
+  letter-spacing: .01em;
+}
+.lang-zh .sms-photos strong { font-size: 1.05rem; }
 .field input,
 .field select,
 .field textarea {

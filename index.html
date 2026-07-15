@@ -65,7 +65,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260715a" />
+  <link rel="stylesheet" href="css/styles.css?v=20260715b" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -317,7 +317,7 @@
       <div class="contact__intro reveal">
         <p class="eyebrow" data-i18n="contact.eyebrow">Get Started</p>
         <h2 class="section-title" data-i18n="contact.title">Request a fitting,<br />or send photos.</h2>
-        <p data-i18n="contact.p">Tell us your wedding date and what you need changed. For the fastest estimate, include photos of the full gown hanging up from the front, back, and sides. We will reply within two business days.</p>
+        <p data-i18n="contact.p">Tell us your wedding date and what you need changed, and we'll reply within two business days. For the fastest estimate, text us photos of the full gown hanging up — front, back, and sides.</p>
         <div class="contact__checklist reveal">
           <h3 data-i18n="contact.checkTitle">For the fastest reply, include:</h3>
           <ul>
@@ -373,20 +373,18 @@
           <textarea id="message" name="message" rows="4" placeholder="The alterations you have in mind, your wedding date, and any questions…" data-i18n-ph="ph.message"></textarea>
         </div>
         <div class="field">
-          <label data-i18n="lbl.photos">Photos (optional)</label>
-          <input type="file" id="photoInput" accept="image/*" multiple hidden />
-          <button type="button" class="upload__zone" id="photoZone">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.8" cy="10" r="1.6"/><path d="m3 17 5-5 4 4 3-3 6 6"/></svg>
-            <span data-i18n="photos.btn">Add up to 3 photos — your dress (front, back &amp; sides) or styles you love</span>
-          </button>
-          <div class="upload__previews" id="photoPreviews"></div>
+          <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
+          <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"/><path d="M8 9.5 12 5.5l4 4"/><path d="M12 5.5v10"/></svg>
+            <span data-i18n="sms.btn"><strong>Text your dress photos to Chloe</strong><br />Front, back &amp; sides — the fastest way to an estimate</span>
+          </a>
         </div>
         <label class="contact__consent">
           <input type="checkbox" id="textConsent" name="textConsent" />
           <span data-i18n="contact.textConsent">You may text me about my estimate and appointment.</span>
         </label>
         <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Send My Fitting Request</button>
-        <p class="contact__hint" data-i18n="contact.hint">Prefer to text or email? Reach Chloe at (415) 734-1832, or send photos of your dress — front, back &amp; sides — to <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a> for a faster estimate.</p>
+        <p class="contact__hint" data-i18n="contact.hint">Prefer to reach us directly? Text or call Chloe at <a href="sms:+14157341832">(415) 734-1832</a>, or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
         <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Thank you. We received your request and will reply within two business days. Your appointment is not confirmed until we contact you with available times.</p>
         <p class="contact__error" id="formError" hidden role="status" data-i18n="contact.error">Sorry, something went wrong sending your request. Please text Chloe at <a href="sms:+14157341832">(415) 734-1832</a> or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
       </form>
@@ -438,7 +436,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260715a"></script>
-  <script src="js/i18n.js?v=20260715a"></script>
+  <script src="js/main.js?v=20260715b"></script>
+  <script src="js/i18n.js?v=20260715b"></script>
 </body>
 </html>

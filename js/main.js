@@ -251,77 +251,7 @@
   if (form) {
     var submitBtn = form.querySelector("button[type=submit]");
 
-    /* --- photo upload (max 3, client-side downscaled, sent as email attachments) --- */
-    var MAX_PHOTOS = 3;
-    var photos = [];   // File objects (compressed)
-    var photoInput = document.getElementById("photoInput");
-    var photoZone = document.getElementById("photoZone");
-    var photoPreviews = document.getElementById("photoPreviews");
-
     function zhUI() { return document.documentElement.lang === "zh-CN"; }
-
-    // Downscale to ≤1600px JPEG so phone photos don't blow the attachment limit
-    function compressImage(file) {
-      return new Promise(function (resolve) {
-        if (!/^image\//.test(file.type) || file.type === "image/gif") return resolve(file);
-        var url = URL.createObjectURL(file);
-        var img = new Image();
-        img.onload = function () {
-          var MAX = 1600;
-          var scale = Math.min(1, MAX / Math.max(img.width, img.height));
-          var c = document.createElement("canvas");
-          c.width = Math.round(img.width * scale);
-          c.height = Math.round(img.height * scale);
-          c.getContext("2d").drawImage(img, 0, 0, c.width, c.height);
-          c.toBlob(function (b) {
-            URL.revokeObjectURL(url);
-            if (b && b.size < file.size) {
-              resolve(new File([b], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: "image/jpeg" }));
-            } else { resolve(file); }
-          }, "image/jpeg", 0.82);
-        };
-        img.onerror = function () { URL.revokeObjectURL(url); resolve(file); };
-        img.src = url;
-      });
-    }
-
-    function renderPreviews() {
-      photoPreviews.innerHTML = "";
-      photos.forEach(function (f, i) {
-        var d = document.createElement("div");
-        d.className = "upload__thumb";
-        var img = document.createElement("img");
-        img.src = URL.createObjectURL(f);
-        img.alt = f.name;
-        var x = document.createElement("button");
-        x.type = "button";
-        x.textContent = "×";
-        x.setAttribute("aria-label", "Remove photo");
-        x.addEventListener("click", function () { photos.splice(i, 1); renderPreviews(); });
-        d.appendChild(img); d.appendChild(x);
-        photoPreviews.appendChild(d);
-      });
-    }
-
-    photoZone.addEventListener("click", function () { photoInput.click(); });
-    photoInput.addEventListener("change", function () {
-      var files = Array.prototype.slice.call(photoInput.files || []);
-      photoInput.value = "";
-      if (!files.length) return;
-      if (photos.length + files.length > MAX_PHOTOS) {
-        window.alert(zhUI() ? "最多上传 " + MAX_PHOTOS + " 张照片。" : "You can upload up to " + MAX_PHOTOS + " photos.");
-        files = files.slice(0, MAX_PHOTOS - photos.length);
-      }
-      files.forEach(function (f) {
-        if (f.size > 20 * 1024 * 1024) {
-          window.alert(zhUI() ? "「" + f.name + "」太大了(超过 20MB),请换一张。" : '"' + f.name + '" is too large (over 20MB) — please choose a smaller photo.');
-          return;
-        }
-        compressImage(f).then(function (out) {
-          if (photos.length < MAX_PHOTOS) { photos.push(out); renderPreviews(); }
-        });
-      });
-    });
 
     var formError = document.getElementById("formError");
 
@@ -332,27 +262,10 @@
       submitBtn.disabled = on;
       submitBtn.textContent = on ? (zhUI() ? "发送中…" : "Sending…") : submitLabelNow();
     }
-    // When photos were dropped (retry without them), nudge the bride to text them.
-    function successNote(photosDropped) {
-      var extra = success.querySelector(".contact__success-extra");
-      if (photosDropped) {
-        if (!extra) {
-          extra = document.createElement("span");
-          extra.className = "contact__success-extra";
-          success.appendChild(extra);
-        }
-        extra.textContent = zhUI()
-          ? " 您的照片这次没能一起发送——方便的话,请把婚纱照片短信发给 Chloe(415)734-1832,以便更快估价。"
-          : " Your photos didn't send this time — please text them to Chloe at (415) 734-1832 for the fastest estimate.";
-      } else if (extra) { extra.textContent = ""; }
-    }
-    function showSuccess(photosDropped) {
+    function showSuccess() {
       if (formError) formError.hidden = true;
-      successNote(photosDropped);
       success.hidden = false;
       form.reset();
-      photos = [];
-      renderPreviews();
       submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
       setTimeout(function () { setBusy(false); }, 2500);
     }
@@ -361,25 +274,24 @@
       setBusy(false);
     }
 
-    // Build a FormData payload. FormSubmit's /ajax/ endpoint returns JSON in
-    // ~0.3s (fast + testable), unlike the native endpoint whose flaky 500s
-    // give the hidden-iframe approach no way to tell success from failure.
     var consentEl = document.getElementById("textConsent");
-    function fieldVals() {
-      return {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        consent: consentEl && consentEl.checked ? "YES — ok to text" : "no",
-        email: document.getElementById("email").value,
-        date: document.getElementById("date").value,
-        service: document.getElementById("service").value,
-        message: document.getElementById("message").value
-      };
+    function buildData() {
+      var fd = new FormData();
+      fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("subject", "New fitting request — Elaine's Bridal Shop website");
+      fd.append("from_name", "Elaine's Bridal Shop website");
+      fd.append("Name", document.getElementById("name").value);
+      fd.append("Phone", document.getElementById("phone").value);
+      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
+      fd.append("email", document.getElementById("email").value);   // reply-to
+      fd.append("Wedding date", document.getElementById("date").value);
+      fd.append("Interested in", document.getElementById("service").value);
+      fd.append("Message", document.getElementById("message").value);
+      return fd;
     }
 
-    // Fetch with a hard timeout so a slow/hung backend can never leave the
-    // button stuck on "Sending…". On timeout the promise rejects → caller
-    // shows the on-page text/email fallback.
+    // Hard timeout so a slow/hung backend can never leave the button stuck on
+    // "Sending…". On timeout the promise rejects → the on-page text/email fallback.
     function fetchTimeout(url, opts, ms) {
       if (typeof AbortController === "undefined") return fetch(url, opts);
       var ctrl = new AbortController();
@@ -391,52 +303,30 @@
       );
     }
 
-    // Web3Forms (preferred): reliable browser CORS, JSON, handles attachments.
-    function postWeb3Forms(withPhotos) {
-      var v = fieldVals();
-      var fd = new FormData();
-      fd.append("access_key", WEB3FORMS_KEY);
-      fd.append("subject", "New fitting request — Elaine's Bridal Shop website");
-      fd.append("from_name", "Elaine's Bridal Shop website");
-      fd.append("Name", v.name);
-      fd.append("Phone", v.phone);
-      fd.append("Text consent", v.consent);
-      fd.append("email", v.email);       // reply-to
-      fd.append("Wedding date", v.date);
-      fd.append("Interested in", v.service);
-      fd.append("Message", v.message);
-      if (withPhotos) {
-        photos.forEach(function (f) { fd.append("attachment", f, f.name); });
-      }
-      return fetchTimeout("https://api.web3forms.com/submit", {
-        method: "POST", headers: { "Accept": "application/json" }, body: fd
-      }, 20000).then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (j) {
-          return j && j.success === true;
+    // Photos are handled out-of-band (brides text them), so the form only sends
+    // text fields — fast + reliable via Web3Forms's browser-friendly CORS.
+    function postForm() {
+      if (WEB3FORMS_KEY) {
+        return fetchTimeout("https://api.web3forms.com/submit", {
+          method: "POST", headers: { "Accept": "application/json" }, body: buildData()
+        }, 15000).then(function (r) {
+          return r.json().catch(function () { return {}; }).then(function (j) {
+            return j && j.success === true;
+          });
         });
-      });
-    }
-
-    // FormSubmit (fallback): currently slow for browser submits; the 12s timeout
-    // means brides get the text/email fallback fast instead of a 60s hang.
-    function postFormSubmit(withPhotos) {
-      var v = fieldVals();
+      }
+      // Fallback to FormSubmit if no Web3Forms key is configured.
       var fd = new FormData();
-      fd.append("Name", v.name);
-      fd.append("Phone", v.phone);
-      fd.append("Text consent", v.consent);
-      fd.append("email", v.email);       // lowercase sets reply-to
-      fd.append("Wedding date", v.date);
-      fd.append("Interested in", v.service);
-      fd.append("Message", v.message);
+      fd.append("Name", document.getElementById("name").value);
+      fd.append("Phone", document.getElementById("phone").value);
+      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
+      fd.append("email", document.getElementById("email").value);
+      fd.append("Wedding date", document.getElementById("date").value);
+      fd.append("Interested in", document.getElementById("service").value);
+      fd.append("Message", document.getElementById("message").value);
       fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
       fd.append("_template", "table");
       fd.append("_captcha", "false");
-      if (withPhotos) {
-        photos.forEach(function (f, i) {
-          fd.append(i === 0 ? "attachment" : "attachment" + (i + 1), f, f.name);
-        });
-      }
       return fetchTimeout("https://formsubmit.co/ajax/" + FORM_EMAIL, {
         method: "POST", headers: { "Accept": "application/json" }, body: fd
       }, 12000).then(function (r) {
@@ -446,38 +336,16 @@
       });
     }
 
-    function postForm(withPhotos) {
-      return WEB3FORMS_KEY ? postWeb3Forms(withPhotos) : postFormSubmit(withPhotos);
-    }
-
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      if (!FORM_EMAIL) { showSuccess(false); return; }  // demo fallback
+      if (!FORM_EMAIL && !WEB3FORMS_KEY) { showSuccess(); return; }  // demo fallback
 
       setBusy(true);
-      var hadPhotos = photos.length > 0;
-
-      // Primary attempt (with photos if any). If it fails and there WERE photos,
-      // retry without them so the lead itself never gets lost to a big/odd file.
-      postForm(hadPhotos).then(function (ok) {
-        if (ok) { showSuccess(false); return; }
-        if (hadPhotos) {
-          return postForm(false).then(function (ok2) {
-            if (ok2) showSuccess(true); else showError();
-          });
-        }
-        showError();
-      }).catch(function () {
-        if (hadPhotos) {
-          postForm(false).then(function (ok2) {
-            if (ok2) showSuccess(true); else showError();
-          }).catch(showError);
-        } else {
-          showError();
-        }
-      });
+      postForm()
+        .then(function (ok) { if (ok) showSuccess(); else showError(); })
+        .catch(showError);
     });
   }
 
