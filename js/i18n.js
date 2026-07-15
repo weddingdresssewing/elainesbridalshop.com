@@ -35,7 +35,7 @@
     "qs.h1": "发送婚礼日期和婚纱照片",
     "qs.p1": "请附上婚纱挂起来的正面、背面和侧面照片,以及您的婚礼日期。",
     "qs.h2": "获取初步估价",
-    "qs.p2": "我们会查看您的照片,通常在两个工作日内回复。",
+    "qs.p2": "我们会查看您的照片,通常在一个工作日内回复。",
     "qs.h3": "预约私人试衣",
     "qs.p3": "准备好后,欢迎来到 Elaine 位于萨克拉门托 95828 的家庭工作室。",
 
@@ -107,7 +107,7 @@
     /* contact */
     "contact.eyebrow": "开始咨询",
     "contact.title": "申请试衣,<br />或发照片估价。",
-    "contact.p": "告诉我们您的婚礼日期和想改的地方,我们会在两个工作日内回复。想最快拿到估价,请把整条婚纱挂起来的正面、背面和侧面照片短信发给我们。",
+    "contact.p": "告诉我们您的婚礼日期和想改的地方,我们会在一个工作日内回复。想最快拿到估价,请把整条婚纱挂起来的正面、背面和侧面照片短信发给我们。",
     "contact.checkTitle": "想更快收到回复,请附上:",
     "contact.check1": "您的婚礼日期",
     "contact.check2": "婚纱的正面、背面和侧面照片",
@@ -133,7 +133,7 @@
     "contact.textConsent": "可以通过短信联系我确认估价和预约。",
     "btn.submit": "提交试衣申请",
     "contact.hint": "想直接联系我们?短信或致电 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
-    "contact.success": "谢谢您。我们已收到您的申请,将在两个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。",
+    "contact.success": "谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。",
     "contact.error": "抱歉,提交时出了点问题。请短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
 
     /* feedback / reviews */
