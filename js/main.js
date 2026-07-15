@@ -159,7 +159,7 @@
     });
   }
   buildVideoGrid("showcaseGrid", "showcase", VIDEOS);
-  buildVideoGrid("customGrid", "custom", [8, 9, 7, 6, 1, 2, 3, 4, 5]);
+  buildVideoGrid("customGrid", "custom", [8, 9, 7, 6, 1, 4]);
 
   /* ---------- Video lightbox (click a video to enlarge) ---------- */
   var vlb = document.getElementById("vLightbox");
