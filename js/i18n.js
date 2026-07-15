@@ -106,7 +106,7 @@
 
     /* contact */
     "contact.eyebrow": "开始咨询",
-    "contact.title": "申请试衣,或发照片<br />获取估价。",
+    "contact.title": "申请试衣,<br />或发照片估价。",
     "contact.p": "告诉我们您的婚礼日期和想改的地方。想最快拿到估价,请附上整条婚纱挂起来的正面、背面和侧面照片。我们会在两个工作日内回复。",
     "contact.checkTitle": "想更快收到回复,请附上:",
     "contact.check1": "您的婚礼日期",
