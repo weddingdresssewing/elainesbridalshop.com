@@ -8,7 +8,12 @@
      OWNER SETTINGS — paste your links here, then save.
      Leave a value as "" to keep that feature off.
      ============================================================ */
-  var FORM_EMAIL         = "weddingdresssewing@gmail.com"; // contact form emails here (free, via FormSubmit)
+  var FORM_EMAIL         = "weddingdresssewing@gmail.com"; // fallback backend (FormSubmit)
+  // PREFERRED form backend — Web3Forms (free, unlimited, reliable browser CORS).
+  // Get a key in 2 min: go to https://web3forms.com, enter weddingdresssewing@gmail.com,
+  // and paste the emailed access key below. Until it's set, the form uses FormSubmit,
+  // which is currently slow/broken for browser submissions (hangs on the Origin header).
+  var WEB3FORMS_KEY      = "";
   var BOOKING_URL        = "";   // free: Calendly free tier OR Google Calendar appointment schedule
   var INSTAGRAM_URL      = "https://www.instagram.com/elainebridalsac";
 
@@ -360,15 +365,70 @@
     // ~0.3s (fast + testable), unlike the native endpoint whose flaky 500s
     // give the hidden-iframe approach no way to tell success from failure.
     var consentEl = document.getElementById("textConsent");
-    function buildData(withPhotos) {
+    function fieldVals() {
+      return {
+        name: document.getElementById("name").value,
+        phone: document.getElementById("phone").value,
+        consent: consentEl && consentEl.checked ? "YES — ok to text" : "no",
+        email: document.getElementById("email").value,
+        date: document.getElementById("date").value,
+        service: document.getElementById("service").value,
+        message: document.getElementById("message").value
+      };
+    }
+
+    // Fetch with a hard timeout so a slow/hung backend can never leave the
+    // button stuck on "Sending…". On timeout the promise rejects → caller
+    // shows the on-page text/email fallback.
+    function fetchTimeout(url, opts, ms) {
+      if (typeof AbortController === "undefined") return fetch(url, opts);
+      var ctrl = new AbortController();
+      opts.signal = ctrl.signal;
+      var timer = setTimeout(function () { ctrl.abort(); }, ms);
+      return fetch(url, opts).then(
+        function (r) { clearTimeout(timer); return r; },
+        function (e) { clearTimeout(timer); throw e; }
+      );
+    }
+
+    // Web3Forms (preferred): reliable browser CORS, JSON, handles attachments.
+    function postWeb3Forms(withPhotos) {
+      var v = fieldVals();
       var fd = new FormData();
-      fd.append("Name", document.getElementById("name").value);
-      fd.append("Phone", document.getElementById("phone").value);
-      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
-      fd.append("email", document.getElementById("email").value);  // lowercase sets reply-to
-      fd.append("Wedding date", document.getElementById("date").value);
-      fd.append("Interested in", document.getElementById("service").value);
-      fd.append("Message", document.getElementById("message").value);
+      fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("subject", "New fitting request — Elaine's Bridal Shop website");
+      fd.append("from_name", "Elaine's Bridal Shop website");
+      fd.append("Name", v.name);
+      fd.append("Phone", v.phone);
+      fd.append("Text consent", v.consent);
+      fd.append("email", v.email);       // reply-to
+      fd.append("Wedding date", v.date);
+      fd.append("Interested in", v.service);
+      fd.append("Message", v.message);
+      if (withPhotos) {
+        photos.forEach(function (f) { fd.append("attachment", f, f.name); });
+      }
+      return fetchTimeout("https://api.web3forms.com/submit", {
+        method: "POST", headers: { "Accept": "application/json" }, body: fd
+      }, 20000).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          return j && j.success === true;
+        });
+      });
+    }
+
+    // FormSubmit (fallback): currently slow for browser submits; the 12s timeout
+    // means brides get the text/email fallback fast instead of a 60s hang.
+    function postFormSubmit(withPhotos) {
+      var v = fieldVals();
+      var fd = new FormData();
+      fd.append("Name", v.name);
+      fd.append("Phone", v.phone);
+      fd.append("Text consent", v.consent);
+      fd.append("email", v.email);       // lowercase sets reply-to
+      fd.append("Wedding date", v.date);
+      fd.append("Interested in", v.service);
+      fd.append("Message", v.message);
       fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
       fd.append("_template", "table");
       fd.append("_captcha", "false");
@@ -377,19 +437,17 @@
           fd.append(i === 0 ? "attachment" : "attachment" + (i + 1), f, f.name);
         });
       }
-      return fd;
-    }
-
-    function postForm(withPhotos) {
-      return fetch("https://formsubmit.co/ajax/" + FORM_EMAIL, {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: buildData(withPhotos)
-      }).then(function (r) {
+      return fetchTimeout("https://formsubmit.co/ajax/" + FORM_EMAIL, {
+        method: "POST", headers: { "Accept": "application/json" }, body: fd
+      }, 12000).then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (j) {
           return String(j && j.success) === "true";
         });
       });
+    }
+
+    function postForm(withPhotos) {
+      return WEB3FORMS_KEY ? postWeb3Forms(withPhotos) : postFormSubmit(withPhotos);
     }
 
     form.addEventListener("submit", function (e) {
