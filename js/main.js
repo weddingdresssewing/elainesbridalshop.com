@@ -245,15 +245,6 @@
   var success = document.getElementById("formSuccess");
   if (form) {
     var submitBtn = form.querySelector("button[type=submit]");
-    var submitLabel = submitBtn.textContent;
-
-    // Hidden iframe target for the native FormSubmit POST. Created once at init
-    // so its initial about:blank "load" can't race a submission's load event.
-    var fsFrame = document.createElement("iframe");
-    fsFrame.name = "fsFrame";
-    fsFrame.setAttribute("title", "hidden form target");
-    fsFrame.style.display = "none";
-    document.body.appendChild(fsFrame);
 
     /* --- photo upload (max 3, client-side downscaled, sent as email attachments) --- */
     var MAX_PHOTOS = 3;
@@ -327,96 +318,108 @@
       });
     });
 
+    var formError = document.getElementById("formError");
+
+    function submitLabelNow() {
+      return zhUI() ? "提交试衣申请" : "Send My Fitting Request";
+    }
+    function setBusy(on) {
+      submitBtn.disabled = on;
+      submitBtn.textContent = on ? (zhUI() ? "发送中…" : "Sending…") : submitLabelNow();
+    }
+    // When photos were dropped (retry without them), nudge the bride to text them.
+    function successNote(photosDropped) {
+      var extra = success.querySelector(".contact__success-extra");
+      if (photosDropped) {
+        if (!extra) {
+          extra = document.createElement("span");
+          extra.className = "contact__success-extra";
+          success.appendChild(extra);
+        }
+        extra.textContent = zhUI()
+          ? " 您的照片这次没能一起发送——方便的话,请把婚纱照片短信发给 Chloe(415)734-1832,以便更快估价。"
+          : " Your photos didn't send this time — please text them to Chloe at (415) 734-1832 for the fastest estimate.";
+      } else if (extra) { extra.textContent = ""; }
+    }
+    function showSuccess(photosDropped) {
+      if (formError) formError.hidden = true;
+      successNote(photosDropped);
+      success.hidden = false;
+      form.reset();
+      photos = [];
+      renderPreviews();
+      submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
+      setTimeout(function () { setBusy(false); }, 2500);
+    }
+    function showError() {
+      if (formError) formError.hidden = false;
+      setBusy(false);
+    }
+
+    // Build a FormData payload. FormSubmit's /ajax/ endpoint returns JSON in
+    // ~0.3s (fast + testable), unlike the native endpoint whose flaky 500s
+    // give the hidden-iframe approach no way to tell success from failure.
+    var consentEl = document.getElementById("textConsent");
+    function buildData(withPhotos) {
+      var fd = new FormData();
+      fd.append("Name", document.getElementById("name").value);
+      fd.append("Phone", document.getElementById("phone").value);
+      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
+      fd.append("email", document.getElementById("email").value);  // lowercase sets reply-to
+      fd.append("Wedding date", document.getElementById("date").value);
+      fd.append("Interested in", document.getElementById("service").value);
+      fd.append("Message", document.getElementById("message").value);
+      fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
+      fd.append("_template", "table");
+      fd.append("_captcha", "false");
+      if (withPhotos) {
+        photos.forEach(function (f, i) {
+          fd.append(i === 0 ? "attachment" : "attachment" + (i + 1), f, f.name);
+        });
+      }
+      return fd;
+    }
+
+    function postForm(withPhotos) {
+      return fetch("https://formsubmit.co/ajax/" + FORM_EMAIL, {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: buildData(withPhotos)
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          return String(j && j.success) === "true";
+        });
+      });
+    }
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
 
-      function submitLabelNow() {
-        return zhUI() ? "提交预约申请" : "Request an Appointment";
-      }
-      function restoreButtonSoon() {
-        setTimeout(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = submitLabelNow();
-        }, 2500);
-      }
+      if (!FORM_EMAIL) { showSuccess(false); return; }  // demo fallback
 
-      if (!FORM_EMAIL) {                       // demo fallback (no email configured)
-        success.hidden = false;
-        form.reset();
-        restoreButtonSoon();
-        return;
-      }
+      setBusy(true);
+      var hadPhotos = photos.length > 0;
 
-      submitBtn.disabled = true;
-      submitBtn.textContent = zhUI() ? "发送中…" : "Sending…";
-
-      // Submit to FormSubmit's NATIVE endpoint via a hidden iframe: the /ajax/
-      // endpoint silently drops file attachments, the native one emails them.
-      var nf = document.createElement("form");
-      nf.action = "https://formsubmit.co/" + FORM_EMAIL;
-      nf.method = "POST";
-      nf.enctype = "multipart/form-data";
-      nf.target = "fsFrame";
-      nf.style.display = "none";
-      function hiddenField(name, value) {
-        var i = document.createElement("input");
-        i.type = "hidden"; i.name = name; i.value = value;
-        nf.appendChild(i);
-      }
-      var consentEl = document.getElementById("textConsent");
-      hiddenField("Name", document.getElementById("name").value);
-      hiddenField("Phone", document.getElementById("phone").value);
-      hiddenField("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
-      hiddenField("email", document.getElementById("email").value);   // lowercase "email" sets reply-to
-      hiddenField("Wedding date", document.getElementById("date").value);
-      hiddenField("Interested in", document.getElementById("service").value);
-      hiddenField("Message", document.getElementById("message").value);
-      hiddenField("_subject", "New fitting request — Elaine's Bridal Shop website");
-      hiddenField("_template", "table");
-      hiddenField("_captcha", "false");
-      // Attach photos; on ancient browsers without DataTransfer, send the form
-      // without them rather than dying mid-submit.
-      try {
-        photos.forEach(function (f, i) {
-          var fi = document.createElement("input");
-          fi.type = "file";
-          fi.name = i === 0 ? "attachment" : "attachment" + (i + 1);
-          var dt = new DataTransfer();
-          dt.items.add(f);
-          fi.files = dt.files;
-          nf.appendChild(fi);
-        });
-      } catch (err) {
-        hiddenField("Note", "(bride attached " + photos.length + " photo(s) but her browser could not upload them)");
-      }
-      document.body.appendChild(nf);
-
-      var formError = document.getElementById("formError");
-      var settled = false;
-      function finishOk() {
-        if (settled) return; settled = true;
-        nf.remove();
-        if (formError) formError.hidden = true;
-        success.hidden = false;
-        form.reset();
-        photos = [];
-        renderPreviews();
-        submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
-        restoreButtonSoon();
-      }
-      fsFrame.addEventListener("load", finishOk, { once: true });
-      // safety net: if the iframe never fires load (offline etc.), show the
-      // on-page error (with text/email fallbacks) and restore the button
-      setTimeout(function () {
-        if (settled) return; settled = true;
-        nf.remove();
-        submitBtn.disabled = false;
-        submitBtn.textContent = submitLabelNow();
-        if (formError) formError.hidden = false;
-      }, 20000);
-
-      nf.submit();
+      // Primary attempt (with photos if any). If it fails and there WERE photos,
+      // retry without them so the lead itself never gets lost to a big/odd file.
+      postForm(hadPhotos).then(function (ok) {
+        if (ok) { showSuccess(false); return; }
+        if (hadPhotos) {
+          return postForm(false).then(function (ok2) {
+            if (ok2) showSuccess(true); else showError();
+          });
+        }
+        showError();
+      }).catch(function () {
+        if (hadPhotos) {
+          postForm(false).then(function (ok2) {
+            if (ok2) showSuccess(true); else showError();
+          }).catch(showError);
+        } else {
+          showError();
+        }
+      });
     });
   }
 
