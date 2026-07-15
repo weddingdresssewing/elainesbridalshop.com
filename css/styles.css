@@ -121,6 +121,7 @@ em { font-style: italic; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2rem;   /* guaranteed breathing room between brand and menu */
 }
 .nav__brand { display: flex; align-items: center; gap: .65rem; }
 .nav__brand-mark {
@@ -150,6 +151,7 @@ em { font-style: italic; }
   color: var(--ivory);
   position: relative;
   transition: color .3s;
+  white-space: nowrap;   /* never let a link wrap to two lines */
 }
 .nav__links a:not(.nav__cta)::after {
   content: "";
@@ -991,9 +993,9 @@ em { font-style: italic; }
   .gallery__item { height: clamp(260px, 40vw, 380px); }
 }
 
-/* The full 7-link nav needs ~1200px; below that, use the slide-in menu
-   (it used to switch at 760px, which left 760–1200px colliding with the brand) */
-@media (max-width: 1199px) {
+/* Measured: the full 7-link nav needs ~1304px viewport; below 1350 use the
+   slide-in menu (was 1199, which left 1200-1304px cramped) */
+@media (max-width: 1349px) {
   .nav__links {
     position: fixed;
     top: 0; right: 0;
