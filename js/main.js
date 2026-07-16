@@ -278,6 +278,7 @@
     function buildData() {
       var fd = new FormData();
       fd.append("access_key", WEB3FORMS_KEY);
+      fd.append("botcheck", "");   // honeypot: Web3Forms drops the submission if this is non-empty
       fd.append("subject", "New fitting request — Elaine's Bridal Shop website");
       fd.append("from_name", "Elaine's Bridal Shop website");
       fd.append("Name", document.getElementById("name").value);
@@ -374,79 +375,6 @@
       if (lt) lt.addEventListener("click", function () { setTimeout(function () { smsBtn.href = buildSmsHref(); }, 0); });
       smsBtn.href = buildSmsHref();
     }
-  }
-
-  /* ---------- Feedback form (stars + FormSubmit, same free pipe) ---------- */
-  var fbForm = document.getElementById("feedbackForm");
-  if (fbForm) {
-    var fbSuccess = document.getElementById("fbSuccess");
-    var fbBtn = fbForm.querySelector("button[type=submit]");
-    var fbMsg = document.getElementById("fbMessage");
-    var starBtns = Array.prototype.slice.call(document.querySelectorAll("#fbStars button"));
-    var fbRating = 0;
-
-    function paintStars() {
-      starBtns.forEach(function (b) {
-        b.classList.toggle("on", parseInt(b.dataset.star, 10) <= fbRating);
-      });
-    }
-    starBtns.forEach(function (b) {
-      b.addEventListener("click", function () {
-        fbRating = parseInt(b.dataset.star, 10);
-        paintStars();
-      });
-    });
-
-    fbForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!fbForm.checkValidity()) { fbForm.reportValidity(); return; }
-      var zh = document.documentElement.lang === "zh-CN";
-
-      function fbRestoreSoon() {
-        setTimeout(function () {
-          fbBtn.disabled = false;
-          fbBtn.textContent = document.documentElement.lang === "zh-CN" ? "发送反馈" : "Send Feedback";
-        }, 2500);
-      }
-
-      if (!FORM_EMAIL) {                      // demo fallback
-        fbSuccess.hidden = false;
-        fbForm.reset(); fbRating = 0; paintStars();
-        fbRestoreSoon();
-        return;
-      }
-
-      fbBtn.disabled = true;
-      fbBtn.textContent = zh ? "发送中…" : "Sending…";
-
-      var payload = {
-        Type: "Website feedback",
-        Rating: fbRating ? fbRating + " / 5" : "(not given)",
-        Name: document.getElementById("fbName").value || "(anonymous)",
-        Feedback: fbMsg.value,
-        _subject: "New feedback — Elaine's Bridal Shop website",
-        _template: "table",
-        _captcha: "false"
-      };
-
-      fetch("https://formsubmit.co/ajax/" + encodeURIComponent(FORM_EMAIL), {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload)
-      })
-        .then(function (r) { return r.json(); })
-        .then(function () {
-          fbSuccess.hidden = false;
-          fbForm.reset(); fbRating = 0; paintStars();
-          fbBtn.textContent = zh ? "已发送 ✓" : "Sent ✓";
-          fbRestoreSoon();
-        })
-        .catch(function () {
-          fbBtn.disabled = false;
-          fbBtn.textContent = zh ? "发送反馈" : "Send Feedback";
-          window.alert((zh ? "抱歉,出了点问题。请直接发邮件至 " : "Sorry — something went wrong. Please email ") + FORM_EMAIL);
-        });
-    });
   }
 
   /* ---------- Online booking (Calendly, lazy-loaded) ----------

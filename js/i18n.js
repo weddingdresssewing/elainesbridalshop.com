@@ -10,7 +10,6 @@
     "nav.services": "改衣服务",
     "nav.gallery": "作品",
     "nav.process": "服务流程",
-    "nav.reviews": "客户评价",
     "nav.custom": "定制婚纱",
     "nav.book": "申请试衣预约",
 
@@ -136,31 +135,19 @@
     "contact.success": "谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。",
     "contact.error": "抱歉,提交时出了点问题。请短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
 
-    /* feedback / reviews */
-    "fb.eyebrow": "新娘评价",
-    "fb.title": "被托付,<br />被信赖。",
-    "fb.lede": "真实新娘的评价即将上线。与 Elaine 合作过?欢迎在下方留下一两句话,既帮我们进步,也帮到之后的新娘。",
-    "fb.lblMsg": "您的反馈",
-    "fb.lblName": "姓名(选填)",
-    "fb.submit": "发送反馈",
-    "fb.success": "谢谢您——您的反馈对我们意义重大。♥",
-
     /* footer */
     "footer.tag": "「这里,有您梦想中的那条裙子」· 加州萨克拉门托 · 家庭工作室",
     "footer.about": "裁缝师",
     "footer.services": "改衣服务",
     "footer.custom": "定制婚纱",
     "footer.gallery": "作品",
-    "footer.feedback": "留下反馈",
     "footer.contact": "联系我们",
     "footer.rights": "版权所有。"
   };
 
   var ZH_PH = {
     "ph.name": "您的姓名",
-    "ph.message": "您想做的改动、婚礼日期,以及任何疑问…",
-    "fb.phMsg": "您的体验、建议,或任何想对我们说的话…",
-    "fb.phName": "可以留空"
+    "ph.message": "您想做的改动、婚礼日期,以及任何疑问…"
   };
 
   var META = {

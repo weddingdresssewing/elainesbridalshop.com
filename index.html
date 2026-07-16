@@ -41,7 +41,14 @@
       "postalCode": "95828",
       "addressCountry": "US"
     },
-    "areaServed": { "@type": "City", "name": "Sacramento" },
+    "areaServed": [
+      { "@type": "City", "name": "Sacramento" },
+      { "@type": "City", "name": "Elk Grove" },
+      { "@type": "City", "name": "Rancho Cordova" },
+      { "@type": "City", "name": "Folsom" },
+      { "@type": "City", "name": "Roseville" },
+      { "@type": "City", "name": "Davis" }
+    ],
     "knowsLanguage": ["English", "Chinese"],
     "sameAs": ["https://www.instagram.com/elainebridalsac"],
     "contactPoint": [
@@ -65,7 +72,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260715d" />
+  <link rel="stylesheet" href="css/styles.css?v=20260715e" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -337,6 +344,8 @@
         </ul>
       </div>
       <form class="contact__form reveal" id="contactForm" novalidate>
+        <!-- honeypot: real people never see or fill this; bots that do are rejected -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <div class="field-row">
           <div class="field">
             <label for="name" data-i18n="lbl.name">Name</label>
@@ -436,7 +445,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260715d"></script>
-  <script src="js/i18n.js?v=20260715d"></script>
+  <script src="js/main.js?v=20260715e"></script>
+  <script src="js/i18n.js?v=20260715e"></script>
 </body>
 </html>
