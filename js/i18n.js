@@ -231,6 +231,10 @@
 
   var saved = "en";
   try { saved = localStorage.getItem("lang") || "en"; } catch (e) {}
+  try {
+    var qlang = new URLSearchParams(location.search).get("lang");
+    if (qlang === "zh" || qlang === "en") saved = qlang;
+  } catch (e) {}
 
   var toggle = document.getElementById("langToggle");
   if (toggle) {
