@@ -218,7 +218,7 @@
     }
 
     // Carry the current language over to the external catalog site
-    document.querySelectorAll('a[href*="dress-catalog"]').forEach(function (a) {
+    document.querySelectorAll('a[href*="dresses.elainesbridalshop"]').forEach(function (a) {
       try {
         var u = new URL(a.href);
         u.searchParams.set("lang", zh ? "zh" : "en");
