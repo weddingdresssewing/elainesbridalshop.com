@@ -216,6 +216,16 @@
       btn.textContent = zh ? "EN" : "中文";
       btn.setAttribute("aria-label", zh ? "Switch to English" : "切换到中文");
     }
+
+    // Carry the current language over to the external catalog site
+    document.querySelectorAll('a[href*="wedding-dresses-catalog"]').forEach(function (a) {
+      try {
+        var u = new URL(a.href);
+        u.searchParams.set("lang", zh ? "zh" : "en");
+        a.href = u.toString();
+      } catch (e) {}
+    });
+
     try { localStorage.setItem("lang", lang); } catch (e) {}
   }
 
