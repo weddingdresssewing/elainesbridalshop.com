@@ -94,7 +94,7 @@
   /* ---------- Build gallery (buttons = keyboard accessible) ---------- */
   var grid = document.getElementById("galleryGrid");
   var items = []; // { full, alt, el }
-  GALLERY.forEach(function (g) {
+  if (grid) GALLERY.forEach(function (g) {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "gallery__item";
@@ -118,7 +118,7 @@
   var galPrev = document.getElementById("galPrev");
   var galNext = document.getElementById("galNext");
   function galScroll(dir) {
-    grid.scrollBy({ left: dir * grid.clientWidth * 0.8, behavior: "smooth" });
+    if (grid) grid.scrollBy({ left: dir * grid.clientWidth * 0.8, behavior: "smooth" });
   }
   if (galPrev) galPrev.addEventListener("click", function () { galScroll(-1); });
   if (galNext) galNext.addEventListener("click", function () { galScroll(1); });
@@ -159,22 +159,24 @@
     if (lastGalleryTrigger) { lastGalleryTrigger.focus(); lastGalleryTrigger = null; }
   }
 
-  grid.addEventListener("click", function (e) {
-    var item = e.target.closest(".gallery__item");
-    if (item && !item.classList.contains("hide")) openLightbox(item);
-  });
-  lbClose.addEventListener("click", closeLightbox);
-  lbPrev.addEventListener("click", function () { showImage(current - 1); });
-  lbNext.addEventListener("click", function () { showImage(current + 1); });
-  lb.addEventListener("click", function (e) {
-    if (e.target === lb) closeLightbox();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (!lb.classList.contains("open")) return;
-    if (e.key === "Escape") closeLightbox();
-    else if (e.key === "ArrowLeft") showImage(current - 1);
-    else if (e.key === "ArrowRight") showImage(current + 1);
-  });
+  if (grid && lb) {
+    grid.addEventListener("click", function (e) {
+      var item = e.target.closest(".gallery__item");
+      if (item && !item.classList.contains("hide")) openLightbox(item);
+    });
+    lbClose.addEventListener("click", closeLightbox);
+    lbPrev.addEventListener("click", function () { showImage(current - 1); });
+    lbNext.addEventListener("click", function () { showImage(current + 1); });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) closeLightbox();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") showImage(current - 1);
+      else if (e.key === "ArrowRight") showImage(current + 1);
+    });
+  }
 
   /* ---------- Video grids (showcase + custom-gown demos) ----------
      Cards are <button> with a poster <img> only — no inline <video> element,
@@ -235,11 +237,13 @@
     document.body.style.overflow = "";
     if (lastVideoTrigger) { lastVideoTrigger.focus(); lastVideoTrigger = null; }
   }
-  vlbClose.addEventListener("click", closeVideoLightbox);
-  vlb.addEventListener("click", function (e) { if (e.target === vlb) closeVideoLightbox(); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && vlb.classList.contains("open")) closeVideoLightbox();
-  });
+  if (vlb) {
+    vlbClose.addEventListener("click", closeVideoLightbox);
+    vlb.addEventListener("click", function (e) { if (e.target === vlb) closeVideoLightbox(); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && vlb.classList.contains("open")) closeVideoLightbox();
+    });
+  }
 
   /* ---------- Contact form ----------
      Submits to FORM_EMAIL via FormSubmit (free, no account). The owner must

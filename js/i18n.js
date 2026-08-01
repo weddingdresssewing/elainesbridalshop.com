@@ -10,7 +10,10 @@
     "nav.services": "改衣服务",
     "nav.gallery": "作品",
     "nav.process": "服务流程",
+    "nav.collection": "婚纱系列",
     "nav.custom": "定制婚纱",
+    "nav.sil": "裙型指南",
+    "nav.measure": "量体指南",
     "nav.book": "申请试衣预约",
 
     /* hero */
@@ -62,16 +65,25 @@
     /* custom gowns */
     "cv.eyebrow": "定制婚纱",
     "cv.title": "为您量身设计的<br />专属婚纱。",
-    "cv.lede": "除了改制,我们也提供婚纱定制,<strong>首次咨询完全免费</strong>!",
+    "cv.lede": "看中了梦想婚纱,却没看中它的价格?把照片发给我们,我们为您原样定制!数千美元的高定质感,<strong>$800 起</strong>就能拥有。让我们把您的构想变成现实:首次设计咨询<strong>完全免费</strong>!",
     "cv.includes": "免费咨询包含:",
-    "cv.i1": "<span>01</span>告诉我们您的三围尺寸、婚礼场地,以及您对梦想婚纱的构想。",
-    "cv.i2": "<span>02</span>我们为您推荐最适合您的婚纱。",
+    "cv.i1": "<span>01</span>我们帮您量三围尺寸;告诉我们您的婚礼场地,以及您对梦想婚纱的构想。",
+    "cv.i2": "<span>02</span>我们为您推荐最适合您的婚纱。(500+ 款式任您挑选)",
     "cv.i3": "<span>03</span>在婚纱做出来之前,先看到您穿上它的样子:免费为您制作一支效果预览视频。",
     "cv.i4": "<span>04</span>若您决定与我们定制婚纱,我们会为您量取详细尺寸,并收取报价 50% 的定金。婚纱将严格按照所量尺寸制作;到店后我们会预约最后一次试衣,如需调整,可为您提供进一步的改制服务。",
     "cv.tip": "已经有心仪的婚纱款式?强烈建议带上它们的图片。最好在预约首次咨询时就发给我们。",
     "cv.note": "效果预览视频是咨询时的款式可视化工具,需到店体验;最终设计、制作、合身与改制均以到店确认为准。",
     "cv.cta": "预约免费咨询",
+    "cv.silBtn": "裙型指南",
+    "cv.measureBtn": "量体指南",
     "cv.demos": "我们制作的部分效果视频",
+
+    /* collection preview */
+    "col.eyebrow": "婚纱系列",
+    "col.title": "先遇见那条裙子,<br />我们为您量身定制。",
+    "col.lede": "130+ 款婚纱在线浏览,涵盖所有裙型;挑好心仪款式,免费咨询时为您量体,按您的尺寸定制。可选款式超过 500 款。",
+    "col.more": "更多款式在线看",
+    "col.cta": "浏览全部婚纱",
 
     /* gallery */
     "gallery.eyebrow": "作品集",
@@ -101,7 +113,7 @@
 
     /* promise */
     "promise.eyebrow": "我们的承诺",
-    "promise.text": "每一位新娘,都值得拥有一条仿佛<em>为她量身定制</em>的婚纱——不做到这一点,我们绝不停手。",
+    "promise.text": "每一位新娘,都值得拥有一条仿佛<em>为她量身定制</em>的婚纱。不做到这一点,我们绝不停手。",
 
     /* contact */
     "contact.eyebrow": "开始咨询",
@@ -125,10 +137,10 @@
     "opt.2": "下摆与拖尾收束",
     "opt.3": "上身、肩带与支撑",
     "opt.4": "袖子与定制细节",
-    "opt.custom": "定制婚纱——免费咨询",
+    "opt.custom": "定制婚纱(免费咨询)",
     "opt.5": "还不确定",
     "lbl.photos": "婚纱照片",
-    "sms.btn": "<strong>把资料和照片短信发给 Chloe</strong><br />已帮您带上表单信息——附上照片即可(正面、背面、侧面)",
+    "sms.btn": "<strong>把资料和照片短信发给 Chloe</strong><br />已帮您带上表单信息,附上照片即可(正面、背面、侧面)",
     "contact.textConsent": "可以通过短信联系我确认估价和预约。",
     "btn.submit": "提交试衣申请",
     "contact.hint": "想直接联系我们?短信或致电 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
@@ -138,7 +150,10 @@
     /* footer */
     "footer.tag": "「这里,有您梦想中的那条裙子」· 加州萨克拉门托 · 家庭工作室",
     "footer.about": "裁缝师",
+    "footer.sil": "裙型指南",
+    "footer.measure": "量体指南",
     "footer.services": "改衣服务",
+    "footer.collection": "婚纱系列",
     "footer.custom": "定制婚纱",
     "footer.gallery": "作品",
     "footer.contact": "联系我们",
@@ -150,14 +165,22 @@
     "ph.message": "您想做的改动、婚礼日期,以及任何疑问…"
   };
 
-  var META = {
+  // Page-specific strings: a page may define window.PAGE_I18N = { zh: {...},
+  // ph: {...}, meta: {en: {...}, zh: {...}} } BEFORE this script loads.
+  // Its keys are merged on top of the shared dictionaries above.
+  var PAGE = window.PAGE_I18N || {};
+  var pk;
+  if (PAGE.zh) for (pk in PAGE.zh) ZH[pk] = PAGE.zh[pk];
+  if (PAGE.ph) for (pk in PAGE.ph) ZH_PH[pk] = PAGE.ph[pk];
+
+  var META = PAGE.meta || {
     en: {
       title: "Sacramento Wedding Dress Alterations | Elaine's Bridal Shop",
       desc: "Private one-on-one wedding dress alterations in Sacramento, CA by Elaine, a bridal seamstress with 40+ years of sewing experience. Send dress photos for an estimate and request a fitting."
     },
     zh: {
       title: "萨克拉门托婚纱改制 | Elaine's Bridal Shop",
-      desc: "Elaine's Bridal Shop —— 位于加州萨克拉门托的私人家庭工作室,40 多年专业缝纫经验,一对一婚纱改制。先发婚纱照片获取估价,再预约试衣。"
+      desc: "Elaine's Bridal Shop,位于加州萨克拉门托的私人家庭工作室,40 多年专业缝纫经验,一对一婚纱改制。先发婚纱照片获取估价,再预约试衣。"
     }
   };
 

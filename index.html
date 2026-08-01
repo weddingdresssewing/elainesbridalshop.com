@@ -56,7 +56,7 @@
       { "@type": "ContactPoint", "telephone": "+1-415-813-9302", "contactType": "customer service", "availableLanguage": ["English", "Chinese"] }
     ],
     "makesOffer": [
-      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Precision tailoring — sides, princess seams, zippers" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Precision tailoring: sides, princess seams, zippers" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bodice shortening and adjustments" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hemming and bustles" } },
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom sleeves, shoulders, and straps" } }
@@ -72,7 +72,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260715e" />
+  <link rel="stylesheet" href="css/styles.css?v=20260801c" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -88,8 +88,10 @@
       <nav class="nav__links" id="navLinks">
         <a href="#services" data-i18n="nav.services">Alterations</a>
         <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#collection" data-i18n="nav.collection">Collection</a>
         <a href="#custom" data-i18n="nav.custom">Custom Gowns</a>
+        <a href="silhouette-guide.html" data-i18n="nav.sil">Silhouettes</a>
+        <a href="measurement-guide.html" data-i18n="nav.measure">Measuring</a>
         <a href="#contact" class="nav__cta" data-book data-i18n="nav.book">Request a Fitting</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
@@ -229,7 +231,7 @@
     <div class="showcase__grid" id="showcaseGrid"><!-- injected by JS --></div>
     <p class="showcase__credit reveal">
       Music: <a href="https://soundcloud.com/scandinavianz" target="_blank" rel="noopener">&ldquo;Flower Street&rdquo; by Scandinavianz</a>,
-      licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Creative Commons — Attribution 3.0 (CC BY 3.0)</a>.
+      licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Creative Commons Attribution 3.0 (CC BY 3.0)</a>.
       <a href="https://links.al/1qC" target="_blank" rel="noopener">Free download / stream</a> ·
       Music promoted by <a href="https://links.al/youtube" target="_blank" rel="noopener">Audio Library</a>.
     </p>
@@ -284,25 +286,53 @@
     </ol>
   </section>
 
+  <!-- ===== Collection preview ===== -->
+  <section class="collection" id="collection">
+    <div class="collection__head reveal">
+      <p class="eyebrow" data-i18n="col.eyebrow">The Collection</p>
+      <h2 class="section-title" data-i18n="col.title">Find the dress,<br />made to your measure.</h2>
+      <p class="collection__lede" data-i18n="col.lede">Browse 130+ gowns online in every silhouette and pick your favorites. We take your measurements at a free consultation, then custom-make your gown to fit. Over 500 styles to choose from.</p>
+    </div>
+    <div class="collection__grid reveal">
+      <a class="collection__tile" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener"><img src="assets/images/collection/col-1.jpg" alt="A-line V-neck wedding dress, the most affordable A-line in the collection" loading="lazy" /><span class="collection__price">$400</span></a>
+      <a class="collection__tile" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener"><img src="assets/images/collection/col-2.jpg" alt="Ball gown wedding dress with illusion neckline from the collection" loading="lazy" /><span class="collection__price">$427</span></a>
+      <a class="collection__tile" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener"><img src="assets/images/collection/col-3.jpg" alt="Mermaid off-the-shoulder wedding dress from the collection" loading="lazy" /><span class="collection__price">$403</span></a>
+      <a class="collection__tile" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener"><img src="assets/images/collection/col-4.jpg" alt="Trumpet V-neck wedding dress from the collection" loading="lazy" /><span class="collection__price">$429</span></a>
+      <a class="collection__tile" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener"><img src="assets/images/collection/col-5.jpg" alt="Sheath V-neck wedding dress from the collection" loading="lazy" /><span class="collection__price">$483</span></a>
+      <a class="collection__tile collection__tile--more" href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener">
+        <span class="collection__more-num">+125</span>
+        <span data-i18n="col.more">more styles online</span>
+        <span class="collection__arrow">&rarr;</span>
+      </a>
+    </div>
+    <div class="collection__cta reveal">
+      <a href="https://wedding-dresses-catalog.netlify.app" target="_blank" rel="noopener" class="btn btn--solid" data-i18n="col.cta">Browse the Full Collection</a>
+    </div>
+  </section>
+
   <!-- ===== Custom Gowns / Free Consultation ===== -->
   <section class="custom" id="custom">
     <div class="custom__head reveal">
       <p class="eyebrow" data-i18n="cv.eyebrow">Custom Gowns</p>
       <h2 class="section-title" data-i18n="cv.title">Your gown, designed<br />around you.</h2>
-      <p class="custom__lede" data-i18n="cv.lede">Beyond alterations, we also create custom wedding gowns, and your <strong>first consultation is free</strong>!</p>
+      <p class="custom__lede" data-i18n="cv.lede">Found your dream dress but not the dream price tag? Send us a photo, and we’ll custom-make it just for you! Get a multi-thousand-dollar boutique look <strong>starting at just $800</strong>. Let's bring your vision to life! Your first design consultation is <strong>100% free</strong>!</p>
     </div>
     <div class="custom__grid">
       <div class="custom__info reveal">
         <h3 class="custom__subtitle" data-i18n="cv.includes">Your free consultation includes:</h3>
         <ol class="custom__steps">
-          <li data-i18n="cv.i1"><span>01</span>Tell us about your measurements, wedding venue, and vision for your dream gown.</li>
-          <li data-i18n="cv.i2"><span>02</span>We recommend wedding dresses that we think best suit you.</li>
+          <li data-i18n="cv.i1"><span>01</span>We take your measurements for you; tell us your wedding venue and your vision for your dream gown.</li>
+          <li data-i18n="cv.i2"><span>02</span>We recommend wedding dresses that we think best suit you. (Over 500 styles to choose from.)</li>
           <li data-i18n="cv.i3"><span>03</span>See yourself in the gown before it exists: a complimentary preview video, created just for you.</li>
           <li data-i18n="cv.i4"><span>04</span>If you decide to customize your wedding dress with us, we will take your detailed measurements and collect a 50% deposit of the quoted price. Your gown is crafted to the measurements taken. Once it arrives, we will schedule a final fitting, and if any adjustments are needed, additional alteration services are available to refine the fit.</li>
         </ol>
         <p class="custom__tip" data-i18n="cv.tip">Already have dresses you love? We highly recommend bringing pictures of them. Ideally, send them to us when you make your first appointment.</p>
         <p class="custom__note" data-i18n="cv.note">Preview videos are a style visualization tool for consultation, and an in-studio experience. Final design, construction, fit, and alterations are confirmed in person.</p>
         <a href="#contact" class="btn btn--solid" data-i18n="cv.cta">Book a Free Consultation</a>
+        <div class="custom__guides">
+          <a href="silhouette-guide.html" class="btn btn--outline" data-i18n="cv.silBtn">Silhouette Guide</a>
+          <a href="measurement-guide.html" class="btn btn--outline" data-i18n="cv.measureBtn">Measurement Guide</a>
+        </div>
       </div>
       <div class="custom__demos reveal">
         <p class="custom__demos-label" data-i18n="cv.demos">A few preview videos we've created</p>
@@ -314,7 +344,7 @@
   <!-- ===== Promise ===== -->
   <section class="promise reveal" id="promise">
     <p class="eyebrow" data-i18n="promise.eyebrow">Our Promise</p>
-    <blockquote class="promise__text" data-i18n="promise.text">Every bride deserves a gown that fits like it was <em>made for her</em> — and we don't stop until yours does.</blockquote>
+    <blockquote class="promise__text" data-i18n="promise.text">Every bride deserves a gown that fits like it was <em>made for her</em>, and we don't stop until yours does.</blockquote>
     <cite class="promise__cite">Elaine's Bridal Shop</cite>
   </section>
 
@@ -324,7 +354,7 @@
       <div class="contact__intro reveal">
         <p class="eyebrow" data-i18n="contact.eyebrow">Get Started</p>
         <h2 class="section-title" data-i18n="contact.title">Request a fitting,<br />or send photos.</h2>
-        <p data-i18n="contact.p">Tell us your wedding date and what you need changed, and we'll reply within one business day. For the fastest estimate, text us photos of the full gown hanging up — front, back, and sides.</p>
+        <p data-i18n="contact.p">Tell us your wedding date and what you need changed, and we'll reply within one business day. For the fastest estimate, text us photos of the full gown hanging up: front, back, and sides.</p>
         <div class="contact__checklist reveal">
           <h3 data-i18n="contact.checkTitle">For the fastest reply, include:</h3>
           <ul>
@@ -385,7 +415,7 @@
           <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
           <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"/><path d="M8 9.5 12 5.5l4 4"/><path d="M12 5.5v10"/></svg>
-            <span data-i18n="sms.btn"><strong>Text your details &amp; photos to Chloe</strong><br />We'll pre-fill your form info — just attach photos (front, back &amp; sides)</span>
+            <span data-i18n="sms.btn"><strong>Text your details &amp; photos to Chloe</strong><br />We'll pre-fill your form info, just attach photos (front, back &amp; sides)</span>
           </a>
         </div>
         <label class="contact__consent">
@@ -423,6 +453,9 @@
       <nav class="footer__links">
         <a href="#about" data-i18n="footer.about">The Seamstress</a>
         <a href="#services" data-i18n="footer.services">Services</a>
+        <a href="silhouette-guide.html" data-i18n="footer.sil">Silhouette Guide</a>
+        <a href="measurement-guide.html" data-i18n="footer.measure">Measurement Guide</a>
+        <a href="#collection" data-i18n="footer.collection">Collection</a>
         <a href="#custom" data-i18n="footer.custom">Custom Gowns</a>
         <a href="#gallery" data-i18n="footer.gallery">Gallery</a>
         <a href="#contact" data-i18n="footer.contact">Contact</a>
@@ -445,7 +478,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260715e"></script>
-  <script src="js/i18n.js?v=20260715e"></script>
+  <script src="js/main.js?v=20260801a"></script>
+  <script src="js/i18n.js?v=20260801h"></script>
 </body>
 </html>
