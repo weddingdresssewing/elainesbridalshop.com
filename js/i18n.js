@@ -76,6 +76,7 @@
     "cv.cta": "预约免费咨询",
     "cv.silBtn": "裙型指南",
     "cv.measureBtn": "量体指南",
+    "cv.more": "定制婚纱详情 <span>&rarr;</span>",
     "cv.demos": "我们制作的部分效果视频",
 
     /* collection preview */
