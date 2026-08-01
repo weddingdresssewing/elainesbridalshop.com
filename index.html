@@ -117,7 +117,7 @@
         <a href="#gallery" class="btn btn--text" data-i18n="hero.gallery">View Real Gown Work</a>
       </div>
     </div>
-    <a href="#about" class="hero__scroll" aria-label="Scroll down">
+    <a href="#gallery" class="hero__scroll" aria-label="Scroll down">
       <span></span>
     </a>
   </section>
@@ -131,6 +131,68 @@
       <p data-i18n="trust.4"><strong>Photos first</strong><span>Estimate before you visit</span></p>
       <p data-i18n="trust.5"><strong>EN / 中文</strong><span>Bilingual support</span></p>
     </div>
+  </section>
+
+  <!-- ===== Gallery ===== -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__head reveal">
+      <p class="eyebrow" data-i18n="gallery.eyebrow">The Gallery</p>
+      <h2 class="section-title" data-i18n="gallery.title">A closer look at<br />our recent work.</h2>
+      <p class="gallery__note" data-i18n="gallery.note">Scroll through, and tap any image to view it larger.</p>
+    </div>
+    <div class="gallery__scroller">
+      <button type="button" class="gallery__nav gallery__nav--prev" id="galPrev" aria-label="Previous photos">&#8249;</button>
+      <div class="gallery__grid" id="galleryGrid"><!-- injected by JS --></div>
+      <button type="button" class="gallery__nav gallery__nav--next" id="galNext" aria-label="Next photos">&#8250;</button>
+    </div>
+    <p class="gallery__consent reveal" data-i18n="gallery.consent">Photos of real brides are shared with their permission.</p>
+  </section>
+
+  <!-- ===== Video showcase ===== -->
+  <section class="showcase" id="showcase">
+    <div class="showcase__head reveal">
+      <p class="eyebrow eyebrow--light" data-i18n="showcase.eyebrow">In Motion</p>
+      <h2 class="section-title section-title--light" data-i18n="showcase.title">A gown only truly<br />reveals itself in movement.</h2>
+    </div>
+    <div class="showcase__grid" id="showcaseGrid"><!-- injected by JS --></div>
+    <p class="showcase__credit reveal">
+      Music: <a href="https://soundcloud.com/scandinavianz" target="_blank" rel="noopener">&ldquo;Flower Street&rdquo; by Scandinavianz</a>,
+      licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Creative Commons Attribution 3.0 (CC BY 3.0)</a>.
+      <a href="https://links.al/1qC" target="_blank" rel="noopener">Free download / stream</a> ·
+      Music promoted by <a href="https://links.al/youtube" target="_blank" rel="noopener">Audio Library</a>.
+    </p>
+  </section>
+
+  <!-- ===== Services ===== -->
+  <section class="services" id="services">
+    <div class="services__head reveal">
+      <p class="eyebrow" data-i18n="services.eyebrow">Alteration Services</p>
+      <h2 class="section-title" data-i18n="services.title">Alterations we handle<br />every week.</h2>
+      <p class="services__lede" data-i18n="services.lede">Whether your gown feels too loose, too tight, too long, or almost right, we shape each detail around your body and wedding day.</p>
+    </div>
+    <div class="services__grid">
+      <article class="service reveal">
+        <span class="service__num">01</span>
+        <h3 data-i18n="svc1.h">Fit &amp; Shaping</h3>
+        <p data-i18n="svc1.p">Taking in or letting out sides, princess seams, zippers, and bodices for a smooth, secure fit.</p>
+      </article>
+      <article class="service reveal">
+        <span class="service__num">02</span>
+        <h3 data-i18n="svc2.h">Hems &amp; Bustles</h3>
+        <p data-i18n="svc2.p">Adjusting length, layers, trains, and reception bustles so you can walk, dance, and photograph comfortably.</p>
+      </article>
+      <article class="service reveal">
+        <span class="service__num">03</span>
+        <h3 data-i18n="svc3.h">Bodice, Straps &amp; Support</h3>
+        <p data-i18n="svc3.p">Shortening bodices, adjusting shoulders, securing straps, and refining neckline fit and support.</p>
+      </article>
+      <article class="service reveal">
+        <span class="service__num">04</span>
+        <h3 data-i18n="svc4.h">Sleeves &amp; Custom Details</h3>
+        <p data-i18n="svc4.p">Adding sleeves, straps, modesty panels, shoulder details, or custom touches that make the gown feel more like you.</p>
+      </article>
+    </div>
+    <p class="services__cta reveal" data-i18n="services.cta">Not sure what your dress needs? <a href="#contact">Send photos for an estimate.</a></p>
   </section>
 
   <!-- ===== Quick start ===== -->
@@ -173,68 +235,6 @@
         <a href="#contact" class="link-arrow" data-i18n="about.link">Begin your fitting <span>&rarr;</span></a>
       </div>
     </div>
-  </section>
-
-  <!-- ===== Services ===== -->
-  <section class="services" id="services">
-    <div class="services__head reveal">
-      <p class="eyebrow" data-i18n="services.eyebrow">Alteration Services</p>
-      <h2 class="section-title" data-i18n="services.title">Alterations we handle<br />every week.</h2>
-      <p class="services__lede" data-i18n="services.lede">Whether your gown feels too loose, too tight, too long, or almost right, we shape each detail around your body and wedding day.</p>
-    </div>
-    <div class="services__grid">
-      <article class="service reveal">
-        <span class="service__num">01</span>
-        <h3 data-i18n="svc1.h">Fit &amp; Shaping</h3>
-        <p data-i18n="svc1.p">Taking in or letting out sides, princess seams, zippers, and bodices for a smooth, secure fit.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">02</span>
-        <h3 data-i18n="svc2.h">Hems &amp; Bustles</h3>
-        <p data-i18n="svc2.p">Adjusting length, layers, trains, and reception bustles so you can walk, dance, and photograph comfortably.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">03</span>
-        <h3 data-i18n="svc3.h">Bodice, Straps &amp; Support</h3>
-        <p data-i18n="svc3.p">Shortening bodices, adjusting shoulders, securing straps, and refining neckline fit and support.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">04</span>
-        <h3 data-i18n="svc4.h">Sleeves &amp; Custom Details</h3>
-        <p data-i18n="svc4.p">Adding sleeves, straps, modesty panels, shoulder details, or custom touches that make the gown feel more like you.</p>
-      </article>
-    </div>
-    <p class="services__cta reveal" data-i18n="services.cta">Not sure what your dress needs? <a href="#contact">Send photos for an estimate.</a></p>
-  </section>
-
-  <!-- ===== Gallery ===== -->
-  <section class="gallery" id="gallery">
-    <div class="gallery__head reveal">
-      <p class="eyebrow" data-i18n="gallery.eyebrow">The Gallery</p>
-      <h2 class="section-title" data-i18n="gallery.title">A closer look at<br />our recent work.</h2>
-      <p class="gallery__note" data-i18n="gallery.note">Scroll through, and tap any image to view it larger.</p>
-    </div>
-    <div class="gallery__scroller">
-      <button type="button" class="gallery__nav gallery__nav--prev" id="galPrev" aria-label="Previous photos">&#8249;</button>
-      <div class="gallery__grid" id="galleryGrid"><!-- injected by JS --></div>
-      <button type="button" class="gallery__nav gallery__nav--next" id="galNext" aria-label="Next photos">&#8250;</button>
-    </div>
-    <p class="gallery__consent reveal" data-i18n="gallery.consent">Photos of real brides are shared with their permission.</p>
-  </section>
-
-  <!-- ===== Video showcase ===== -->
-  <section class="showcase" id="showcase">
-    <div class="showcase__head reveal">
-      <p class="eyebrow eyebrow--light" data-i18n="showcase.eyebrow">In Motion</p>
-      <h2 class="section-title section-title--light" data-i18n="showcase.title">A gown only truly<br />reveals itself in movement.</h2>
-    </div>
-    <div class="showcase__grid" id="showcaseGrid"><!-- injected by JS --></div>
-    <p class="showcase__credit reveal">
-      Music: <a href="https://soundcloud.com/scandinavianz" target="_blank" rel="noopener">&ldquo;Flower Street&rdquo; by Scandinavianz</a>,
-      licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Creative Commons Attribution 3.0 (CC BY 3.0)</a>.
-      <a href="https://links.al/1qC" target="_blank" rel="noopener">Free download / stream</a> ·
-      Music promoted by <a href="https://links.al/youtube" target="_blank" rel="noopener">Audio Library</a>.
-    </p>
   </section>
 
   <!-- ===== How It Works ===== -->
