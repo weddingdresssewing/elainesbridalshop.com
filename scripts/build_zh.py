@@ -102,7 +102,7 @@ def patch_en(fname, cfg):
         if not srcm:
             return tag
         src = srcm.group(1)
-        if src.startswith("http") or not os.path.isfile(os.path.join(ROOT, src)):
+        if src.startswith("http") or "images/collection/" in src or not os.path.isfile(os.path.join(ROOT, src)):
             return tag
         w, h = img_dims(os.path.join(ROOT, src))
         if not w:
