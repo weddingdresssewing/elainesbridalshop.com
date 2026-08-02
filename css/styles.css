@@ -293,10 +293,10 @@ em { font-style: italic; }
   color: var(--ivory);
   transition: color .4s var(--ease);
 }
-.nav__links { display: flex; align-items: center; gap: 1.5rem; }
+.nav__links { display: flex; align-items: center; gap: 1.05rem; }
 .nav__links a {
-  font-size: .78rem;
-  letter-spacing: .18em;
+  font-size: .74rem;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--ivory);
   position: relative;
@@ -1172,7 +1172,7 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-@media (max-width: 1329px) {
+@media (max-width: 1409px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";
