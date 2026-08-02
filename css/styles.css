@@ -1172,7 +1172,7 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-@media (max-width: 1409px) {
+@media (max-width: 1479px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";
