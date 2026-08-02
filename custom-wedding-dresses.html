@@ -85,7 +85,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260801c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260801d" />
 </head>
 <body>
 
@@ -99,10 +99,8 @@
       <nav class="nav__links" id="navLinks">
         <a href="index.html#services" data-i18n="nav.services">Alterations</a>
         <a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="index.html#collection" data-i18n="nav.collection">Collection</a>
         <a href="custom-wedding-dresses.html" data-i18n="nav.custom">Custom Gowns</a>
-        <a href="silhouette-guide.html" data-i18n="nav.sil">Silhouettes</a>
-        <a href="measurement-guide.html" data-i18n="nav.measure">Measuring</a>
+        <a href="https://dresses.elainesbridalshop.com/" data-i18n="nav.collection">Collection</a>
         <a href="index.html#contact" class="nav__cta" data-i18n="nav.book">Request a Fitting</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
@@ -190,6 +188,19 @@
     </div>
   </section>
 
+  <!-- ===== Preview videos ===== -->
+  <section class="mg" id="videos">
+    <div class="mg__inner">
+      <div class="mg__head reveal">
+        <p class="eyebrow" data-i18n="cw.vidEyebrow">Preview Videos</p>
+        <h2 class="section-title" data-i18n="cw.vidTitle">See yourself in it,<br />before it exists.</h2>
+        <p class="mg__lede" data-i18n="cw.vidLede">A few preview videos we have created for brides. Yours is made at the free consultation, with your face, your figure, and the gown you are considering.</p>
+      </div>
+      <div class="custom__videos reveal" id="customGrid"><!-- injected by JS --></div>
+      <p class="custom__note" data-i18n="cw.vidNote">Preview videos are a style visualization tool for consultation, and an in-studio experience. Final design, construction, fit, and alterations are confirmed in person.</p>
+    </div>
+  </section>
+
   <!-- ===== Collection funnel ===== -->
   <section class="collection" id="styles">
     <div class="collection__head reveal">
@@ -268,9 +279,15 @@
     <p class="fg-cta__sub" data-i18n="cw.ctaSub">Bring your photos, your venue and your vision. We will measure you, recommend styles, and show you a preview of yourself in the gown, all before you spend a dollar.</p>
     <div class="fg-cta__actions">
       <a href="index.html#contact" class="btn btn--solid" data-i18n="cw.ctaBtn1">Book a Free Consultation</a>
-      <a href="index.html#custom" class="btn btn--ghost" data-i18n="cw.ctaBtn2">Watch Preview Videos</a>
+      <a href="#videos" class="btn btn--ghost" data-i18n="cw.ctaBtn2">Watch Preview Videos</a>
     </div>
   </section>
+
+  <!-- ===== Video lightbox ===== -->
+  <div class="lightbox lightbox--video" id="vLightbox" aria-hidden="true">
+    <button class="lightbox__close" id="vlbClose" aria-label="Close">&times;</button>
+    <video class="lightbox__video" id="vlbVideo" controls playsinline></video>
+  </div>
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
@@ -296,7 +313,7 @@
         <a href="index.html#services" data-i18n="footer.services">Services</a>
         <a href="silhouette-guide.html" data-i18n="footer.sil">Silhouette Guide</a>
         <a href="measurement-guide.html" data-i18n="footer.measure">Measurement Guide</a>
-        <a href="index.html#collection" data-i18n="footer.collection">Collection</a>
+        <a href="https://dresses.elainesbridalshop.com/" data-i18n="footer.collection">Collection</a>
         <a href="custom-wedding-dresses.html" data-i18n="footer.custom">Custom Gowns</a>
         <a href="index.html#gallery" data-i18n="footer.gallery">Gallery</a>
         <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
@@ -356,6 +373,10 @@
       "cw.q6h": "应该什么时候开始?",
       "cw.q6p": "越早越好。咨询时告诉我们婚礼日期,我们会为制作、到货和最终试衣确认一个从容的时间表。",
 
+      "cw.vidEyebrow": "效果预览视频",
+      "cw.vidTitle": "裙子还没做,<br />先看到您穿上它。",
+      "cw.vidLede": "这是我们为新娘制作的部分预览视频。您的那支会在免费咨询时制作:您的脸、您的身形、您正在考虑的那条裙子。",
+      "cw.vidNote": "效果预览视频是咨询时的款式可视化工具,需到店体验;最终设计、制作、合身与改制均以到店确认为准。",
       "cw.ctaTitle": "首次咨询免费。<br /><em>预览视频也免费。</em>",
       "cw.ctaSub": "带上照片、场地和您的构想。量体、推荐款式、预览上身效果,这些都不花一分钱。",
       "cw.ctaBtn1": "预约免费咨询",
@@ -374,6 +395,6 @@
   };
   </script>
   <script src="js/main.js?v=20260801c"></script>
-  <script src="js/i18n.js?v=20260801k"></script>
+  <script src="js/i18n.js?v=20260801l"></script>
 </body>
 </html>
