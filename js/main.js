@@ -103,7 +103,7 @@
     // NOTE: no loading="lazy" here — in the horizontal strip the items are
     // 0-wide until the image loads, so a lazy image never "intersects" and
     // never loads (chicken-and-egg). Eager is required for this layout.
-    img.src = "assets/images/thumb/gown-" + g.id + ".jpg";
+    img.src = "/assets/images/thumb/gown-" + g.id + ".jpg";
     img.alt = g.alt;
     var cap = document.createElement("span");
     cap.className = "gallery__caption";
@@ -111,7 +111,7 @@
     btn.appendChild(img);
     btn.appendChild(cap);
     grid.appendChild(btn);
-    items.push({ full: "assets/images/full/gown-" + g.id + ".jpg", alt: g.alt, el: btn });
+    items.push({ full: "/assets/images/full/gown-" + g.id + ".jpg", alt: g.alt, el: btn });
   });
 
   /* ---------- Gallery arrows (desktop) ---------- */
@@ -185,8 +185,8 @@
     var grid = document.getElementById(gridId);
     if (!grid) return;
     list.forEach(function (v, i) {
-      var src = "assets/video/" + prefix + "-" + v + ".mp4";
-      var poster = "assets/video/" + prefix + "-" + v + "-poster.jpg";
+      var src = "/assets/video/" + prefix + "-" + v + ".mp4";
+      var poster = "/assets/video/" + prefix + "-" + v + "-poster.jpg";
       var card = document.createElement("button");
       card.type = "button";
       card.className = "video-card";
