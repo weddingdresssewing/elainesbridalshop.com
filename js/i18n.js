@@ -11,7 +11,7 @@
     "nav.gallery": "作品",
     "nav.process": "服务流程",
     "nav.showcase": "动态展示",
-    "nav.about": "认识 Elaine",
+    "nav.about": "裁缝师",
     "nav.start": "如何开始",
     "nav.collection": "婚纱系列",
     "nav.custom": "定制婚纱",
@@ -120,6 +120,8 @@
     "p2.v2": "<span>第二次</span>我们检查合身度并精修每个细节。小幅调整通常当场完成;若需要较大改动,我们会再约第三次。",
     "p4.h": "工作室位置",
     "p4.p": "我们位于<strong>加州萨克拉门托 95828 区</strong>,采用预约制。确认预约后,我们会提供详细地址。",
+    "p5.h": "付款方式",
+    "p5.p": "我们接受<strong>现金(首选)、Venmo 或 Zelle</strong>。确定与我们改衣后,需支付 50% 定金。",
 
     /* promise */
     "promise.eyebrow": "我们的承诺",
