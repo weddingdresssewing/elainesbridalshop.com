@@ -269,6 +269,8 @@
     function showSuccess() {
       if (formError) formError.hidden = true;
       success.hidden = false;
+      // Google Ads conversion: fires only on a real, successful submission
+      if (typeof gtag === "function") gtag("event", "ads_conversion_Submit_lead_form_1", {});
       form.reset();
       submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
       setTimeout(function () { setBusy(false); }, 2500);
