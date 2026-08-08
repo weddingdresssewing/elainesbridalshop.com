@@ -45,9 +45,23 @@
 
   /* ---------- Sticky nav ---------- */
   var nav = document.getElementById("nav");
+  var mcta = document.getElementById("mobileCta");
+  var heroEl = document.getElementById("home");
+  var contactEl = document.getElementById("contact");
   function onScroll() {
     if (window.scrollY > 60) nav.classList.add("scrolled");
     else nav.classList.remove("scrolled");
+    // Mobile sticky CTA: show once past the hero, retract over the contact form
+    // (CSS keeps it display:none above 760px, so this is a no-op on desktop).
+    if (mcta) {
+      var pastHero = window.scrollY > (heroEl ? heroEl.offsetHeight - 120 : 500);
+      var contactInView = false;
+      if (contactEl) {
+        var c = contactEl.getBoundingClientRect();
+        contactInView = c.top < window.innerHeight * 0.85 && c.bottom > 0;
+      }
+      mcta.classList.toggle("show", pastHero && !contactInView);
+    }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();

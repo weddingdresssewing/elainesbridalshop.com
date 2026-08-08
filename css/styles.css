@@ -1120,6 +1120,49 @@ em { font-style: italic; }
 }
 
 /* ============================================================
+   Mobile sticky CTA bar
+   ============================================================ */
+.mobile-cta { display: none; }
+@media (max-width: 760px) {
+  .mobile-cta {
+    display: flex;
+    gap: .5rem;
+    position: fixed;
+    left: 0; right: 0; bottom: 0;
+    z-index: 90;
+    padding: .55rem .7rem calc(.55rem + env(safe-area-inset-bottom, 0px));
+    background: rgba(251, 248, 243, .96);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    transform: translateY(120%);
+    transition: transform .35s var(--ease);
+  }
+  .mobile-cta.show { transform: translateY(0); }
+  .mobile-cta__btn {
+    flex: 1;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: .74rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: .95rem .5rem;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--charcoal);
+    color: var(--charcoal);
+    background: transparent;
+  }
+  .mobile-cta__btn--primary {
+    background: var(--charcoal);
+    color: var(--ivory);
+    border-color: var(--charcoal);
+  }
+}
+
+/* ============================================================
    Footer
    ============================================================ */
 .footer { background: var(--charcoal); color: var(--ivory); padding: 4rem 2rem 2.5rem; }
@@ -1217,7 +1260,9 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-@media (max-width: 1479px) {
+/* Full horizontal nav needs only ~640px; collapse to the slide-in menu at 900px
+   (was 1479px, which wrongly gave laptops a mobile hamburger). */
+@media (max-width: 900px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";

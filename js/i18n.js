@@ -168,6 +168,10 @@
     "contact.success": "谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。",
     "contact.error": "抱歉,提交时出了点问题。请短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
 
+    /* mobile sticky CTA */
+    "mcta.fitting": "申请试衣",
+    "mcta.text": "短信发照片",
+
     /* footer */
     "footer.tag": "「这里,有您梦想中的那条裙子」· 加州萨克拉门托 · 家庭工作室",
     "footer.about": "裁缝师",
