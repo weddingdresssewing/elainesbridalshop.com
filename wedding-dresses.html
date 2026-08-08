@@ -102,7 +102,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808h" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808i" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}, {"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}]}
   </script>
@@ -117,11 +117,12 @@
         <span class="nav__brand-text">Elaine's&nbsp;Bridal&nbsp;Shop</span>
       </a>
       <nav class="nav__links" id="navLinks">
-        <a href="index.html#gallery" data-i18n="nav.gallery">Gallery</a>
-        <a href="index.html#showcase" data-i18n="nav.showcase">In Motion</a>
-        <a href="index.html#services" data-i18n="nav.services">Alterations</a>
-        <a href="index.html#about" data-i18n="nav.about">The Seamstress</a>
-        <a href="index.html#process" data-i18n="nav.process">How It Works</a>
+        <a href="index.html#services" data-i18n="wnav.alt">Alterations</a>
+        <a href="#styles" data-i18n="wnav.collection">The Collection</a>
+        <a href="#custom" data-i18n="wnav.custom">Custom Gowns</a>
+        <a href="#how" data-i18n="wnav.how">How It Works</a>
+        <a href="#videos" data-i18n="wnav.videos">Preview Videos</a>
+        <a href="#faq" data-i18n="wnav.faq">FAQs</a>
         <a href="index.html#contact" class="nav__cta" data-i18n="nav.book">Request a Fitting</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
@@ -152,18 +153,24 @@
   <section class="chooser" aria-label="Choose how to find your dress">
     <div class="chooser__grid">
       <a class="chooser__card reveal" href="https://dresses.elainesbridalshop.com/?lang=en">
-        <p class="eyebrow" data-i18n="wd.ch1e">Shop the Collection</p>
-        <h3 data-i18n="wd.ch1h">130+ dresses, ready to wear.</h3>
-        <p class="chooser__price" data-i18n="wd.ch1price">From $400</p>
-        <p data-i18n="wd.ch1p">Browse every silhouette online, add your favorites to a list, and we take it from there.</p>
-        <span class="chooser__link" data-i18n="wd.ch1cta">See the collection <span>&rarr;</span></span>
+        <div class="chooser__media"><img src="/assets/images/collection/col-4.jpg" alt="A wedding dress from the collection" loading="lazy" /></div>
+        <div class="chooser__body">
+          <p class="eyebrow" data-i18n="wd.ch1e">Shop the Collection</p>
+          <h3 data-i18n="wd.ch1h">130+ dresses, ready to wear.</h3>
+          <p class="chooser__price" data-i18n="wd.ch1price">From $400</p>
+          <p data-i18n="wd.ch1p">Browse every silhouette online, add your favorites to a list, and we take it from there.</p>
+          <span class="chooser__link" data-i18n="wd.ch1cta">See the collection <span>&rarr;</span></span>
+        </div>
       </a>
       <a class="chooser__card reveal" href="#custom">
-        <p class="eyebrow" data-i18n="wd.ch2e">Custom Gown</p>
-        <h3 data-i18n="wd.ch2h">Made just for you, from a photo.</h3>
-        <p class="chooser__price" data-i18n="wd.ch2price">From $800</p>
-        <p data-i18n="wd.ch2p">Send a photo of the dress you love; we recreate it to your exact measurements, with a free preview video.</p>
-        <span class="chooser__link" data-i18n="wd.ch2cta">See how it works <span>&darr;</span></span>
+        <div class="chooser__media"><img src="/assets/images/collection/col-5.jpg" alt="A custom-made wedding gown" loading="lazy" /></div>
+        <div class="chooser__body">
+          <p class="eyebrow" data-i18n="wd.ch2e">Custom Gown</p>
+          <h3 data-i18n="wd.ch2h">Made just for you, from a photo.</h3>
+          <p class="chooser__price" data-i18n="wd.ch2price">From $800</p>
+          <p data-i18n="wd.ch2p">Send a photo of the dress you love; we recreate it to your exact measurements, with a free preview video.</p>
+          <span class="chooser__link" data-i18n="wd.ch2cta">See how it works <span>&darr;</span></span>
+        </div>
       </a>
     </div>
   </section>
@@ -377,6 +384,12 @@
   window.PAGE_I18N = {
     zh: {
       "nav.dresses": "婚纱",
+      "wnav.alt": "改衣服务",
+      "wnav.collection": "婚纱系列",
+      "wnav.custom": "定制婚纱",
+      "wnav.how": "定制流程",
+      "wnav.videos": "效果预览",
+      "wnav.faq": "常见问题",
       "footer.dresses": "婚纱",
 
       "wd.eyebrow": "婚纱 · 萨克拉门托",
@@ -463,7 +476,7 @@
     }
   };
   </script>
-  <script src="js/main.js?v=20260808h"></script>
-  <script src="js/i18n.js?v=20260808h"></script>
+  <script src="js/main.js?v=20260808i"></script>
+  <script src="js/i18n.js?v=20260808i"></script>
 </body>
 </html>

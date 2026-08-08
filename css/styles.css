@@ -1421,7 +1421,9 @@ em { font-style: italic; }
 .fg-hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 62% 42%; }
 .fg-hero__overlay {
   position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(to top, rgba(26,22,18,.82) 0%, rgba(26,22,18,.45) 45%, rgba(26,22,18,.25) 100%);
+  background:
+    linear-gradient(90deg, rgba(26,22,18,.74) 0%, rgba(26,22,18,.5) 44%, rgba(26,22,18,.26) 100%),
+    linear-gradient(to top, rgba(26,22,18,.6), transparent 55%);
 }
 .fg-hero__content {
   width: 100%; max-width: var(--maxw); margin: 0 auto;
@@ -1445,10 +1447,17 @@ em { font-style: italic; }
 .chooser__card {
   display: flex; flex-direction: column;
   background: var(--ivory); border: 1px solid var(--line);
-  padding: 2.5rem 2.3rem;
+  overflow: hidden;
   transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
 }
 .chooser__card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(42,38,34,.12); border-color: var(--gold-soft); }
+.chooser__media { overflow: hidden; }
+.chooser__media img {
+  width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block;
+  transition: transform .6s var(--ease);
+}
+.chooser__card:hover .chooser__media img { transform: scale(1.045); }
+.chooser__body { display: flex; flex-direction: column; flex: 1; padding: 2rem 2.3rem 2.3rem; }
 .chooser__card h3 {
   font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 2.4vw, 1.8rem);
   color: var(--charcoal); margin: .5rem 0 .3rem;
