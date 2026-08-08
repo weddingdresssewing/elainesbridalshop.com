@@ -83,7 +83,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808d" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -184,27 +184,29 @@
       <h2 class="section-title" data-i18n="services.title">Alterations we handle<br />every week.</h2>
       <p class="services__lede" data-i18n="services.lede">Whether your gown feels too loose, too tight, too long, or almost right, we shape each detail around your body and wedding day.</p>
     </div>
-    <div class="services__grid">
-      <article class="service reveal">
-        <span class="service__num">01</span>
-        <h3 data-i18n="svc1.h">Fit &amp; Shaping</h3>
-        <p data-i18n="svc1.p">Taking in or letting out sides, princess seams, zippers, and bodices for a smooth, secure fit.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">02</span>
-        <h3 data-i18n="svc2.h">Hems &amp; Bustles</h3>
-        <p data-i18n="svc2.p">Adjusting length, layers, trains, and reception bustles so you can walk, dance, and photograph comfortably.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">03</span>
-        <h3 data-i18n="svc3.h">Bodice, Straps &amp; Support</h3>
-        <p data-i18n="svc3.p">Shortening bodices, adjusting shoulders, securing straps, and refining neckline fit and support.</p>
-      </article>
-      <article class="service reveal">
-        <span class="service__num">04</span>
-        <h3 data-i18n="svc4.h">Sleeves &amp; Custom Details</h3>
-        <p data-i18n="svc4.p">Adding sleeves, straps, modesty panels, shoulder details, or custom touches that make the gown feel more like you.</p>
-      </article>
+    <div class="services__scroller">
+      <div class="services__grid">
+        <article class="service">
+          <span class="service__num">01</span>
+          <h3 data-i18n="svc1.h">Fit &amp; Shaping</h3>
+          <p data-i18n="svc1.p">Taking in or letting out sides, princess seams, zippers, and bodices for a smooth, secure fit.</p>
+        </article>
+        <article class="service">
+          <span class="service__num">02</span>
+          <h3 data-i18n="svc2.h">Hems &amp; Bustles</h3>
+          <p data-i18n="svc2.p">Adjusting length, layers, trains, and reception bustles so you can walk, dance, and photograph comfortably.</p>
+        </article>
+        <article class="service">
+          <span class="service__num">03</span>
+          <h3 data-i18n="svc3.h">Bodice, Straps &amp; Support</h3>
+          <p data-i18n="svc3.p">Shortening bodices, adjusting shoulders, securing straps, and refining neckline fit and support.</p>
+        </article>
+        <article class="service">
+          <span class="service__num">04</span>
+          <h3 data-i18n="svc4.h">Sleeves &amp; Custom Details</h3>
+          <p data-i18n="svc4.p">Adding sleeves, straps, modesty panels, shoulder details, or custom touches that make the gown feel more like you.</p>
+        </article>
+      </div>
     </div>
     <p class="services__cta reveal" data-i18n="services.cta">Not sure what your dress needs? <a href="#contact">Send photos for an estimate.</a></p>
   </section>
@@ -298,13 +300,6 @@
         <span class="paths__arrow">&rarr;</span>
       </a>
     </div>
-  </section>
-
-  <!-- ===== Promise ===== -->
-  <section class="promise reveal" id="promise">
-    <p class="eyebrow" data-i18n="promise.eyebrow">Our Promise</p>
-    <blockquote class="promise__text" data-i18n="promise.text">Every bride deserves a gown that fits like it was <em>made for her</em>, and we don't stop until yours does.</blockquote>
-    <cite class="promise__cite">Elaine's Bridal Shop</cite>
   </section>
 
   <!-- ===== Contact ===== -->
@@ -414,6 +409,12 @@
     </div>
   </section>
 
+  <!-- ===== Promise ===== -->
+  <section class="promise reveal" id="promise">
+    <p class="eyebrow" data-i18n="promise.eyebrow">Our Promise</p>
+    <blockquote class="promise__text" data-i18n="promise.text">Every bride deserves a gown that fits like it was <em>made for her</em>, and we don't stop until yours does.</blockquote>
+    <cite class="promise__cite">Elaine's Bridal Shop</cite>
+  </section>
 
   <!-- ===== Mobile sticky CTA (shown after the hero, hidden over the contact form) ===== -->
   <div class="mobile-cta" id="mobileCta" aria-hidden="true">
@@ -468,7 +469,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260808c"></script>
-  <script src="js/i18n.js?v=20260808c"></script>
+  <script src="js/main.js?v=20260808d"></script>
+  <script src="js/i18n.js?v=20260808d"></script>
 </body>
 </html>
