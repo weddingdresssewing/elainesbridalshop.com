@@ -1325,9 +1325,9 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-/* The 7-link nav (Wedding Dresses added) needs ~1227px in one row, so it collapses
-   to the slide-in menu below 1240px; laptops ≥1280 show the full nav. */
-@media (max-width: 1240px) {
+/* The 6-link nav needs ~1097px in one row, so it collapses to the slide-in menu
+   only below 1120px (tablets/phones); laptops show the full nav. */
+@media (max-width: 1120px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";
@@ -1464,6 +1464,10 @@ em { font-style: italic; }
 .nav__links a.is-current { color: var(--gold-soft); }
 
 .fg-rules { background: var(--cream); padding: clamp(3.5rem, 7vw, 5.5rem) 2rem; }
+/* The custom intro (#custom) flows straight into the three facts below — both are
+   cream, so collapse the double section padding into one tight gap. */
+#custom.mg { padding-bottom: clamp(1.2rem, 2.5vw, 2rem); }
+#custom + .fg-rules { padding-top: clamp(1.5rem, 3vw, 2.2rem); }
 .fg-rules__grid {
   max-width: var(--maxw); margin: 0 auto;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4rem;
@@ -1576,6 +1580,19 @@ em { font-style: italic; }
 .mg__lede { color: var(--ink); margin-top: 1.3rem; }
 .mg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
 .mg-grid--two { grid-template-columns: repeat(2, 1fr); max-width: 52rem; }
+/* Horizontal-scroll variant (How It Works) */
+.mg-grid--scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: .8rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-soft) transparent;
+}
+.mg-grid--scroll::-webkit-scrollbar { height: 7px; }
+.mg-grid--scroll::-webkit-scrollbar-thumb { background: var(--gold-soft); border-radius: 4px; }
+.mg-grid--scroll .mg-card { flex: 0 0 clamp(258px, 42%, 320px); scroll-snap-align: start; }
 .mg-card {
   background: var(--ivory);
   border: 1px solid var(--line);
