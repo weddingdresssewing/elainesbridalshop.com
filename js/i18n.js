@@ -8,6 +8,7 @@
   var ZH = {
     /* nav */
     "nav.services": "改衣服务",
+    "nav.dresses": "婚纱",
     "nav.gallery": "作品",
     "nav.process": "服务流程",
     "nav.showcase": "动态展示",
@@ -172,6 +173,7 @@
     "footer.sil": "裙型指南",
     "footer.measure": "量体指南",
     "footer.services": "改衣服务",
+    "footer.dresses": "婚纱",
     "footer.gallery": "作品",
     "footer.contact": "联系我们",
     "footer.rights": "版权所有。"

@@ -1325,9 +1325,9 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-/* The 6-link nav needs ~1097px in one row, so it stays horizontal on laptops and
-   collapses to the slide-in menu only below 1120px (tablets/phones). */
-@media (max-width: 1120px) {
+/* The 7-link nav (Wedding Dresses added) needs ~1227px in one row, so it collapses
+   to the slide-in menu below 1240px; laptops ≥1280 show the full nav. */
+@media (max-width: 1240px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";
@@ -1439,6 +1439,30 @@ em { font-style: italic; }
 .fg-hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 /* --- three rules strip --- */
+/* ===== Wedding Dresses: choose-your-path chooser ===== */
+.chooser { max-width: var(--maxw); margin: 0 auto; padding: clamp(3.5rem, 7vw, 5.5rem) 2rem; }
+.chooser__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.chooser__card {
+  display: flex; flex-direction: column;
+  background: var(--ivory); border: 1px solid var(--line);
+  padding: 2.5rem 2.3rem;
+  transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease);
+}
+.chooser__card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(42,38,34,.12); border-color: var(--gold-soft); }
+.chooser__card h3 {
+  font-family: var(--serif); font-weight: 500; font-size: clamp(1.4rem, 2.4vw, 1.8rem);
+  color: var(--charcoal); margin: .5rem 0 .3rem;
+}
+.chooser__price { font-family: var(--serif); font-size: 1.35rem; color: var(--gold-dark); margin-bottom: .9rem; }
+.chooser__card p:not(.eyebrow):not(.chooser__price) { color: var(--ink); font-size: .96rem; flex: 1; margin-bottom: 1.4rem; }
+.chooser__link { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-dark); }
+.chooser__link span { display: inline-block; transition: transform .3s; }
+.chooser__card:hover .chooser__link span { transform: translateX(5px); }
+@media (max-width: 760px) { .chooser__grid { grid-template-columns: 1fr; } }
+
+/* current-page marker in the nav */
+.nav__links a.is-current { color: var(--gold-soft); }
+
 .fg-rules { background: var(--cream); padding: clamp(3.5rem, 7vw, 5.5rem) 2rem; }
 .fg-rules__grid {
   max-width: var(--maxw); margin: 0 auto;
