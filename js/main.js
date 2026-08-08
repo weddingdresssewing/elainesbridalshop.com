@@ -258,32 +258,66 @@
     function zhUI() { return document.documentElement.lang === "zh-CN"; }
 
     /* --- availability chips (multi-select day + time) --- */
-    var DAY_ZH  = { Mon: "周一", Tue: "周二", Wed: "周三", Thu: "周四", Fri: "周五", Sat: "周六", Sun: "周日" };
-    var TIME_ZH = { Morning: "上午", Afternoon: "下午", Evening: "晚上" };
+    var TIME_ZH   = { Morning: "上午", Afternoon: "下午", Evening: "晚上" };
+    var DAY_OFF   = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 };  // offset from Monday
+    var MON_EN    = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    var WDAY_EN   = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];      // indexed by Date.getDay()
+    var WDAY_ZH   = ["周日","周一","周二","周三","周四","周五","周六"]; // indexed by Date.getDay()
+
+    // Concrete date of a chosen weekday in NEXT week (the Mon–Sun week after this one).
+    function nextWeekDate(dayVal) {
+      var t = new Date(); t.setHours(0, 0, 0, 0);
+      var sinceMon = (t.getDay() + 6) % 7;              // Mon=0 … Sun=6
+      var nextMon = new Date(t);
+      nextMon.setDate(t.getDate() - sinceMon + 7);      // Monday of next week
+      var d = new Date(nextMon);
+      d.setDate(nextMon.getDate() + DAY_OFF[dayVal]);
+      return d;
+    }
+    function fmtDate(d, zh) {
+      return zh
+        ? (d.getMonth() + 1) + "月" + d.getDate() + "日(" + WDAY_ZH[d.getDay()] + ")"
+        : WDAY_EN[d.getDay()] + ", " + MON_EN[d.getMonth()] + " " + d.getDate();
+    }
+
     Array.prototype.forEach.call(form.querySelectorAll(".chips"), function (group) {
       group.addEventListener("click", function (e) {
         var chip = e.target.closest(".chip");
         if (!chip) return;
         chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
+        updateAvailPreview();
         form.dispatchEvent(new Event("input", { bubbles: true }));  // refresh the SMS href
       });
     });
-    function chipVals(groupId, zh) {
+
+    function pressedVals(groupId) {
       return Array.prototype.slice
         .call(document.querySelectorAll("#" + groupId + " .chip[aria-pressed='true']"))
-        .map(function (c) {
-          var v = c.getAttribute("data-val");
-          return zh ? (DAY_ZH[v] || TIME_ZH[v] || v) : v;
-        });
+        .map(function (c) { return c.getAttribute("data-val"); });
     }
+    // Selected weekdays -> concrete next-week dates (localized).
     function availability(zh) {
       var notesEl = document.getElementById("availNotes");
       var sep = zh ? "、" : ", ";
+      var dates = pressedVals("availDays").map(function (v) { return fmtDate(nextWeekDate(v), zh); });
+      var times = pressedVals("availTimes").map(function (v) { return zh ? TIME_ZH[v] : v; });
       return {
-        days:  chipVals("availDays", zh).join(sep),
-        times: chipVals("availTimes", zh).join(sep),
+        days: dates.join(sep),
+        times: times.join(sep),
         notes: notesEl ? notesEl.value.trim() : ""
       };
+    }
+    // Live "here's what we'll suggest" preview under the chips.
+    function updateAvailPreview() {
+      var box = document.getElementById("availPreview");
+      if (!box) return;
+      var zh = zhUI();
+      var av = availability(zh);
+      if (!av.days) { box.hidden = true; box.innerHTML = ""; return; }
+      var lead = zh ? "建议下周:" : "Suggested for next week: ";
+      var timePart = av.times ? (zh ? " · " + av.times : " · " + av.times) : "";
+      box.innerHTML = lead + "<strong>" + av.days + "</strong>" + timePart;
+      box.hidden = false;
     }
 
     var formError = document.getElementById("formError");
@@ -304,6 +338,7 @@
       // form.reset() doesn't touch the aria-pressed chips — clear them manually
       Array.prototype.forEach.call(form.querySelectorAll(".chip[aria-pressed='true']"),
         function (c) { c.setAttribute("aria-pressed", "false"); });
+      updateAvailPreview();   // hides the now-empty preview box
       submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
       setTimeout(function () { setBusy(false); }, 2500);
     }
@@ -327,9 +362,11 @@
       fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
       var av = availability(zhUI());
-      if (av.days)  fd.append("Availability days", av.days);
-      if (av.times) fd.append("Availability times", av.times);
+      if (av.days)  fd.append("Preferred dates", av.days);
+      if (av.times) fd.append("Preferred times", av.times);
       if (av.notes) fd.append("Availability notes", av.notes);
+      var ref = document.getElementById("referral");
+      if (ref && ref.value) fd.append("How did you find us", ref.value);
       return fd;
     }
 
@@ -368,9 +405,11 @@
       fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
       var av2 = availability(zhUI());
-      if (av2.days)  fd.append("Availability days", av2.days);
-      if (av2.times) fd.append("Availability times", av2.times);
+      if (av2.days)  fd.append("Preferred dates", av2.days);
+      if (av2.times) fd.append("Preferred times", av2.times);
       if (av2.notes) fd.append("Availability notes", av2.notes);
+      var ref2 = document.getElementById("referral");
+      if (ref2 && ref2.value) fd.append("How did you find us", ref2.value);
       fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
       fd.append("_template", "table");
       fd.append("_captcha", "false");
@@ -412,9 +451,11 @@
         if (v("service")) lines.push((zh ? "需求:" : "Needs: ") + v("service"));
         if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
         var av = availability(zh);
-        if (av.days)  lines.push((zh ? "可约日期:" : "Available days: ") + av.days);
-        if (av.times) lines.push((zh ? "可约时段:" : "Available times: ") + av.times);
+        if (av.days)  lines.push((zh ? "希望日期:" : "Preferred dates: ") + av.days);
+        if (av.times) lines.push((zh ? "希望时段:" : "Preferred times: ") + av.times);
         if (av.notes) lines.push((zh ? "时间备注:" : "Availability notes: ") + av.notes);
+        var refEl = document.getElementById("referral");
+        if (refEl && refEl.value) lines.push((zh ? "从何得知:" : "Found us via: ") + refEl.value);
         lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
         return "sms:" + SMS_NUMBER + "?&body=" + encodeURIComponent(lines.join("\n"));
       }
@@ -422,7 +463,7 @@
       form.addEventListener("input", function () { smsBtn.href = buildSmsHref(); });
       smsBtn.addEventListener("click", function () { smsBtn.href = buildSmsHref(); });
       var lt = document.getElementById("langToggle");
-      if (lt) lt.addEventListener("click", function () { setTimeout(function () { smsBtn.href = buildSmsHref(); }, 0); });
+      if (lt) lt.addEventListener("click", function () { setTimeout(function () { smsBtn.href = buildSmsHref(); updateAvailPreview(); }, 0); });
       smsBtn.href = buildSmsHref();
     }
   }

@@ -414,8 +414,20 @@
               <button type="button" class="chip" data-val="Afternoon" aria-pressed="false" data-i18n="time.afternoon">Afternoon</button>
               <button type="button" class="chip" data-val="Evening" aria-pressed="false" data-i18n="time.evening">Evening</button>
             </div>
+            <p class="avail__preview" id="availPreview" aria-live="polite" hidden></p>
             <input type="text" id="availNotes" name="availNotes" placeholder="Any specific dates or times that work best? (optional)" data-i18n-ph="avail.notesPh" />
           </div>
+        </div>
+        <div class="field">
+          <label for="referral" data-i18n="lbl.referral">How did you find us?</label>
+          <select id="referral" name="referral">
+            <option value="" data-i18n="ref.default">Please select…</option>
+            <option data-i18n="ref.google">Google</option>
+            <option data-i18n="ref.facebook">Facebook</option>
+            <option data-i18n="ref.instagram">Instagram</option>
+            <option data-i18n="ref.reddit">Reddit</option>
+            <option data-i18n="ref.friend">Friend referral</option>
+          </select>
         </div>
         <div class="field">
           <span class="field__label" data-i18n="lbl.photos">Dress photos</span>

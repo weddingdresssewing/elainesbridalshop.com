@@ -999,6 +999,16 @@ em { font-style: italic; }
   color: var(--ivory);
 }
 .chip:focus-visible { outline: 3px solid var(--gold-dark); outline-offset: 2px; }
+.avail__preview {
+  margin: .8rem 0 .2rem;
+  padding: .7rem .9rem;
+  background: var(--cream);
+  border-left: 2px solid var(--gold);
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--charcoal);
+}
+.avail__preview strong { font-weight: 500; }
 #availNotes { margin-top: .7rem; }
 
 /* Tap-to-text photos callout (replaces the old in-form photo upload) */
