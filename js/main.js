@@ -298,12 +298,11 @@
     // Selected weekdays -> concrete next-week dates (localized).
     function availability(zh) {
       var notesEl = document.getElementById("availNotes");
-      var sep = zh ? "、" : ", ";
       var dates = pressedVals("availDays").map(function (v) { return fmtDate(nextWeekDate(v), zh); });
       var times = pressedVals("availTimes").map(function (v) { return zh ? TIME_ZH[v] : v; });
       return {
-        days: dates.join(sep),
-        times: times.join(sep),
+        days: dates.join(zh ? "、" : " · "),   // distinct dates: mid-dot reads clearer than commas
+        times: times.join(zh ? "、" : ", "),
         notes: notesEl ? notesEl.value.trim() : ""
       };
     }
