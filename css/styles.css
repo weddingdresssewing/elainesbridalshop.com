@@ -1260,9 +1260,10 @@ em { font-style: italic; }
 }
 
 /* Nav is now 5 links + CTA + lang (~1070px needed); below 1100 use the slide-in menu */
-/* Full horizontal nav needs only ~640px; collapse to the slide-in menu at 900px
-   (was 1479px, which wrongly gave laptops a mobile hamburger). */
-@media (max-width: 900px) {
+/* The current 9-link nav needs ~1420px to sit in one row, so it collapses to the
+   slide-in menu below 1480px. The real fix is fewer nav links (see IA cleanup);
+   once trimmed to ~5 this breakpoint can drop to ~1000px. */
+@media (max-width: 1479px) {
   /* dark backdrop behind the open menu */
   .nav.menu-open::before {
     content: "";
