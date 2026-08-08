@@ -358,7 +358,6 @@
       fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
       fd.append("email", document.getElementById("email").value);   // reply-to
       fd.append("Wedding date", document.getElementById("date").value);
-      fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
       var av = availability(zhUI());
       if (av.days)  fd.append("Preferred dates", av.days);
@@ -401,7 +400,6 @@
       fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
       fd.append("email", document.getElementById("email").value);
       fd.append("Wedding date", document.getElementById("date").value);
-      fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
       var av2 = availability(zhUI());
       if (av2.days)  fd.append("Preferred dates", av2.days);
@@ -447,7 +445,6 @@
         if (v("phone"))   lines.push((zh ? "电话:" : "Phone: ") + v("phone"));
         if (v("email"))   lines.push((zh ? "邮箱:" : "Email: ") + v("email"));
         if (v("date"))    lines.push((zh ? "婚礼日期:" : "Wedding date: ") + v("date"));
-        if (v("service")) lines.push((zh ? "需求:" : "Needs: ") + v("service"));
         if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
         var av = availability(zh);
         if (av.days)  lines.push((zh ? "希望日期:" : "Preferred dates: ") + av.days);
