@@ -84,7 +84,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260801f" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808a" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -102,7 +102,6 @@
         <a href="#showcase" data-i18n="nav.showcase">In Motion</a>
         <a href="#services" data-i18n="nav.services">Alterations</a>
         <a href="#about" data-i18n="nav.about">The Seamstress</a>
-        <a href="#start" data-i18n="nav.start">How to Start</a>
         <a href="#process" data-i18n="nav.process">How It Works</a>
         <a href="https://dresses.elainesbridalshop.com/" data-i18n="nav.collection">Collection</a>
         <a href="custom-wedding-dresses.html" data-i18n="nav.custom">Custom Gowns</a>
@@ -168,7 +167,9 @@
       <p class="eyebrow eyebrow--light" data-i18n="showcase.eyebrow">In Motion</p>
       <h2 class="section-title section-title--light" data-i18n="showcase.title">A gown only truly<br />reveals itself in movement.</h2>
     </div>
-    <div class="showcase__grid" id="showcaseGrid"><!-- injected by JS --></div>
+    <div class="showcase__scroller">
+      <div class="showcase__grid" id="showcaseGrid"><!-- injected by JS --></div>
+    </div>
     <p class="showcase__credit reveal">
       Music: <a href="https://soundcloud.com/scandinavianz" target="_blank" rel="noopener">&ldquo;Flower Street&rdquo; by Scandinavianz</a>,
       licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank" rel="noopener">Creative Commons Attribution 3.0 (CC BY 3.0)</a>.
@@ -223,31 +224,6 @@
         <p data-i18n="about.p2">Your gown stays in Elaine's hands from fitting to finishing. She accepts a limited number of brides so each dress has the time, precision, and calm attention it deserves.</p>
         <a href="#contact" class="link-arrow" data-i18n="about.link">Begin your fitting <span>&rarr;</span></a>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== Quick start ===== -->
-  <section class="quick-start" id="start">
-    <div class="quick-start__head reveal">
-      <p class="eyebrow" data-i18n="qs.eyebrow">How to Start</p>
-      <h2 class="section-title" data-i18n="qs.title">Send photos first.<br />Then come in with confidence.</h2>
-    </div>
-    <div class="quick-start__grid">
-      <article class="reveal">
-        <span>01</span>
-        <h3 data-i18n="qs.h1">Send your date and dress photos</h3>
-        <p data-i18n="qs.p1">Include front, back, and side photos of the gown hanging up, plus your wedding date.</p>
-      </article>
-      <article class="reveal">
-        <span>02</span>
-        <h3 data-i18n="qs.h2">Receive a preliminary estimate</h3>
-        <p data-i18n="qs.p2">We review your photos and reply within one business day whenever possible.</p>
-      </article>
-      <article class="reveal">
-        <span>03</span>
-        <h3 data-i18n="qs.h3">Request a private fitting</h3>
-        <p data-i18n="qs.p3">Come to Elaine's in-home studio in Sacramento 95828 when you are ready. The private fitting is free.</p>
-      </article>
     </div>
   </section>
 
@@ -349,11 +325,13 @@
             <li data-i18n="contact.check5">Your preferred fitting timeframe</li>
           </ul>
         </div>
-        <ul class="contact__details">
+        <a class="contact__primary" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.">
+          <span class="contact__primary-label" data-i18n="contact.primaryLabel">Fastest reply</span>
+          <span class="contact__primary-main" data-i18n="contact.primaryMain">Text Chloe · (415) 734-1832</span>
+        </a>
+        <ul class="contact__details contact__details--muted">
           <li data-i18n="contact.studio"><span>Studio</span>Private in-home studio · Sacramento, CA 95828 · Exact address provided after your appointment is confirmed</li>
-          <li data-i18n="contact.email"><span>Email</span><a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a></li>
-          <li><span>Chloe</span><a href="tel:+14157341832">(415) 734-1832</a></li>
-          <li><span>Elaine</span><a href="tel:+14158139302">(415) 813-9302</a></li>
+          <li data-i18n="contact.secondary"><span>Or</span>Call Chloe (415) 734-1832 · Elaine (415) 813-9302 · <a href="mailto:weddingdresssewing@gmail.com">email us</a></li>
           <li data-instagram-row hidden><span>Instagram</span><a data-instagram-link target="_blank" rel="noopener"></a></li>
         </ul>
       </div>
@@ -372,11 +350,11 @@
         </div>
         <div class="field-row">
           <div class="field">
-            <label for="email" data-i18n="lbl.email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@email.com" />
+            <label for="email" data-i18n="lbl.email">Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" />
           </div>
           <div class="field">
-            <label for="date" data-i18n="lbl.date">Wedding date</label>
+            <label for="date" data-i18n="lbl.date">Wedding date (optional)</label>
             <input type="date" id="date" name="date" />
           </div>
         </div>
@@ -384,6 +362,8 @@
           <label for="message" data-i18n="lbl.message">Tell us about your gown</label>
           <textarea id="message" name="message" rows="4" placeholder="The alterations you have in mind, and any questions…" data-i18n-ph="ph.message"></textarea>
         </div>
+        <details class="more-fields">
+          <summary data-i18n="more.summary">Add your availability &amp; how you found us <span>(optional)</span></summary>
         <div class="field">
           <span class="field__label" data-i18n="lbl.avail">Your availability for a fitting</span>
           <div class="avail">
@@ -418,6 +398,7 @@
             <option data-i18n="ref.friend">Friend referral</option>
           </select>
         </div>
+        </details>
         <div class="field">
           <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
           <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
@@ -491,7 +472,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260801a"></script>
-  <script src="js/i18n.js?v=20260801o"></script>
+  <script src="js/main.js?v=20260808a"></script>
+  <script src="js/i18n.js?v=20260808a"></script>
 </body>
 </html>
