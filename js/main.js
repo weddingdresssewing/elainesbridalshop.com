@@ -257,6 +257,35 @@
 
     function zhUI() { return document.documentElement.lang === "zh-CN"; }
 
+    /* --- availability chips (multi-select day + time) --- */
+    var DAY_ZH  = { Mon: "周一", Tue: "周二", Wed: "周三", Thu: "周四", Fri: "周五", Sat: "周六", Sun: "周日" };
+    var TIME_ZH = { Morning: "上午", Afternoon: "下午", Evening: "晚上" };
+    Array.prototype.forEach.call(form.querySelectorAll(".chips"), function (group) {
+      group.addEventListener("click", function (e) {
+        var chip = e.target.closest(".chip");
+        if (!chip) return;
+        chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
+        form.dispatchEvent(new Event("input", { bubbles: true }));  // refresh the SMS href
+      });
+    });
+    function chipVals(groupId, zh) {
+      return Array.prototype.slice
+        .call(document.querySelectorAll("#" + groupId + " .chip[aria-pressed='true']"))
+        .map(function (c) {
+          var v = c.getAttribute("data-val");
+          return zh ? (DAY_ZH[v] || TIME_ZH[v] || v) : v;
+        });
+    }
+    function availability(zh) {
+      var notesEl = document.getElementById("availNotes");
+      var sep = zh ? "、" : ", ";
+      return {
+        days:  chipVals("availDays", zh).join(sep),
+        times: chipVals("availTimes", zh).join(sep),
+        notes: notesEl ? notesEl.value.trim() : ""
+      };
+    }
+
     var formError = document.getElementById("formError");
 
     function submitLabelNow() {
@@ -272,6 +301,9 @@
       // Google Ads conversion: fires only on a real, successful submission
       if (typeof gtag === "function") gtag("event", "ads_conversion_Submit_lead_form_1", {});
       form.reset();
+      // form.reset() doesn't touch the aria-pressed chips — clear them manually
+      Array.prototype.forEach.call(form.querySelectorAll(".chip[aria-pressed='true']"),
+        function (c) { c.setAttribute("aria-pressed", "false"); });
       submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
       setTimeout(function () { setBusy(false); }, 2500);
     }
@@ -294,6 +326,10 @@
       fd.append("Wedding date", document.getElementById("date").value);
       fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
+      var av = availability(zhUI());
+      if (av.days)  fd.append("Availability days", av.days);
+      if (av.times) fd.append("Availability times", av.times);
+      if (av.notes) fd.append("Availability notes", av.notes);
       return fd;
     }
 
@@ -331,6 +367,10 @@
       fd.append("Wedding date", document.getElementById("date").value);
       fd.append("Interested in", document.getElementById("service").value);
       fd.append("Message", document.getElementById("message").value);
+      var av2 = availability(zhUI());
+      if (av2.days)  fd.append("Availability days", av2.days);
+      if (av2.times) fd.append("Availability times", av2.times);
+      if (av2.notes) fd.append("Availability notes", av2.notes);
       fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
       fd.append("_template", "table");
       fd.append("_captcha", "false");
@@ -371,6 +411,10 @@
         if (v("date"))    lines.push((zh ? "婚礼日期:" : "Wedding date: ") + v("date"));
         if (v("service")) lines.push((zh ? "需求:" : "Needs: ") + v("service"));
         if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
+        var av = availability(zh);
+        if (av.days)  lines.push((zh ? "可约日期:" : "Available days: ") + av.days);
+        if (av.times) lines.push((zh ? "可约时段:" : "Available times: ") + av.times);
+        if (av.notes) lines.push((zh ? "时间备注:" : "Availability notes: ") + av.notes);
         lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
         return "sms:" + SMS_NUMBER + "?&body=" + encodeURIComponent(lines.join("\n"));
       }

@@ -151,6 +151,19 @@
     "opt.4": "袖子与定制细节",
     "opt.custom": "定制婚纱(免费咨询)",
     "opt.5": "还不确定",
+    "lbl.avail": "您方便试衣的时间",
+    "avail.days": "哪几天方便?",
+    "avail.times": "偏好的时段?",
+    "day.mon": "周一",
+    "day.tue": "周二",
+    "day.wed": "周三",
+    "day.thu": "周四",
+    "day.fri": "周五",
+    "day.sat": "周六",
+    "day.sun": "周日",
+    "time.morning": "上午",
+    "time.afternoon": "下午",
+    "time.evening": "晚上",
     "lbl.photos": "婚纱照片",
     "sms.btn": "<strong>把资料和照片短信发给 Chloe</strong><br />已帮您带上表单信息,附上照片即可(正面、背面、侧面)",
     "contact.textConsent": "可以通过短信联系我确认估价和预约。",
@@ -174,7 +187,8 @@
 
   var ZH_PH = {
     "ph.name": "您的姓名",
-    "ph.message": "您想做的改动、婚礼日期,以及任何疑问…"
+    "ph.message": "您想做的改动、婚礼日期,以及任何疑问…",
+    "avail.notesPh": "有特别合适的具体日期或时间吗?(选填)"
   };
 
   // Page-specific strings: a page may define window.PAGE_I18N = { zh: {...},

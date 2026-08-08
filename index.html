@@ -396,6 +396,28 @@
           <textarea id="message" name="message" rows="4" placeholder="The alterations you have in mind, your wedding date, and any questions…" data-i18n-ph="ph.message"></textarea>
         </div>
         <div class="field">
+          <span class="field__label" data-i18n="lbl.avail">Your availability for a fitting</span>
+          <div class="avail">
+            <p class="avail__sub" data-i18n="avail.days">Which days work best?</p>
+            <div class="chips" id="availDays" role="group" aria-label="Preferred days">
+              <button type="button" class="chip" data-val="Mon" aria-pressed="false" data-i18n="day.mon">Mon</button>
+              <button type="button" class="chip" data-val="Tue" aria-pressed="false" data-i18n="day.tue">Tue</button>
+              <button type="button" class="chip" data-val="Wed" aria-pressed="false" data-i18n="day.wed">Wed</button>
+              <button type="button" class="chip" data-val="Thu" aria-pressed="false" data-i18n="day.thu">Thu</button>
+              <button type="button" class="chip" data-val="Fri" aria-pressed="false" data-i18n="day.fri">Fri</button>
+              <button type="button" class="chip" data-val="Sat" aria-pressed="false" data-i18n="day.sat">Sat</button>
+              <button type="button" class="chip" data-val="Sun" aria-pressed="false" data-i18n="day.sun">Sun</button>
+            </div>
+            <p class="avail__sub" data-i18n="avail.times">Preferred time of day?</p>
+            <div class="chips" id="availTimes" role="group" aria-label="Preferred times">
+              <button type="button" class="chip" data-val="Morning" aria-pressed="false" data-i18n="time.morning">Morning</button>
+              <button type="button" class="chip" data-val="Afternoon" aria-pressed="false" data-i18n="time.afternoon">Afternoon</button>
+              <button type="button" class="chip" data-val="Evening" aria-pressed="false" data-i18n="time.evening">Evening</button>
+            </div>
+            <input type="text" id="availNotes" name="availNotes" placeholder="Any specific dates or times that work best? (optional)" data-i18n-ph="avail.notesPh" />
+          </div>
+        </div>
+        <div class="field">
           <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
           <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
             <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"/><path d="M8 9.5 12 5.5l4 4"/><path d="M12 5.5v10"/></svg>
