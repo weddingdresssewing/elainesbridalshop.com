@@ -973,35 +973,7 @@ em { font-style: italic; }
 .contact__intro p { color: var(--ink); margin: 1.4rem 0 1.6rem; max-width: 28rem; }
 .contact__intro .section-title { margin-bottom: 0; }
 .contact__book { margin-bottom: 2.4rem; }
-
-/* One primary contact path — text Chloe — with everything else muted below it */
-.contact__primary {
-  display: block;
-  background: var(--charcoal);
-  color: var(--ivory);
-  padding: 1.1rem 1.4rem;
-  margin-bottom: 1.4rem;
-  transition: background .25s var(--ease);
-}
-.contact__primary:hover { background: var(--gold-dark); }
-.contact__primary-label {
-  display: block;
-  font-size: .66rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--gold-soft);
-  margin-bottom: .25rem;
-}
-.contact__primary-main {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.4rem;
-  font-weight: 500;
-}
 .contact__details { list-style: none; }
-.contact__details--muted li { font-size: .85rem; color: var(--ink); opacity: .85; }
-.contact__details--muted span { color: var(--ink); opacity: .8; }
-.contact__details--muted a { text-decoration: underline; text-underline-offset: 3px; }
 .contact__details li {
   padding: 1rem 0;
   border-top: 1px solid var(--line);

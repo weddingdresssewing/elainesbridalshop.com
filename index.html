@@ -84,7 +84,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808a" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808b" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -325,13 +325,11 @@
             <li data-i18n="contact.check5">Your preferred fitting timeframe</li>
           </ul>
         </div>
-        <a class="contact__primary" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.">
-          <span class="contact__primary-label" data-i18n="contact.primaryLabel">Fastest reply</span>
-          <span class="contact__primary-main" data-i18n="contact.primaryMain">Text Chloe · (415) 734-1832</span>
-        </a>
-        <ul class="contact__details contact__details--muted">
+        <ul class="contact__details">
           <li data-i18n="contact.studio"><span>Studio</span>Private in-home studio · Sacramento, CA 95828 · Exact address provided after your appointment is confirmed</li>
-          <li data-i18n="contact.secondary"><span>Or</span>Call Chloe (415) 734-1832 · Elaine (415) 813-9302 · <a href="mailto:weddingdresssewing@gmail.com">email us</a></li>
+          <li data-i18n="contact.textChloe"><span>Text Chloe</span><a href="sms:+14157341832">(415) 734-1832</a></li>
+          <li><span>Elaine</span><a href="tel:+14158139302">(415) 813-9302</a></li>
+          <li data-i18n="contact.email"><span>Email</span><a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a></li>
           <li data-instagram-row hidden><span>Instagram</span><a data-instagram-link target="_blank" rel="noopener"></a></li>
         </ul>
       </div>
@@ -411,7 +409,7 @@
           <span data-i18n="contact.textConsent">You may text me about my estimate and appointment.</span>
         </label>
         <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Send My Fitting Request</button>
-        <p class="contact__hint" data-i18n="contact.hint">Prefer to reach us directly? Text or call Chloe at <a href="sms:+14157341832">(415) 734-1832</a>, or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
+        <p class="contact__hint" data-i18n="contact.hint">Prefer to reach us directly? Text Chloe at <a href="sms:+14157341832">(415) 734-1832</a>, or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
         <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Thank you. We received your request and will reply within one business day. Your appointment is not confirmed until we contact you with available times.</p>
         <p class="contact__error" id="formError" hidden role="status" data-i18n="contact.error">Sorry, something went wrong sending your request. Please text Chloe at <a href="sms:+14157341832">(415) 734-1832</a> or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
       </form>
@@ -472,7 +470,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260808a"></script>
-  <script src="js/i18n.js?v=20260808a"></script>
+  <script src="js/main.js?v=20260808b"></script>
+  <script src="js/i18n.js?v=20260808b"></script>
 </body>
 </html>
