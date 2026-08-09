@@ -1835,3 +1835,22 @@ em { font-style: italic; }
 @media (max-width: 520px) {
   .fg-sil__grid { grid-template-columns: 1fr; }
 }
+
+/* Intent chips sit above the message box on the dresses enquiry form */
+.chips--intent { margin: 0 0 .8rem; }
+
+/* Full-screen mobile menu (more room + clearer hierarchy than the side drawer) */
+@media (max-width: 1479px) {
+  .nav__links {
+    width: 100vw;
+    max-width: none;
+    align-items: center;
+    justify-content: center;
+    padding: 5.5rem 1.5rem 3rem;
+    gap: 1.9rem;
+    box-shadow: none;
+  }
+  .nav__links a { font-size: 1.22rem; letter-spacing: .06em; }
+  .nav__cta { padding: .85rem 2.2rem !important; }
+  .nav__lang { margin-top: 1rem; padding: .55rem 1.4rem; }
+}

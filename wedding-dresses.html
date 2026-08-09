@@ -102,7 +102,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808u" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808am" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}, {"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}]}
   </script>
@@ -348,8 +348,14 @@
           </div>
         </div>
         <div class="field">
-          <label for="message" data-i18n="lbl.message">Tell us about your gown</label>
-          <textarea id="message" name="message" rows="4" placeholder="The alterations you have in mind, and any questions…" data-i18n-ph="ph.message"></textarea>
+          <label for="message" data-i18n="wd.msgLabel">What are you interested in?</label>
+          <div class="chips chips--intent" id="intentChips" role="group" aria-label="What are you interested in">
+            <button type="button" class="chip" data-val="Ready-to-wear dress" aria-pressed="false" data-i18n="wd.intent1">Ready-to-wear dress</button>
+            <button type="button" class="chip" data-val="Custom gown" aria-pressed="false" data-i18n="wd.intent2">Custom gown</button>
+            <button type="button" class="chip" data-val="Alterations" aria-pressed="false" data-i18n="wd.intent3">Alterations</button>
+            <button type="button" class="chip" data-val="Not sure yet" aria-pressed="false" data-i18n="wd.intent4">Not sure yet</button>
+          </div>
+          <textarea id="message" name="message" rows="4" placeholder="Ready-to-wear dress, custom gown, alterations, wedding date, and any questions..." data-i18n-ph="wd.msgPh"></textarea>
         </div>
         <details class="more-fields">
           <summary data-i18n="more.summary">Add your availability &amp; how you found us <span>(optional)</span></summary>
@@ -454,6 +460,12 @@
   <script>
   window.PAGE_I18N = {
     zh: {
+      "wd.msgLabel": "您想咨询什么?",
+      "wd.msgPh": "现货婚纱、定制婚纱、改衣需求、婚礼日期,以及任何问题…",
+      "wd.intent1": "现货婚纱",
+      "wd.intent2": "定制婚纱",
+      "wd.intent3": "婚纱修改",
+      "wd.intent4": "还不确定",
       "nav.dresses": "婚纱",
       "wd.crumbHome": "首页",
       "wd.crumbHere": "婚纱",
@@ -551,7 +563,7 @@
     }
   };
   </script>
-  <script src="js/main.js?v=20260808u"></script>
-  <script src="js/i18n.js?v=20260808u"></script>
+  <script src="js/main.js?v=20260808am"></script>
+  <script src="js/i18n.js?v=20260808am"></script>
 </body>
 </html>
