@@ -31,6 +31,7 @@
     "trust.1": "<strong>40+ 年</strong><span>缝纫经验</span>",
     "trust.2": "<strong>11 年</strong><span>萨克拉门托婚纱店经验</span>",
     "trust.3": "<strong>私人</strong><span>一对一试衣</span>",
+    "trust.4": "<strong>免费</strong><span>咨询与报价</span>",
     "trust.5": "<strong>EN / 中文</strong><span>双语服务</span>",
 
     /* quick start */
