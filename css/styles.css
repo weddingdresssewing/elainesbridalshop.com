@@ -133,8 +133,9 @@ em { font-style: italic; }
 .collection { background: var(--cream); padding: clamp(5rem, 9vw, 7.5rem) 2rem; }
 .collection__head { max-width: var(--maxw); margin: 0 auto 2.6rem; }
 .collection__lede { color: var(--ink); margin-top: 1.3rem; max-width: 38rem; }
+/* 4 tiles (3 dresses + the "more" card) fill the row edge to edge */
 .collection__grid { max-width: var(--maxw); margin: 0 auto; display: grid;
-  grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+  grid-template-columns: repeat(4, 1fr); gap: 1rem; }
 .collection__tile { display: block; position: relative; overflow: hidden; background: var(--ivory);
   box-shadow: 0 10px 30px rgba(42,38,34,.07); }
 .collection__tile img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; display: block;
@@ -151,8 +152,20 @@ em { font-style: italic; }
 .collection__arrow { font-size: 1.15rem; color: var(--gold-dark); transition: transform .3s var(--ease); }
 .collection__tile--more:hover .collection__arrow { transform: translateX(6px); }
 .collection__cta { max-width: var(--maxw); margin: 2.4rem auto 0; }
+/* Buttons share the tile row's exact left/right bounds */
+.collection__actions {
+  max-width: var(--maxw);
+  margin: 1.6rem auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.collection__actions .btn { width: 100%; text-align: center; }
 @media (max-width: 900px) { .collection__grid { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 560px) { .collection__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .collection__grid { grid-template-columns: repeat(2, 1fr); }
+  .collection__actions { grid-template-columns: 1fr; }
+}
 
 .link-arrow {
   display: inline-block;
