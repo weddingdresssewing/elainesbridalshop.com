@@ -31,7 +31,6 @@
     "trust.1": "<strong>40+ 年</strong><span>缝纫经验</span>",
     "trust.2": "<strong>11 年</strong><span>萨克拉门托婚纱店经验</span>",
     "trust.3": "<strong>私人</strong><span>一对一试衣</span>",
-    "trust.4": "<strong>照片先行</strong><span>到店前先估价</span>",
     "trust.5": "<strong>EN / 中文</strong><span>双语服务</span>",
 
     /* quick start */
@@ -186,7 +185,7 @@
     "price.side2": "收腰身/侧缝",
     "price.zipper2": "收拉链处",
     "price.hem2": "改裙长",
-    "price.note": "每条裙子都不一样,最终价格取决于面料、层数和改动工作量。动工之前一定会先给您准确报价。",
+    "price.note": "每条裙子都不一样,最终价格取决于面料、层数和改动工作量。以上价格仅供参考,准确报价会在免费咨询时给出,动工之前一定先告知您。",
 
     /* footer */
     "footer.tag": "「这里,有您梦想中的那条裙子」· 加州萨克拉门托 · 家庭工作室",
