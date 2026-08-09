@@ -1479,6 +1479,13 @@ em { font-style: italic; }
   color: var(--ink);
 }
 .note-important strong { color: var(--charcoal); font-weight: 600; }
+/* Same callout used at section level (not inside a card) */
+.note-important--wide {
+  max-width: 38rem;
+  margin-top: 1.4rem;
+  padding: 1rem 1.2rem;
+  font-size: .95rem;
+}
 
 /* Scroll-spy: current section in the in-page nav */
 .nav__links a.is-active { color: var(--gold-soft); }
