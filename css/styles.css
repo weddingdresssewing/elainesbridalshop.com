@@ -1468,6 +1468,44 @@ em { font-style: italic; }
 .crumbs span[aria-hidden] { margin: 0 .5rem; opacity: .5; }
 .crumbs span[aria-current] { color: var(--charcoal); }
 
+/* Scroll-spy: current section in the in-page nav */
+.nav__links a.is-active { color: var(--gold-soft); }
+.nav__links a.is-active:not(.nav__cta)::after { width: 100%; }
+.nav.scrolled .nav__links a.is-active { color: var(--gold-dark); }
+
+/* Breadcrumb sitting on a dark hero */
+.crumbs--onhero {
+  max-width: none;
+  padding: 0;
+  margin-bottom: 1.1rem;
+  color: rgba(255,255,255,.75);
+}
+.crumbs--onhero a { color: rgba(255,255,255,.92); }
+.crumbs--onhero a:hover { border-bottom-color: rgba(255,255,255,.7); }
+.crumbs--onhero span[aria-current] { color: rgba(255,255,255,.75); }
+
+/* "Found one you love?" exit line at the end of a section */
+.section-exit {
+  max-width: var(--maxw);
+  margin: 1.8rem auto 0;
+  font-size: .95rem;
+  color: var(--ink);
+}
+.section-exit a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); }
+.section-exit a:hover { color: var(--charcoal); }
+
+/* Free-consultation note in the contact intro */
+.contact__free {
+  background: var(--cream);
+  border-left: 2px solid var(--gold);
+  padding: .9rem 1.1rem;
+  margin: 0 0 1.6rem;
+  font-size: .95rem;
+  color: var(--ink);
+  max-width: 32rem;
+}
+.contact__free strong { color: var(--charcoal); font-weight: 500; }
+
 /* ===== FAQ accordion ===== */
 .faq-list { max-width: 46rem; margin: 0 auto; }
 .faq-item {

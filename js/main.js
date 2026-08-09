@@ -66,6 +66,34 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Scroll-spy: highlight the nav link for the section in view ----------
+     Only runs on pages whose nav points at in-page anchors (e.g. wedding-dresses). */
+  (function () {
+    if (!("IntersectionObserver" in window)) return;
+    var spyLinks = [];
+    Array.prototype.forEach.call(document.querySelectorAll('#navLinks a[href^="#"]'), function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var sec = id && document.getElementById(id);
+      if (sec) spyLinks.push({ a: a, sec: sec });
+    });
+    if (spyLinks.length < 2) return;   // not an in-page nav
+    var visible = {};
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { visible[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var bestId = null, best = 0;
+      spyLinks.forEach(function (p) {
+        var v = visible[p.sec.id] || 0;
+        if (v > best) { best = v; bestId = p.sec.id; }
+      });
+      spyLinks.forEach(function (p) {
+        var on = p.sec.id === bestId;
+        p.a.classList.toggle("is-active", on);
+        if (on) p.a.setAttribute("aria-current", "true"); else p.a.removeAttribute("aria-current");
+      });
+    }, { rootMargin: "-88px 0px -55% 0px", threshold: [0, .15, .35, .6, 1] });
+    spyLinks.forEach(function (p) { spy.observe(p.sec); });
+  })();
+
   /* ---------- Mobile menu (accessible) ---------- */
   var toggle = document.getElementById("navToggle");
   var links = document.getElementById("navLinks");
