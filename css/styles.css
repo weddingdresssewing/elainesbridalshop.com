@@ -1468,6 +1468,18 @@ em { font-style: italic; }
 .crumbs span[aria-hidden] { margin: 0 .5rem; opacity: .5; }
 .crumbs span[aria-current] { color: var(--charcoal); }
 
+/* Important pricing/scope disclosure — must not read as fine print */
+.note-important {
+  margin-top: .9rem;
+  padding: .8rem 1rem;
+  background: #FBF3E6;
+  border-left: 3px solid var(--gold);
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.note-important strong { color: var(--charcoal); font-weight: 600; }
+
 /* Scroll-spy: current section in the in-page nav */
 .nav__links a.is-active { color: var(--gold-soft); }
 .nav__links a.is-active:not(.nav__cta)::after { width: 100%; }
