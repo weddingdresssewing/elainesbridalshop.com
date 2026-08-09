@@ -1865,7 +1865,7 @@ em { font-style: italic; }
   width: 100%;
   height: auto;          /* let padding + min-height size it like the other fields */
   min-height: 50px;
-  line-height: 1.4;
+  line-height: normal;   /* text inputs use normal; 1.4 made it 2px taller */
 }
 .field input[type="date"]::-webkit-date-and-time-value {
   text-align: left;
