@@ -179,6 +179,7 @@
     "price.shoulders": "收肩",
     "price.side": "收腰身/侧缝",
     "price.zipper": "收拉链处",
+    "price.hem": "改裙长",
     "price.cups2": "加胸垫",
     "price.straps2": "缩短肩带",
     "price.shoulders2": "收肩",
