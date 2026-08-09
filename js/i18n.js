@@ -8,6 +8,7 @@
   var ZH = {
     /* nav */
     "nav.services": "改衣服务",
+    "nav.pricing": "改衣价格",
     "nav.dresses": "婚纱",
     "nav.gallery": "作品",
     "nav.process": "服务流程",
