@@ -22,6 +22,7 @@
   // gown-06 is the hero image, so it's intentionally left out of the gallery.
   // Gallery photos in display order. Each has a specific alt + bilingual caption.
   var GALLERY = [
+    { id: "24", alt: "Before and after: a vintage wedding gown back re-made with a lace-up corset panel in place of the original zipper", en: "Before and after: zipper back re-made as a lace-up corset.", zh: "改造前后:原拉链后背改成系带束腰。" },
     { id: "01", alt: "Elaine hand-sewing a wedding gown hem beside the dress form in her Sacramento studio", en: "Hand-finishing a gown, stitch by stitch.", zh: "一针一线,手工精修婚纱。" },
     { id: "05", alt: "Elaine guiding wedding gown fabric through her sewing machine", en: "Precision work at the machine.", zh: "缝纫机前的精准作业。" },
     { id: "07", alt: "Pinning a lace wedding gown during a private fitting", en: "Pinning the fit during a private fitting.", zh: "私人试衣中细致定位。" },
