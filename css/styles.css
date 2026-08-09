@@ -1470,10 +1470,13 @@ em { font-style: italic; }
 .crumbs span[aria-current] { color: var(--charcoal); }
 
 /* ===== Alteration pricing guide ===== */
-.pricing { background: var(--cream); padding: clamp(4.5rem, 9vw, 7.5rem) 2rem; }
-/* Pricing continues Services (same background), so don't stack both paddings */
-.services:has(+ .pricing) { padding-bottom: clamp(2.2rem, 4vw, 3.2rem); }
-.services + .pricing { padding-top: clamp(2.2rem, 4vw, 3.2rem); }
+/* Ivory (one shade lighter than the cream Services band) so the two sections
+   read as distinct areas instead of one long empty stretch */
+.pricing {
+  background: var(--ivory);
+  border-top: 1px solid var(--line);
+  padding: clamp(4rem, 8vw, 6.5rem) 2rem;
+}
 .pricing__inner { max-width: var(--maxw); margin: 0 auto; }
 .pricing__head { margin-bottom: 3rem; }
 .pricing__lede {
@@ -1488,7 +1491,7 @@ em { font-style: italic; }
   gap: clamp(1.2rem, 3vw, 2rem);
 }
 .pricing__card {
-  background: var(--ivory);
+  background: var(--cream);
   border: 1px solid var(--line);
   padding: clamp(1.6rem, 3vw, 2.3rem);
 }
