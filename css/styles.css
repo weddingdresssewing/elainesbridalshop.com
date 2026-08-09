@@ -1864,9 +1864,13 @@ em { font-style: italic; }
   min-width: 0;
   width: 100%;
   height: auto;          /* let padding + min-height size it like the other fields */
-  min-height: 50px;
-  line-height: normal;   /* text inputs use normal; 1.4 made it 2px taller */
+  min-height: 52px;
+  line-height: normal;
 }
+/* Every single-line field gets the same explicit height, so native controls
+   (date pickers, selects) can't render taller than the plain text inputs. */
+.field input:not([type="checkbox"]),
+.field select { height: 52px; }
 .field input[type="date"]::-webkit-date-and-time-value {
   text-align: left;
   margin: 0;
