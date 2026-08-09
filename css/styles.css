@@ -26,7 +26,8 @@
 
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
-section { scroll-margin-top: 88px; }
+section, .anchor-block { scroll-margin-top: 88px; }
+.anchor-block { margin-top: 2.6rem; }
 
 body {
   font-family: var(--sans);
