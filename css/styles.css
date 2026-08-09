@@ -1469,6 +1469,66 @@ em { font-style: italic; }
 .crumbs span[aria-hidden] { margin: 0 .5rem; opacity: .5; }
 .crumbs span[aria-current] { color: var(--charcoal); }
 
+/* ===== Alteration pricing guide ===== */
+.pricing { background: var(--cream); padding: clamp(4.5rem, 9vw, 7.5rem) 2rem; }
+.pricing__inner { max-width: var(--maxw); margin: 0 auto; }
+.pricing__head { margin-bottom: 3rem; }
+.pricing__lede {
+  max-width: 40rem;
+  margin-top: 1.3rem;
+  color: var(--ink);
+  font-size: 1.02rem;
+}
+.pricing__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.2rem, 3vw, 2rem);
+}
+.pricing__card {
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  padding: clamp(1.6rem, 3vw, 2.3rem);
+}
+.pricing__card h3 {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  padding-bottom: .9rem;
+  margin-bottom: .4rem;
+  border-bottom: 1px solid var(--line);
+}
+.pricing__card dl { margin: 0; }
+.pricing__card dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: .78rem 0;
+  border-bottom: 1px solid rgba(222,212,197,.55);
+}
+.pricing__card dl > div:last-child { border-bottom: 0; }
+.pricing__card dt { color: var(--ink); font-size: .96rem; }
+.pricing__card dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.18rem;
+  font-weight: 500;
+  color: var(--gold-dark);
+  white-space: nowrap;
+}
+.pricing__note {
+  margin-top: 2rem;
+  max-width: 44rem;
+  font-size: .95rem;
+  color: var(--ink);
+}
+.pricing__note a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); }
+.pricing__note a:hover { color: var(--charcoal); }
+@media (max-width: 760px) {
+  .pricing__grid { grid-template-columns: 1fr; }
+}
+
 /* Important pricing/scope disclosure — must not read as fine print */
 .note-important {
   margin-top: .9rem;

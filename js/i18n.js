@@ -167,6 +167,25 @@
     "mcta.fitting": "申请试衣",
     "mcta.text": "短信发照片",
 
+    /* pricing guide */
+    "price.eyebrow": "改衣价格",
+    "price.title": "改衣费用<br />参考指南。",
+    "price.lede": "通常我需要看到您穿上婚纱才能给出准确报价,以下价格供您参考:",
+    "price.bridal": "婚纱",
+    "price.bridesmaid": "伴娘裙",
+    "price.cups": "加胸垫",
+    "price.straps": "缩短肩带",
+    "price.shoulders": "收肩",
+    "price.side": "收腰身/侧缝",
+    "price.zipper": "收拉链处",
+    "price.cups2": "加胸垫",
+    "price.straps2": "缩短肩带",
+    "price.shoulders2": "收肩",
+    "price.side2": "收腰身/侧缝",
+    "price.zipper2": "收拉链处",
+    "price.hem2": "改裙长",
+    "price.note": "每条裙子都不一样,最终价格取决于面料、层数和改动工作量。动工之前一定会先给您准确报价。<a href=\"#contact\">发照片给我们估价。</a>",
+
     /* footer */
     "footer.tag": "「这里,有您梦想中的那条裙子」· 加州萨克拉门托 · 家庭工作室",
     "footer.about": "裁缝师",
