@@ -102,7 +102,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808l" />
+  <link rel="stylesheet" href="css/styles.css?v=20260808m" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}, {"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}]}
   </script>
@@ -123,7 +123,7 @@
         <a href="#how" data-i18n="wnav.how">How It Works</a>
         <a href="#videos" data-i18n="wnav.videos">Preview Videos</a>
         <a href="#faq" data-i18n="wnav.faq">FAQs</a>
-        <a href="index.html#contact" class="nav__cta" data-i18n="nav.book">Request a Fitting</a>
+        <a href="#contact" class="nav__cta" data-i18n="nav.book">Request a Fitting</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -173,7 +173,7 @@
         <span class="chooser__link" data-i18n="wd.ch2cta">See how it works <span>&darr;</span></span>
       </a>
     </div>
-    <p class="chooser__help reveal" data-i18n="wd.help">Not sure which is right for you? Most brides start with the collection, and we suggest custom only if nothing fits your vision. <a href="index.html#contact">Ask us and we'll help you decide.</a></p>
+    <p class="chooser__help reveal" data-i18n="wd.help">Not sure which is right for you? Most brides start with the collection, and we suggest custom only if nothing fits your vision. <a href="#contact">Ask us and we'll help you decide.</a></p>
   </section>
 
   <!-- ===== Collection ===== -->
@@ -326,8 +326,115 @@
     <h2 class="fg-cta__title" data-i18n="cw.ctaTitle">The first consultation is free.<br /><em>The preview video too.</em></h2>
     <p class="fg-cta__sub" data-i18n="cw.ctaSub">Bring your photos, your venue and your vision. We will measure you, recommend styles, and show you a preview of yourself in the gown, all before you spend a dollar.</p>
     <div class="fg-cta__actions">
-      <a href="index.html#contact" class="btn btn--solid" data-i18n="cw.ctaBtn1">Book a Free Consultation</a>
+      <a href="#contact" class="btn btn--solid" data-i18n="cw.ctaBtn1">Book a Free Consultation</a>
       <a href="#videos" class="btn btn--ghost" data-i18n="cw.ctaBtn2">Watch Preview Videos</a>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact">
+    <div class="contact__grid">
+      <div class="contact__intro reveal">
+        <p class="eyebrow" data-i18n="contact.eyebrow">Get Started</p>
+        <h2 class="section-title" data-i18n="contact.title">Request a fitting,<br />or send photos.</h2>
+        <p data-i18n="contact.p">Tell us your wedding date and what you need changed, and we'll reply within one business day. For the fastest estimate, text us photos of the full gown hanging up: front, back, and sides.</p>
+        <div class="contact__checklist reveal">
+          <h3 data-i18n="contact.checkTitle">For the fastest reply, include:</h3>
+          <ul>
+            <li data-i18n="contact.check1">Your wedding date</li>
+            <li data-i18n="contact.check2">Front, back, and side photos of the gown</li>
+            <li data-i18n="contact.check3">A photo of the dress on you, if available</li>
+            <li data-i18n="contact.check4">Your alteration wish list</li>
+            <li data-i18n="contact.check5">Your preferred fitting timeframe</li>
+          </ul>
+        </div>
+        <ul class="contact__details">
+          <li data-i18n="contact.studio"><span>Studio</span>Private in-home studio · Sacramento, CA 95828 · Exact address provided after your appointment is confirmed</li>
+          <li data-i18n="contact.textChloe"><span>Text Chloe</span><a href="sms:+14157341832">(415) 734-1832</a></li>
+          <li data-i18n="contact.email"><span>Email</span><a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a></li>
+          <li data-instagram-row hidden><span>Instagram</span><a data-instagram-link target="_blank" rel="noopener"></a></li>
+        </ul>
+      </div>
+      <form class="contact__form reveal" id="contactForm" novalidate>
+        <!-- honeypot: real people never see or fill this; bots that do are rejected -->
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <div class="field-row">
+          <div class="field">
+            <label for="name" data-i18n="lbl.name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" data-i18n-ph="ph.name" />
+          </div>
+          <div class="field">
+            <label for="phone" data-i18n="lbl.phone">Phone (for text replies)</label>
+            <input type="tel" id="phone" name="phone" required placeholder="(916) 555-1234" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email" data-i18n="lbl.email">Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@email.com" />
+          </div>
+          <div class="field">
+            <label for="date" data-i18n="lbl.date">Wedding date (optional)</label>
+            <input type="date" id="date" name="date" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="message" data-i18n="lbl.message">Tell us about your gown</label>
+          <textarea id="message" name="message" rows="4" placeholder="The alterations you have in mind, and any questions…" data-i18n-ph="ph.message"></textarea>
+        </div>
+        <details class="more-fields">
+          <summary data-i18n="more.summary">Add your availability &amp; how you found us <span>(optional)</span></summary>
+        <div class="field">
+          <span class="field__label" data-i18n="lbl.avail">Your availability for a fitting</span>
+          <div class="avail">
+            <p class="avail__sub" data-i18n="avail.days">Which days work best?</p>
+            <div class="chips" id="availDays" role="group" aria-label="Preferred days">
+              <button type="button" class="chip" data-val="Mon" aria-pressed="false" data-i18n="day.mon">Mon</button>
+              <button type="button" class="chip" data-val="Tue" aria-pressed="false" data-i18n="day.tue">Tue</button>
+              <button type="button" class="chip" data-val="Wed" aria-pressed="false" data-i18n="day.wed">Wed</button>
+              <button type="button" class="chip" data-val="Thu" aria-pressed="false" data-i18n="day.thu">Thu</button>
+              <button type="button" class="chip" data-val="Fri" aria-pressed="false" data-i18n="day.fri">Fri</button>
+              <button type="button" class="chip" data-val="Sat" aria-pressed="false" data-i18n="day.sat">Sat</button>
+              <button type="button" class="chip" data-val="Sun" aria-pressed="false" data-i18n="day.sun">Sun</button>
+            </div>
+            <p class="avail__sub" data-i18n="avail.times">Preferred time of day?</p>
+            <div class="chips" id="availTimes" role="group" aria-label="Preferred times">
+              <button type="button" class="chip" data-val="Morning" aria-pressed="false" data-i18n="time.morning">Morning</button>
+              <button type="button" class="chip" data-val="Afternoon" aria-pressed="false" data-i18n="time.afternoon">Afternoon</button>
+              <button type="button" class="chip" data-val="Evening" aria-pressed="false" data-i18n="time.evening">Evening</button>
+            </div>
+            <p class="avail__preview" id="availPreview" aria-live="polite" hidden></p>
+            <input type="text" id="availNotes" name="availNotes" placeholder="Any specific dates or times that work best? (optional)" data-i18n-ph="avail.notesPh" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="referral" data-i18n="lbl.referral">How did you find us?</label>
+          <select id="referral" name="referral">
+            <option value="" data-i18n="ref.default">Please select…</option>
+            <option data-i18n="ref.google">Google</option>
+            <option data-i18n="ref.facebook">Facebook</option>
+            <option data-i18n="ref.instagram">Instagram</option>
+            <option data-i18n="ref.reddit">Reddit</option>
+            <option data-i18n="ref.friend">Friend referral</option>
+          </select>
+        </div>
+        </details>
+        <div class="field">
+          <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
+          <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"/><path d="M8 9.5 12 5.5l4 4"/><path d="M12 5.5v10"/></svg>
+            <span data-i18n="sms.btn"><strong>Text your details &amp; photos to Chloe</strong><br />We'll pre-fill your form info, just attach photos (front, back &amp; sides)</span>
+          </a>
+        </div>
+        <label class="contact__consent">
+          <input type="checkbox" id="textConsent" name="textConsent" />
+          <span data-i18n="contact.textConsent">You may text me about my estimate and appointment.</span>
+        </label>
+        <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Send My Fitting Request</button>
+        <p class="contact__hint" data-i18n="contact.hint">Prefer to reach us directly? Text Chloe at <a href="sms:+14157341832">(415) 734-1832</a>, or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
+        <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Thank you. We received your request and will reply within one business day. Your appointment is not confirmed until we contact you with available times.</p>
+        <p class="contact__error" id="formError" hidden role="status" data-i18n="contact.error">Sorry, something went wrong sending your request. Please text Chloe at <a href="sms:+14157341832">(415) 734-1832</a> or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
+      </form>
     </div>
   </section>
 
@@ -362,7 +469,7 @@
         <a href="index.html#about" data-i18n="footer.about">The Seamstress</a>
         <a href="silhouette-guide.html" data-i18n="footer.sil">Silhouette Guide</a>
         <a href="measurement-guide.html" data-i18n="footer.measure">Measurement Guide</a>
-        <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+        <a href="#contact" data-i18n="footer.contact">Contact</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> Elaine's Bridal Shop. <span data-i18n="footer.rights">All rights reserved.</span></p>
     </div>
@@ -375,7 +482,7 @@
       "nav.dresses": "婚纱",
       "wd.crumbHome": "首页",
       "wd.crumbHere": "婚纱",
-      "wd.help": "不确定选哪条?多数新娘先看现货系列;若都不合心意,我们再建议定制。<a href=\"index.html#contact\">问我们,帮您一起决定。</a>",
+      "wd.help": "不确定选哪条?多数新娘先看现货系列;若都不合心意,我们再建议定制。<a href=\"#contact\">问我们,帮您一起决定。</a>",
       "wnav.alt": "改衣服务",
       "wnav.collection": "婚纱系列",
       "wnav.custom": "定制婚纱",
@@ -468,7 +575,7 @@
     }
   };
   </script>
-  <script src="js/main.js?v=20260808l"></script>
-  <script src="js/i18n.js?v=20260808l"></script>
+  <script src="js/main.js?v=20260808m"></script>
+  <script src="js/i18n.js?v=20260808m"></script>
 </body>
 </html>

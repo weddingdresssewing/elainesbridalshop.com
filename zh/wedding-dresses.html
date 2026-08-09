@@ -74,7 +74,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="/css/styles.css?v=20260808l" />
+  <link rel="stylesheet" href="/css/styles.css?v=20260808m" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "首页", "item": "https://elainesbridalshop.com/zh/"}, {"@type": "ListItem", "position": 2, "name": "婚纱", "item": "https://elainesbridalshop.com/zh/wedding-dresses.html"}]}
   </script>
@@ -95,7 +95,7 @@
         <a href="#how">定制流程</a>
         <a href="#videos">效果预览</a>
         <a href="#faq">常见问题</a>
-        <a href="/zh/#contact" class="nav__cta">申请试衣预约</a>
+        <a href="#contact" class="nav__cta">申请试衣预约</a>
         <a class="nav__lang" href="/wedding-dresses.html">EN</a>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -145,7 +145,7 @@
         <span class="chooser__link">看看怎么做 <span>&darr;</span></span>
       </a>
     </div>
-    <p class="chooser__help reveal">不确定选哪条?多数新娘先看现货系列;若都不合心意,我们再建议定制。<a href="/zh/#contact">问我们,帮您一起决定。</a></p>
+    <p class="chooser__help reveal">不确定选哪条?多数新娘先看现货系列;若都不合心意,我们再建议定制。<a href="#contact">问我们,帮您一起决定。</a></p>
   </section>
 
   <!-- ===== Collection ===== -->
@@ -298,10 +298,93 @@
     <h2 class="fg-cta__title">首次咨询免费。<br /><em>预览视频也免费。</em></h2>
     <p class="fg-cta__sub">带上照片、场地和您的构想。量体、推荐款式、预览上身效果,这些都不花一分钱。</p>
     <div class="fg-cta__actions">
-      <a href="/zh/#contact" class="btn btn--solid">预约免费咨询</a>
+      <a href="#contact" class="btn btn--solid">预约免费咨询</a>
       <a href="#videos" class="btn btn--ghost">观看预览视频</a>
     </div>
   </section>
+
+  <!-- ===== Contact ===== -->
+  <section class="contact" id="contact">
+<div class="contact__grid">
+<div class="contact__intro reveal">
+<p class="eyebrow" data-i18n="contact.eyebrow">开始咨询</p>
+<h2 class="section-title" data-i18n="contact.title">申请试衣,<br/>或发照片估价。</h2>
+<p data-i18n="contact.p">告诉我们您的婚礼日期和想改的地方,我们会在一个工作日内回复。想最快拿到估价,请把整条婚纱挂起来的正面、背面和侧面照片短信发给我们。</p>
+<div class="contact__checklist reveal">
+<h3 data-i18n="contact.checkTitle">想更快收到回复,请附上:</h3>
+<ul>
+<li data-i18n="contact.check1">您的婚礼日期</li>
+<li data-i18n="contact.check2">婚纱的正面、背面和侧面照片</li>
+<li data-i18n="contact.check3">如方便,附一张您穿着这条裙子的照片</li>
+<li data-i18n="contact.check4">您想改的项目清单</li>
+<li data-i18n="contact.check5">您期望的试衣时间段</li>
+</ul>
+</div>
+<ul class="contact__details">
+<li data-i18n="contact.studio"><span>工作室</span>私人家庭工作室 · 加州萨克拉门托 95828 · 预约确认后提供详细地址</li>
+<li data-i18n="contact.email"><span>邮箱</span><a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a></li>
+<li><span>Chloe</span><a href="tel:+14157341832">(415) 734-1832</a></li>
+<li><span>Elaine</span><a href="tel:+14158139302">(415) 813-9302</a></li>
+<li data-instagram-row="" hidden=""><span>Instagram</span><a data-instagram-link="" rel="noopener" target="_blank"></a></li>
+</ul>
+</div>
+<form class="contact__form reveal" id="contactForm" novalidate="">
+<!-- honeypot: real people never see or fill this; bots that do are rejected -->
+<input aria-hidden="true" autocomplete="off" name="botcheck" style="display:none" tabindex="-1" type="checkbox"/>
+<div class="field-row">
+<div class="field">
+<label data-i18n="lbl.name" for="name">姓名</label>
+<input data-i18n-ph="ph.name" id="name" name="name" placeholder="您的姓名" required="" type="text"/>
+</div>
+<div class="field">
+<label data-i18n="lbl.phone" for="phone">电话(便于短信回复)</label>
+<input autocomplete="tel" id="phone" name="phone" placeholder="(916) 555-1234" required="" type="tel"/>
+</div>
+</div>
+<div class="field-row">
+<div class="field">
+<label data-i18n="lbl.email" for="email">邮箱</label>
+<input id="email" name="email" placeholder="you@email.com" required="" type="email"/>
+</div>
+<div class="field">
+<label data-i18n="lbl.date" for="date">婚礼日期</label>
+<input id="date" name="date" type="date"/>
+</div>
+</div>
+<div class="field">
+<label data-i18n="lbl.service" for="service">我想了解</label>
+<select id="service" name="service">
+<option data-i18n="opt.1">版型与塑形</option>
+<option data-i18n="opt.2">下摆与拖尾收束</option>
+<option data-i18n="opt.3">上身、肩带与支撑</option>
+<option data-i18n="opt.4">袖子与定制细节</option>
+<option data-i18n="opt.custom">定制婚纱(免费咨询)</option>
+<option data-i18n="opt.5">还不确定</option>
+</select>
+</div>
+<div class="field">
+<label data-i18n="lbl.message" for="message">和我们聊聊您的婚纱</label>
+<textarea data-i18n-ph="ph.message" id="message" name="message" placeholder="您想做的改动、婚礼日期,以及任何疑问…" rows="4"></textarea>
+</div>
+<div class="field">
+<span class="field__label" data-i18n="lbl.photos">婚纱照片</span>
+<a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="24"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"></path><path d="M8 9.5 12 5.5l4 4"></path><path d="M12 5.5v10"></path></svg>
+<span data-i18n="sms.btn"><strong>把资料和照片短信发给 Chloe</strong><br/>已帮您带上表单信息,附上照片即可(正面、背面、侧面)</span>
+</a>
+</div>
+<label class="contact__consent">
+<input id="textConsent" name="textConsent" type="checkbox"/>
+<span data-i18n="contact.textConsent">可以通过短信联系我确认估价和预约。</span>
+</label>
+<button class="btn btn--solid btn--full" data-i18n="btn.submit" type="submit">提交试衣申请</button>
+<p class="contact__hint" data-i18n="contact.hint">想直接联系我们?短信或致电 Chloe <a href="sms:+14157341832">(415) 734-1832</a>,或发邮件至 <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>。</p>
+<p class="contact__success" data-i18n="contact.success" hidden="" id="formSuccess" role="status">谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。</p>
+<p class="contact__error" data-i18n="contact.error" hidden="" id="formError" role="status">抱歉,提交时出了点问题。请短信联系 Chloe <a href="sms:+14157341832">(415) 734-1832</a>,或发邮件至 <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>。</p>
+</form>
+</div>
+</section>
+
 
   <!-- ===== Video lightbox ===== -->
   <div class="lightbox lightbox--video" id="vLightbox" aria-hidden="true">
@@ -331,12 +414,12 @@
         <a href="/zh/#about">裁缝师</a>
         <a href="/zh/silhouette-guide.html">裙型指南</a>
         <a href="/zh/measurement-guide.html">量体指南</a>
-        <a href="/zh/#contact">联系我们</a>
+        <a href="#contact">联系我们</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> Elaine's Bridal Shop. 版权所有。</p>
     </div>
   </footer>
 
-  <script src="/js/main.js?v=20260808l"></script>
+  <script src="/js/main.js?v=20260808m"></script>
 </body>
 </html>
