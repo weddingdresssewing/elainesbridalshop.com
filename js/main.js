@@ -364,9 +364,14 @@
 
     var formError = document.getElementById("formError");
 
-    function submitLabelNow() {
-      return zhUI() ? "提交试衣申请" : "Send My Fitting Request";
-    }
+    // Read the button's own label so each page keeps its own wording
+    // (the homepage asks for a fitting; the dresses page is broader).
+    var restLabel = submitBtn.textContent.trim();
+    var langBtnEl = document.getElementById("langToggle");
+    if (langBtnEl) langBtnEl.addEventListener("click", function () {
+      setTimeout(function () { if (!submitBtn.disabled) restLabel = submitBtn.textContent.trim(); }, 0);
+    });
+    function submitLabelNow() { return restLabel; }
     function setBusy(on) {
       submitBtn.disabled = on;
       submitBtn.textContent = on ? (zhUI() ? "发送中…" : "Sending…") : submitLabelNow();
