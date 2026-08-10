@@ -133,6 +133,7 @@
     "contact.check5": "您期望的试衣时间段",
     "contact.studio": "<span>工作室</span>私人家庭工作室 · 加州萨克拉门托 95828 · 预约确认后提供详细地址",
     "contact.textChloe": "<span>短信 Chloe</span><a href='sms:+14157341832'>(415) 734-1832</a>",
+    "contact.callElaine": "<span>致电 Elaine</span><a href='tel:+14158139302'>(415) 813-9302</a>",
     "contact.email": "<span>邮箱</span><a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>",
     "lbl.name": "姓名",
     "lbl.phone": "电话(便于短信回复)",
