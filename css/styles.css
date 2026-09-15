@@ -316,20 +316,24 @@ em { font-style: italic; }
 .nav__cta {
   border: 1px solid rgba(255,255,255,.55);
   padding: .65rem 1.4rem;
+  line-height: 1.2;
   transition: all .35s var(--ease);
 }
 .nav__cta:hover { background: var(--ivory); color: var(--charcoal) !important; border-color: var(--ivory); }
 .nav__lang {
+  /* Sized exactly like .nav__cta so the two pills read as one pair */
   font-family: var(--sans);
-  font-size: .72rem;
-  letter-spacing: .14em;
+  font-size: .74rem;
+  letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--ivory);
   background: none;
-  border: 1px solid rgba(255,255,255,.45);
-  border-radius: 2px;
-  padding: .5rem .8rem;
-  line-height: 1;
+  border: 1px solid rgba(255,255,255,.55);
+  border-radius: 0;
+  padding: .65rem 1.4rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  flex-shrink: 0;
   cursor: pointer;
   transition: all .35s var(--ease);
 }
@@ -1096,28 +1100,6 @@ em { font-style: italic; }
 .avail__preview strong { font-weight: 500; }
 #availNotes { margin-top: .7rem; }
 
-/* Tap-to-text photos callout (replaces the old in-form photo upload) */
-.sms-photos {
-  display: flex;
-  align-items: center;
-  gap: .95rem;
-  padding: 1rem 1.15rem;
-  background: var(--cream);
-  border: 1px solid var(--gold-soft);
-  border-radius: 4px;
-  color: var(--charcoal);
-  transition: background .25s var(--ease), border-color .25s var(--ease);
-}
-.sms-photos:hover { background: var(--sand); border-color: var(--gold); }
-.sms-photos svg { flex-shrink: 0; color: var(--gold-dark); }
-.sms-photos span { font-size: .92rem; line-height: 1.5; }
-.sms-photos strong {
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  font-weight: 500;
-  letter-spacing: .01em;
-}
-.lang-zh .sms-photos strong { font-size: 1.05rem; }
 .field input,
 .field select,
 .field textarea {
@@ -1167,29 +1149,6 @@ em { font-style: italic; }
   left: 0;
   color: var(--gold-dark);
 }
-.contact__consent {
-  display: flex;
-  align-items: flex-start;
-  gap: .6rem;
-  margin-bottom: 1.2rem;
-  font-size: .88rem;
-  color: var(--ink);
-  cursor: pointer;
-}
-.contact__consent input {
-  width: 18px;
-  height: 18px;
-  margin-top: .2rem;
-  flex-shrink: 0;
-  accent-color: var(--gold-dark);
-}
-.contact__error {
-  margin-top: 1.2rem;
-  text-align: center;
-  color: #8A1F1F;
-  font-size: .95rem;
-}
-.contact__error a { color: #8A1F1F; text-decoration: underline; }
 .contact__hint {
   margin-top: 1.1rem;
   text-align: center;
@@ -1839,8 +1798,10 @@ em { font-style: italic; }
 /* Intent chips sit above the message box on the dresses enquiry form */
 .chips--intent { margin: 0 0 .8rem; }
 
-/* Full-screen mobile menu (more room + clearer hierarchy than the side drawer) */
-@media (max-width: 1479px) {
+/* Full-screen mobile menu (more room + clearer hierarchy than the side drawer).
+   Must match the hamburger breakpoint above (1120px), or laptops between the
+   two widths get mobile font sizes on the desktop nav and it overflows. */
+@media (max-width: 1120px) {
   .nav__links {
     width: 100vw;
     max-width: none;
@@ -1850,9 +1811,9 @@ em { font-style: italic; }
     gap: 1.9rem;
     box-shadow: none;
   }
-  .nav__links a { font-size: 1.22rem; letter-spacing: .06em; }
+  .nav__links a, .nav__lang { font-size: 1.22rem; letter-spacing: .06em; }
   .nav__cta { padding: .85rem 2.2rem !important; }
-  .nav__lang { margin-top: 1rem; padding: .55rem 1.4rem; }
+  .nav__lang { margin-top: 1rem; padding: .85rem 2.2rem; }
 }
 
 /* iOS/Safari give input[type=date] their own intrinsic size, so it renders

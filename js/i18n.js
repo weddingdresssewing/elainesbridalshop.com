@@ -17,14 +17,13 @@
     "nav.start": "如何开始",
     "nav.sil": "裙型指南",
     "nav.measure": "量体指南",
-    "nav.book": "申请试衣预约",
+    "nav.book": "获取估价",
 
     /* hero */
     "hero.eyebrow": "萨克拉门托婚纱改制",
     "hero.title": "您的婚纱,<br /><em>由 Elaine 亲手改到合身。</em>",
     "hero.sub": "在萨克拉门托,由拥有 40 多年专业缝纫经验的裁缝师为您提供私人一对一婚纱改制。先发送婚纱照片获取估价,准备好后再预约试衣。",
-    "hero.estimate": "发送照片获取估价",
-    "hero.request": "申请试衣预约",
+    "hero.estimate": "获取估价",
     "hero.gallery": "查看真实作品",
 
     /* trust strip */
@@ -157,16 +156,12 @@
     "ref.default": "请选择…",
     "ref.friend": "朋友推荐",
     "more.summary": "补充你方便的时间和从哪知道我们 <span>(选填)</span>",
-    "lbl.photos": "婚纱照片",
-    "sms.btn": "<strong>把资料和照片短信发给 Chloe</strong><br />已帮您带上表单信息,附上照片即可(正面、背面、侧面)",
-    "contact.textConsent": "可以通过短信联系我确认估价和预约。",
-    "btn.submit": "提交试衣申请",
-    "contact.hint": "想直接联系我们?短信 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
-    "contact.success": "谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。",
-    "contact.error": "抱歉,提交时出了点问题。请短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a>,或发邮件至 <a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>。",
+    "btn.submit": "短信发送试衣申请",
+    "contact.hint": "点击按钮会打开您的短信 App,资料已自动填好,收件人是 Chloe 和 Elaine。附上婚纱照片(正面、背面、侧面)发送即可。",
+    "contact.success": "您的短信 App 应该已经打开,资料已填好。附上婚纱照片后点发送即可。如果没有打开,请直接短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a> 或 Elaine <a href='sms:+14158139302'>(415) 813-9302</a>。",
 
     /* mobile sticky CTA */
-    "mcta.fitting": "申请试衣",
+    "mcta.fitting": "获取估价",
     "mcta.text": "短信发照片",
 
     /* pricing guide */

@@ -39,7 +39,7 @@
 <link href="/favicon-192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 <link href="/favicon.ico" rel="shortcut icon"/>
-<link href="/css/styles.css?v=20260808at" rel="stylesheet"/>
+<link href="/css/styles.css?v=20260914a" rel="stylesheet"/>
 <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
 <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -58,7 +58,7 @@
 <a data-i18n="nav.pricing" href="#pricing">改衣价格</a>
 <a data-i18n="nav.about" href="#about">裁缝师</a>
 <a data-i18n="nav.process" href="#process">服务流程</a>
-<a class="nav__cta" data-book="" data-i18n="nav.book" href="#contact">申请试衣预约</a>
+<a class="nav__cta" data-book="" data-i18n="nav.book" href="#contact">获取估价</a>
 <a class="nav__lang" href="/">EN</a>
 </nav>
 <button aria-controls="navLinks" aria-expanded="false" aria-label="Open menu" class="nav__toggle" id="navToggle">
@@ -77,8 +77,7 @@
 <h1 class="hero__title" data-i18n="hero.title">您的婚纱,<br/><em>由 Elaine 亲手改到合身。</em></h1>
 <p class="hero__sub" data-i18n="hero.sub">在萨克拉门托,由拥有 40 多年专业缝纫经验的裁缝师为您提供私人一对一婚纱改制。先发送婚纱照片获取估价,准备好后再预约试衣。</p>
 <div class="hero__actions">
-<a class="btn btn--solid" data-i18n="hero.estimate" href="#contact">发送照片获取估价</a>
-<a class="btn btn--ghost" data-book="" data-i18n="hero.request" href="#contact">申请试衣预约</a>
+<a class="btn btn--solid" data-i18n="hero.estimate" href="#contact">获取估价</a>
 <a class="btn btn--text" data-i18n="hero.gallery" href="#gallery">查看真实作品</a>
 </div>
 </div>
@@ -353,21 +352,9 @@
 <label data-i18n="lbl.message" for="message">和我们聊聊您的婚纱</label>
 <textarea data-i18n-ph="ph.message" id="message" name="message" placeholder="您想做的改动、婚礼日期,以及任何疑问…" rows="4"></textarea>
 </div>
-<div class="field">
-<span class="field__label" data-i18n="lbl.photos">婚纱照片</span>
-<a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
-<svg fill="none" height="24" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24" width="24"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"></path><path d="M8 9.5 12 5.5l4 4"></path><path d="M12 5.5v10"></path></svg>
-<span data-i18n="sms.btn"><strong>把资料和照片短信发给 Chloe</strong><br/>已帮您带上表单信息,附上照片即可(正面、背面、侧面)</span>
-</a>
-</div>
-<label class="contact__consent">
-<input id="textConsent" name="textConsent" type="checkbox"/>
-<span data-i18n="contact.textConsent">可以通过短信联系我确认估价和预约。</span>
-</label>
-<button class="btn btn--solid btn--full" data-i18n="btn.submit" type="submit">提交试衣申请</button>
-<p class="contact__hint" data-i18n="contact.hint">想直接联系我们?短信 Chloe <a href="sms:+14157341832">(415) 734-1832</a>,或发邮件至 <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>。</p>
-<p class="contact__success" data-i18n="contact.success" hidden="" id="formSuccess" role="status">谢谢您。我们已收到您的申请,将在一个工作日内回复。在我们与您确认可预约时间之前,预约尚未最终生效。</p>
-<p class="contact__error" data-i18n="contact.error" hidden="" id="formError" role="status">抱歉,提交时出了点问题。请短信联系 Chloe <a href="sms:+14157341832">(415) 734-1832</a>,或发邮件至 <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>。</p>
+<button class="btn btn--solid btn--full" data-i18n="btn.submit" type="submit">短信发送试衣申请</button>
+<p class="contact__hint" data-i18n="contact.hint">点击按钮会打开您的短信 App,资料已自动填好,收件人是 Chloe 和 Elaine。附上婚纱照片(正面、背面、侧面)发送即可。</p>
+<p class="contact__success" data-i18n="contact.success" hidden="" id="formSuccess" role="status">您的短信 App 应该已经打开,资料已填好。附上婚纱照片后点发送即可。如果没有打开,请直接短信联系 Chloe <a href="sms:+14157341832">(415) 734-1832</a> 或 Elaine <a href="sms:+14158139302">(415) 813-9302</a>。</p>
 </form>
 </div>
 </section>
@@ -397,7 +384,7 @@
 <a data-i18n="nav.pricing" href="#pricing">改衣价格</a>
 <a data-i18n="nav.about" href="#about">裁缝师</a>
 <a data-i18n="nav.process" href="#process">服务流程</a>
-<a data-i18n="nav.book" href="#contact">申请试衣预约</a>
+<a data-i18n="nav.book" href="#contact">获取估价</a>
 </nav>
 <p class="footer__copy">© <span id="year"></span> Elaine's Bridal Shop. <span data-i18n="footer.rights">版权所有。</span></p>
 </div>
@@ -414,7 +401,7 @@
 <img alt="" class="lightbox__img" id="lbImg" src="/"/>
 <button aria-label="Next" class="lightbox__nav lightbox__nav--next" id="lbNext">›</button>
 </div>
-<script src="/js/main.js?v=20260808at"></script>
+<script src="/js/main.js?v=20260914a"></script>
 
 </body>
 </html>

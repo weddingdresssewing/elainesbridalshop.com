@@ -84,7 +84,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260808at" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914a" />
   <!-- Calendly (online booking) — only activates once BOOKING_URL is set in js/main.js -->
   <!-- Calendly is lazy-loaded by js/main.js only when BOOKING_URL is configured -->
 </head>
@@ -104,7 +104,7 @@
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
         <a href="#about" data-i18n="nav.about">The Seamstress</a>
         <a href="#process" data-i18n="nav.process">How It Works</a>
-        <a href="#contact" class="nav__cta" data-book data-i18n="nav.book">Request a Fitting</a>
+        <a href="#contact" class="nav__cta" data-book data-i18n="nav.book">Get a Quote</a>
         <button class="nav__lang" id="langToggle" type="button">中文</button>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
@@ -124,8 +124,7 @@
       <h1 class="hero__title" data-i18n="hero.title">Your wedding gown,<br /><em>fitted by Elaine.</em></h1>
       <p class="hero__sub" data-i18n="hero.sub">Private, one-on-one wedding dress alterations in Sacramento by a seamstress with 40+ years of professional sewing experience. Send your dress photos for an estimate, then request a fitting when you are ready.</p>
       <div class="hero__actions">
-        <a href="#contact" class="btn btn--solid" data-i18n="hero.estimate">Send Photos for an Estimate</a>
-        <a href="#contact" class="btn btn--ghost" data-book data-i18n="hero.request">Request a Fitting</a>
+        <a href="#contact" class="btn btn--solid" data-i18n="hero.estimate">Get a Quote</a>
         <a href="#gallery" class="btn btn--text" data-i18n="hero.gallery">View Real Gown Work</a>
       </div>
     </div>
@@ -409,21 +408,9 @@
           </select>
         </div>
         </details>
-        <div class="field">
-          <span class="field__label" data-i18n="lbl.photos">Dress photos</span>
-          <a class="sms-photos" href="sms:+14157341832?&amp;body=Hi%21%20I%27d%20like%20a%20wedding%20dress%20alteration%20estimate.%20Here%20are%20photos%20of%20my%20gown%20%E2%80%94%20front%2C%20back%20%26%20sides%3A">
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 15.5v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V15.5"/><path d="M8 9.5 12 5.5l4 4"/><path d="M12 5.5v10"/></svg>
-            <span data-i18n="sms.btn"><strong>Text your details &amp; photos to Chloe</strong><br />We'll pre-fill your form info, just attach photos (front, back &amp; sides)</span>
-          </a>
-        </div>
-        <label class="contact__consent">
-          <input type="checkbox" id="textConsent" name="textConsent" />
-          <span data-i18n="contact.textConsent">You may text me about my estimate and appointment.</span>
-        </label>
-        <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Send My Fitting Request</button>
-        <p class="contact__hint" data-i18n="contact.hint">Prefer to reach us directly? Text Chloe at <a href="sms:+14157341832">(415) 734-1832</a>, or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
-        <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Thank you. We received your request and will reply within one business day. Your appointment is not confirmed until we contact you with available times.</p>
-        <p class="contact__error" id="formError" hidden role="status" data-i18n="contact.error">Sorry, something went wrong sending your request. Please text Chloe at <a href="sms:+14157341832">(415) 734-1832</a> or email <a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>.</p>
+        <button type="submit" class="btn btn--solid btn--full" data-i18n="btn.submit">Text My Fitting Request</button>
+        <p class="contact__hint" data-i18n="contact.hint">Tap the button to open your Messages app with everything filled in, addressed to Chloe &amp; Elaine. Just attach photos of your gown (front, back &amp; sides) and hit send.</p>
+        <p class="contact__success" id="formSuccess" hidden role="status" data-i18n="contact.success">Your Messages app should now be open with your details filled in. Attach your dress photos and tap send. If nothing opened, text us directly: Chloe <a href="sms:+14157341832">(415) 734-1832</a> or Elaine <a href="sms:+14158139302">(415) 813-9302</a>.</p>
       </form>
     </div>
   </section>
@@ -437,8 +424,8 @@
 
   <!-- ===== Mobile sticky CTA (shown after the hero, hidden over the contact form) ===== -->
   <div class="mobile-cta" id="mobileCta" aria-hidden="true">
-    <a href="#contact" class="mobile-cta__btn mobile-cta__btn--primary" data-i18n="mcta.fitting">Request a Fitting</a>
-    <a href="sms:+14157341832" class="mobile-cta__btn" data-i18n="mcta.text">Text Photos</a>
+    <a href="#contact" class="mobile-cta__btn mobile-cta__btn--primary" data-i18n="mcta.fitting">Get a Quote</a>
+    <a href="sms:+14157341832,+14158139302" class="mobile-cta__btn" data-i18n="mcta.text">Text Photos</a>
   </div>
 
   <!-- ===== Footer ===== -->
@@ -467,7 +454,7 @@
         <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
         <a href="#about" data-i18n="nav.about">The Seamstress</a>
         <a href="#process" data-i18n="nav.process">How It Works</a>
-        <a href="#contact" data-i18n="nav.book">Request a Fitting</a>
+        <a href="#contact" data-i18n="nav.book">Get a Quote</a>
       </nav>
       <p class="footer__copy">© <span id="year"></span> Elaine's Bridal Shop. <span data-i18n="footer.rights">All rights reserved.</span></p>
     </div>
@@ -487,7 +474,7 @@
     <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Next">&#8250;</button>
   </div>
 
-  <script src="js/main.js?v=20260808at"></script>
-  <script src="js/i18n.js?v=20260808at"></script>
+  <script src="js/main.js?v=20260914a"></script>
+  <script src="js/i18n.js?v=20260914a"></script>
 </body>
 </html>

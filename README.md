@@ -49,14 +49,13 @@ compressed from ~165 MB total down to ~23 MB for fast loading.
 - Instagram / email / phone in the footer
 - Mobile hamburger menu, responsive down to 375 px
 
-## ⚙️ Owner settings — paste 3 links (5 minutes)
+## ⚙️ Owner settings — paste 2 links (5 minutes)
 
 Open **`js/main.js`**, find the **OWNER SETTINGS** block at the very top, and
 fill in any of these (leave `""` to keep a feature off):
 
 | Setting | What it does | Where to get it |
 |---|---|---|
-| `FORM_EMAIL` | Inbox the contact form delivers to. **Already set** to `weddingdresssewing@gmail.com` via FormSubmit (free, no account). See activation note below. | — |
 | `BOOKING_URL` | Makes every "Book a Fitting" button open an online scheduler. Until set, those buttons scroll to the (working) contact form. | Free [Calendly](https://calendly.com) event, or a free [Google Calendar appointment schedule](https://support.google.com/calendar/answer/10729749) (uses your Gmail) |
 | `INSTAGRAM_URL` | Shows the Instagram icon in the footer + contact row. **Already set** to `@elainebridalsac`. | Your IG profile URL |
 
@@ -78,20 +77,15 @@ fill in any of these (leave `""` to keep a feature off):
 "Our Promise" section is the shop's own words (not a fake customer quote). When
 you collect real Google reviews, they can be added back as a reviews section.
 
-## Contact form — activate it (one time, free)
+## Contact form — text-only (no email backend)
 
-The form already delivers to **weddingdresssewing@gmail.com** through
-[FormSubmit](https://formsubmit.co) — free, unlimited, no account. One one-time
-step to switch it on:
-
-1. Open the live site and submit the form once (any test message).
-2. FormSubmit emails an **activation link** to weddingdresssewing@gmail.com —
-   open that email and click **Activate Form**.
-3. Done. From then on, every inquiry arrives in the inbox (with the bride's
-   email as reply-to, so you can just hit Reply).
-
-To reduce spam scraping later, you can swap the email in `js/main.js`
-(`FORM_EMAIL`) for the random alias FormSubmit gives you after activation.
+The form has no server and sends no email. When a bride taps **Text My
+Fitting Request**, the site builds an SMS addressed to **Chloe (415) 734-1832
+and Elaine (415) 813-9302** with everything she typed (name, phone, wedding
+date, message, availability, how she found us) plus a "photos of my gown"
+prompt, then opens her Messages app so she can attach the photos and hit send.
+Both numbers receive it as one group text. The numbers live in `js/main.js`
+(`SMS_NUMBERS`).
 
 ## Online booking — free options
 

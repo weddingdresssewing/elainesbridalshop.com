@@ -8,12 +8,6 @@
      OWNER SETTINGS — paste your links here, then save.
      Leave a value as "" to keep that feature off.
      ============================================================ */
-  var FORM_EMAIL         = "weddingdresssewing@gmail.com"; // fallback backend (FormSubmit)
-  // PREFERRED form backend — Web3Forms (free, unlimited, reliable browser CORS).
-  // Get a key in 2 min: go to https://web3forms.com, enter weddingdresssewing@gmail.com,
-  // and paste the emailed access key below. Until it's set, the form uses FormSubmit,
-  // which is currently slow/broken for browser submissions (hangs on the Origin header).
-  var WEB3FORMS_KEY      = "6811e452-3852-4e8e-822f-51a45c275905";
   var BOOKING_URL        = "";   // free: Calendly free tier OR Google Calendar appointment schedule
   var INSTAGRAM_URL      = "https://www.instagram.com/elainebridalsac";
 
@@ -289,14 +283,12 @@
   }
 
   /* ---------- Contact form ----------
-     Submits to FORM_EMAIL via FormSubmit (free, no account). The owner must
-     confirm the very FIRST submission once — FormSubmit emails a one-time
-     activation link. After that, every inquiry lands in the inbox.
-     Set FORM_EMAIL = "" to fall back to a demo-only form. */
+     No email backend. The submit button builds an SMS to Chloe & Elaine
+     pre-filled with everything the bride typed, then opens her Messages app
+     so her details + gown photos arrive together in one text. */
   var form = document.getElementById("contactForm");
   var success = document.getElementById("formSuccess");
   if (form) {
-    var submitBtn = form.querySelector("button[type=submit]");
 
     function zhUI() { return document.documentElement.lang === "zh-CN"; }
 
@@ -329,7 +321,6 @@
         if (!chip) return;
         chip.setAttribute("aria-pressed", chip.getAttribute("aria-pressed") === "true" ? "false" : "true");
         updateAvailPreview();
-        form.dispatchEvent(new Event("input", { bubbles: true }));  // refresh the SMS href
       });
     });
 
@@ -362,160 +353,40 @@
       box.hidden = false;
     }
 
-    var formError = document.getElementById("formError");
+    var SMS_NUMBERS = "+14157341832,+14158139302";   // Chloe, Elaine (group text)
+    function buildSmsHref() {
+      var zh = zhUI();
+      function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
+      var lines = [zh ? "您好!我想咨询婚纱改制估价。" : "Hi! I'd like a wedding dress alteration estimate."];
+      if (v("name"))    lines.push((zh ? "姓名:" : "Name: ") + v("name"));
+      if (v("phone"))   lines.push((zh ? "电话:" : "Phone: ") + v("phone"));
+      if (v("email"))   lines.push((zh ? "邮箱:" : "Email: ") + v("email"));
+      if (v("date"))    lines.push((zh ? "婚礼日期:" : "Wedding date: ") + v("date"));
+      var intentVals = pressedVals("intentChips");
+      if (intentVals.length) lines.push((zh ? "咨询内容:" : "Interested in: ") + intentVals.join(", "));
+      if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
+      var av = availability(zh);
+      if (av.days)  lines.push((zh ? "希望日期:" : "Preferred dates: ") + av.days);
+      if (av.times) lines.push((zh ? "希望时段:" : "Preferred times: ") + av.times);
+      if (av.notes) lines.push((zh ? "时间备注:" : "Availability notes: ") + av.notes);
+      var refEl = document.getElementById("referral");
+      if (refEl && refEl.value) lines.push((zh ? "从何得知:" : "Found us via: ") + refEl.value);
+      lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
+      return "sms:" + SMS_NUMBERS + "?&body=" + encodeURIComponent(lines.join("\n"));
+    }
 
-    // Read the button's own label so each page keeps its own wording
-    // (the homepage asks for a fitting; the dresses page is broader).
-    var restLabel = submitBtn.textContent.trim();
+    // Re-localize the availability preview when the language is toggled.
     var langBtnEl = document.getElementById("langToggle");
-    if (langBtnEl) langBtnEl.addEventListener("click", function () {
-      setTimeout(function () { if (!submitBtn.disabled) restLabel = submitBtn.textContent.trim(); }, 0);
-    });
-    function submitLabelNow() { return restLabel; }
-    function setBusy(on) {
-      submitBtn.disabled = on;
-      submitBtn.textContent = on ? (zhUI() ? "发送中…" : "Sending…") : submitLabelNow();
-    }
-    function showSuccess() {
-      if (formError) formError.hidden = true;
-      success.hidden = false;
-      // Google Ads conversion: fires only on a real, successful submission
-      if (typeof gtag === "function") gtag("event", "ads_conversion_Submit_lead_form_1", {});
-      form.reset();
-      // form.reset() doesn't touch the aria-pressed chips — clear them manually
-      Array.prototype.forEach.call(form.querySelectorAll(".chip[aria-pressed='true']"),
-        function (c) { c.setAttribute("aria-pressed", "false"); });
-      updateAvailPreview();   // hides the now-empty preview box
-      submitBtn.textContent = zhUI() ? "已发送 ✓" : "Sent ✓";
-      setTimeout(function () { setBusy(false); }, 2500);
-    }
-    function showError() {
-      if (formError) formError.hidden = false;
-      setBusy(false);
-    }
-
-    var consentEl = document.getElementById("textConsent");
-    function buildData() {
-      var fd = new FormData();
-      fd.append("access_key", WEB3FORMS_KEY);
-      fd.append("botcheck", "");   // honeypot: Web3Forms drops the submission if this is non-empty
-      fd.append("subject", "New fitting request — Elaine's Bridal Shop website");
-      fd.append("from_name", "Elaine's Bridal Shop website");
-      fd.append("Name", document.getElementById("name").value);
-      fd.append("Phone", document.getElementById("phone").value);
-      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
-      fd.append("email", document.getElementById("email").value);   // reply-to
-      fd.append("Wedding date", document.getElementById("date").value);
-      var intent = pressedVals("intentChips");
-      if (intent.length) fd.append("Interested in", intent.join(", "));
-      fd.append("Message", document.getElementById("message").value);
-      var av = availability(zhUI());
-      if (av.days)  fd.append("Preferred dates", av.days);
-      if (av.times) fd.append("Preferred times", av.times);
-      if (av.notes) fd.append("Availability notes", av.notes);
-      var ref = document.getElementById("referral");
-      if (ref && ref.value) fd.append("How did you find us", ref.value);
-      return fd;
-    }
-
-    // Hard timeout so a slow/hung backend can never leave the button stuck on
-    // "Sending…". On timeout the promise rejects → the on-page text/email fallback.
-    function fetchTimeout(url, opts, ms) {
-      if (typeof AbortController === "undefined") return fetch(url, opts);
-      var ctrl = new AbortController();
-      opts.signal = ctrl.signal;
-      var timer = setTimeout(function () { ctrl.abort(); }, ms);
-      return fetch(url, opts).then(
-        function (r) { clearTimeout(timer); return r; },
-        function (e) { clearTimeout(timer); throw e; }
-      );
-    }
-
-    // Photos are handled out-of-band (brides text them), so the form only sends
-    // text fields — fast + reliable via Web3Forms's browser-friendly CORS.
-    function postForm() {
-      if (WEB3FORMS_KEY) {
-        return fetchTimeout("https://api.web3forms.com/submit", {
-          method: "POST", headers: { "Accept": "application/json" }, body: buildData()
-        }, 15000).then(function (r) {
-          return r.json().catch(function () { return {}; }).then(function (j) {
-            return j && j.success === true;
-          });
-        });
-      }
-      // Fallback to FormSubmit if no Web3Forms key is configured.
-      var fd = new FormData();
-      fd.append("Name", document.getElementById("name").value);
-      fd.append("Phone", document.getElementById("phone").value);
-      fd.append("Text consent", consentEl && consentEl.checked ? "YES — ok to text" : "no");
-      fd.append("email", document.getElementById("email").value);
-      fd.append("Wedding date", document.getElementById("date").value);
-      var intent = pressedVals("intentChips");
-      if (intent.length) fd.append("Interested in", intent.join(", "));
-      fd.append("Message", document.getElementById("message").value);
-      var av2 = availability(zhUI());
-      if (av2.days)  fd.append("Preferred dates", av2.days);
-      if (av2.times) fd.append("Preferred times", av2.times);
-      if (av2.notes) fd.append("Availability notes", av2.notes);
-      var ref2 = document.getElementById("referral");
-      if (ref2 && ref2.value) fd.append("How did you find us", ref2.value);
-      fd.append("_subject", "New fitting request — Elaine's Bridal Shop website");
-      fd.append("_template", "table");
-      fd.append("_captcha", "false");
-      return fetchTimeout("https://formsubmit.co/ajax/" + FORM_EMAIL, {
-        method: "POST", headers: { "Accept": "application/json" }, body: fd
-      }, 12000).then(function (r) {
-        return r.json().catch(function () { return {}; }).then(function (j) {
-          return String(j && j.success) === "true";
-        });
-      });
-    }
+    if (langBtnEl) langBtnEl.addEventListener("click", function () { setTimeout(updateAvailPreview, 0); });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       if (!form.checkValidity()) { form.reportValidity(); return; }
-
-      if (!FORM_EMAIL && !WEB3FORMS_KEY) { showSuccess(); return; }  // demo fallback
-
-      setBusy(true);
-      postForm()
-        .then(function (ok) { if (ok) showSuccess(); else showError(); })
-        .catch(showError);
+      // Google Ads conversion: fires when the bride hands off to Messages
+      if (typeof gtag === "function") gtag("event", "ads_conversion_Submit_lead_form_1", {});
+      if (success) success.hidden = false;   // "Messages should be open… if not, text us" hint
+      window.location.href = buildSmsHref();
     });
-
-    /* --- Text-your-photos button carries the filled form ---
-       Tapping it opens SMS to Chloe pre-filled with whatever the bride typed
-       (name, date, needs, message) so her details + photos arrive together. */
-    var smsBtn = document.querySelector(".sms-photos");
-    if (smsBtn) {
-      var SMS_NUMBER = "+14157341832";
-      function buildSmsHref() {
-        var zh = zhUI();
-        function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
-        var lines = [zh ? "您好!我想咨询婚纱改制估价。" : "Hi! I'd like a wedding dress alteration estimate."];
-        if (v("name"))    lines.push((zh ? "姓名:" : "Name: ") + v("name"));
-        if (v("phone"))   lines.push((zh ? "电话:" : "Phone: ") + v("phone"));
-        if (v("email"))   lines.push((zh ? "邮箱:" : "Email: ") + v("email"));
-        if (v("date"))    lines.push((zh ? "婚礼日期:" : "Wedding date: ") + v("date"));
-        var intentVals = pressedVals("intentChips");
-        if (intentVals.length) lines.push((zh ? "咨询内容:" : "Interested in: ") + intentVals.join(", "));
-        if (v("message")) lines.push((zh ? "说明:" : "Details: ") + v("message"));
-        var av = availability(zh);
-        if (av.days)  lines.push((zh ? "希望日期:" : "Preferred dates: ") + av.days);
-        if (av.times) lines.push((zh ? "希望时段:" : "Preferred times: ") + av.times);
-        if (av.notes) lines.push((zh ? "时间备注:" : "Availability notes: ") + av.notes);
-        var refEl = document.getElementById("referral");
-        if (refEl && refEl.value) lines.push((zh ? "从何得知:" : "Found us via: ") + refEl.value);
-        lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
-        return "sms:" + SMS_NUMBER + "?&body=" + encodeURIComponent(lines.join("\n"));
-      }
-      // keep the href current as she types / switches language / just before tapping
-      form.addEventListener("input", function () { smsBtn.href = buildSmsHref(); });
-      smsBtn.addEventListener("click", function () { smsBtn.href = buildSmsHref(); });
-      var lt = document.getElementById("langToggle");
-      if (lt) lt.addEventListener("click", function () { setTimeout(function () { smsBtn.href = buildSmsHref(); updateAvailPreview(); }, 0); });
-      smsBtn.href = buildSmsHref();
-    }
   }
 
   /* ---------- Online booking (Calendly, lazy-loaded) ----------
