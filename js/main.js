@@ -353,7 +353,23 @@
       box.hidden = false;
     }
 
-    var SMS_NUMBERS = "+14157341832,+14158139302";   // Chloe, Elaine (group text)
+    var SMS_NUMBERS = ["+14157341832", "+14158139302"];   // Chloe, Elaine (group text)
+    // Multi-recipient sms: links are platform-specific. iOS ignores every
+    // recipient after the first in the generic "sms:a,b?body=" form and
+    // wants "sms://open?addresses=a,b&body="; Android (Google + Samsung
+    // Messages) takes "sms:a;b?body=".
+    function smsHref(numbers, body) {
+      var ua = navigator.userAgent || "";
+      var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+      var q = body ? encodeURIComponent(body) : "";
+      if (ios) return "sms://open?addresses=" + numbers.join(",") + (q ? "&body=" + q : "");
+      if (/Android/.test(ua)) return "sms:" + numbers.join(";") + (q ? "?body=" + q : "");
+      return "sms:" + numbers.join(",") + (q ? "?&body=" + q : "");
+    }
+    // Sticky mobile "Text Photos" link: same recipients, same platform rules.
+    Array.prototype.forEach.call(document.querySelectorAll('.mobile-cta__btn[href^="sms:"]'), function (a) {
+      a.href = smsHref(SMS_NUMBERS, "");
+    });
     function buildSmsHref() {
       var zh = zhUI();
       function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
@@ -372,7 +388,7 @@
       var refEl = document.getElementById("referral");
       if (refEl && refEl.value) lines.push((zh ? "从何得知:" : "Found us via: ") + refEl.value);
       lines.push(zh ? "婚纱照片(正面、背面、侧面):" : "Photos of my gown (front, back & sides):");
-      return "sms:" + SMS_NUMBERS + "?&body=" + encodeURIComponent(lines.join("\n"));
+      return smsHref(SMS_NUMBERS, lines.join("\n"));
     }
 
     // Re-localize the availability preview when the language is toggled.
