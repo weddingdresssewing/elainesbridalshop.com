@@ -271,8 +271,8 @@ page = f'''<!DOCTYPE html>
             <input type="email" id="qEmail" placeholder="you@email.com" autocomplete="email" />
           </div>
           <div class="field">
-            <label for="qDate" data-i18n="lbl.date">Wedding date (optional)</label>
-            <input type="date" id="qDate" />
+            <label for="qDate" data-i18n="qn.date">Wedding date</label>
+            <input type="date" id="qDate" required />
           </div>
         </div>
       </section>
@@ -311,7 +311,7 @@ page = f'''<!DOCTYPE html>
       "lbl.name": "姓名",
       "lbl.phone": "电话(用于短信回复)",
       "lbl.email": "邮箱(选填)",
-      "lbl.date": "婚礼日期(选填)",
+      "qn.date": "婚礼日期",
       "qn.nextTitle": "接下来会怎样",
       "qn.nextP": "我们会根据您的偏好生成婚纱效果图。如果您满意设计方案和报价,我们再预约免费咨询,为您量体。期待为您打造专属婚纱!",
       "qn.submit": "短信发送给 Chloe 和 Elaine",
@@ -413,7 +413,7 @@ page = f'''<!DOCTYPE html>
       lines.push((Z ? "姓名: " : "Name: ") + val("qName"));
       lines.push((Z ? "电话: " : "Phone: ") + val("qPhone"));
       if (val("qEmail")) lines.push((Z ? "邮箱: " : "Email: ") + val("qEmail"));
-      if (val("qDate"))  lines.push((Z ? "婚礼日期: " : "Wedding date: ") + val("qDate"));
+      lines.push((Z ? "婚礼日期: " : "Wedding date: ") + val("qDate"));
       META.forEach(function (m) {{
         var a = answerFor(m);
         if (a) lines.push(m.n + ". " + m.short[Z ? "zh" : "en"] + ": " + a);
