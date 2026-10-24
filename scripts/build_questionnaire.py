@@ -234,7 +234,7 @@ page = f'''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260914e" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914f" />
   <script type="application/ld+json">
   {{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}}, {{"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}}, {{"@type": "ListItem", "position": 3, "name": "Custom Gown Questionnaire", "item": "https://elainesbridalshop.com/custom-gown-questionnaire.html"}}]}}
   </script>
@@ -296,7 +296,7 @@ page = f'''<!DOCTYPE html>
         <button type="submit" class="btn btn--solid btn--full" data-i18n="qn.submit">Text My Answers to Chloe &amp; Elaine</button>
         <p class="contact__hint" data-i18n="qn.hint">Tap the button to open your Messages app with your answers filled in, addressed to Chloe &amp; Elaine. Attach your inspiration photos and hit send.</p>
         <p class="contact__success" id="qnSuccess" hidden role="status" data-i18n="qn.success">Your Messages app should now be open with your answers filled in. Attach your inspiration photos and tap send. If nothing opened, use the copy button below and text us at Chloe <a href="sms:+14157341832">(415) 734-1832</a> or Elaine <a href="sms:+14158139302">(415) 813-9302</a>.</p>
-        <p class="qn-copy"><button type="button" class="qn-copy__btn" id="qnCopy" data-i18n="qn.copy">On a computer? Copy my answers instead</button><span class="qn-copy__done" id="qnCopied" hidden data-i18n="qn.copied">Copied. Paste them into a text or email to us.</span></p>
+        <p class="qn-copy"><button type="button" class="qn-copy__btn" id="qnCopy" data-i18n="qn.copy">On a computer? Copy my answers instead</button><span class="qn-copy__done" id="qnCopied" hidden data-i18n="qn.copied">Copied. Paste them into a text or email (<a href="mailto:weddingdresssewing@gmail.com">weddingdresssewing@gmail.com</a>) to us.</span></p>
       </section>
     </form>
   </section>
@@ -327,7 +327,7 @@ page = f'''<!DOCTYPE html>
       "qn.hint": "点击按钮会打开您的短信 App,答案已自动填好,收件人是 Chloe 和 Elaine。附上灵感照片后发送即可。",
       "qn.success": "您的短信 App 应该已经打开,答案已填好。附上灵感照片后点发送即可。如果没有打开,请用下方的复制按钮,然后短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a> 或 Elaine <a href='sms:+14158139302'>(415) 813-9302</a>。",
       "qn.copy": "在电脑上?改为复制我的答案",
-      "qn.copied": "已复制。粘贴到短信或邮件发给我们即可。",
+      "qn.copied": "已复制。粘贴到短信或邮件(<a href='mailto:weddingdresssewing@gmail.com'>weddingdresssewing@gmail.com</a>)发给我们即可。",
 {I18N_LINES}
       "footer.tag": "「您的梦想婚纱在这里等您」· 加州萨克拉门托家庭工作室",
       "footer.rights": "版权所有。"
@@ -442,7 +442,7 @@ page = f'''<!DOCTYPE html>
     /* ---- desktop fallback: copy to clipboard ---- */
     el("qnCopy").addEventListener("click", function () {{
       var text = compose(), done = el("qnCopied");
-      function show() {{ done.hidden = false; setTimeout(function () {{ done.hidden = true; }}, 4000); }}
+      function show() {{ done.hidden = false; }}   // stays visible so she can find the address later
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(show, function () {{ window.prompt("Copy your answers:", text); }});
       else window.prompt("Copy your answers:", text);
     }});

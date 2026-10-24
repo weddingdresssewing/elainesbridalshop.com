@@ -1909,3 +1909,4 @@ em { font-style: italic; }
   .qn-q textarea, .qn-q input[type="text"], .qn-other { margin-left: 0; width: 100%; }
   .qn .field-row { grid-template-columns: 1fr; }
 }
+.qn-copy__done a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); }
