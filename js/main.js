@@ -289,6 +289,16 @@
   var form = document.getElementById("contactForm");
   var success = document.getElementById("formSuccess");
   if (form) {
+    // Arriving from the color chart: ?color=Name (Code), Fabric pre-fills the message.
+    try {
+      var pickedColor = new URLSearchParams(location.search).get("color");
+      var msgEl = document.getElementById("message");
+      if (pickedColor && msgEl && !msgEl.value.trim()) {
+        var zhPick = false;
+        try { zhPick = localStorage.getItem("lang") === "zh" || document.documentElement.lang === "zh-CN"; } catch (e2) {}
+        msgEl.value = (zhPick ? "我想要的颜色: " : "Color I'd like: ") + pickedColor + "\n";
+      }
+    } catch (e) {}
 
     function zhUI() { return document.documentElement.lang === "zh-CN"; }
 

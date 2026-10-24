@@ -1,0 +1,1666 @@
+[
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "White",
+  "code": "Y09-89",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-White-V4_480x480.jpg?v=1695018179",
+  "hex": "#e4e3e6"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "Off White",
+  "code": "Y09-90",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Off_White-V4_480x480.jpg?v=1695018010",
+  "hex": "#e4e4e2"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "Ivory",
+  "code": "Y09-91",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Ivory-V4_dce9ede3-0cdf-4d1a-bda2-9f5c897e151f_480x480.jpg?v=1695123014",
+  "hex": "#e9e9df"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "Silver Grey",
+  "code": "Y09-165",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Silver-V4_9d020b0e-caad-4bb8-9d2e-c6acf9f6e1fc_480x480.jpg?v=1695263176",
+  "hex": "#bdbdbd"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "Steel Grey",
+  "code": "Y09-95",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Gray-V4_480x480.jpg?v=1695123326",
+  "hex": "#777779"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Whites",
+  "name": "Black",
+  "code": "Y09-98",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Black-V4_73cf8d11-a074-4aad-9388-58f728dd45a8_480x480.jpg?v=1695123416",
+  "hex": "#212121"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Pearl Pink",
+  "code": "Y09-114",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Pearl_Pink-V4_480x480.jpg?v=1695033545",
+  "hex": "#fee0da"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Blush",
+  "code": "Y09-37",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light_Pink-V4_480x480.jpg?v=1695198621",
+  "hex": "#f1e0e2"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Pink",
+  "code": "Y09-18",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Pink-V4_480x480.jpg?v=1695033106",
+  "hex": "#f3dade"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Pale Rose",
+  "code": "Y09-57",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Pale-Rose-V4_480x480.jpg?v=1695263374",
+  "hex": "#d1b7c0"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Dusty Pink",
+  "code": "Y09-83",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dusty_Rose-V4_20fbdc07-42d3-46c3-83a9-4e1fbc6976d4_480x480.jpg?v=1695197218",
+  "hex": "#c7a8a1"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "English Rose",
+  "code": "Y09-31",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-English-Rose-V4_480x480.jpg?v=1695208161",
+  "hex": "#c8957a"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Candy Pink",
+  "code": "Y09-32",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Candy-Pink-V4_480x480.jpg?v=1695263289",
+  "hex": "#ef91ac"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Coral",
+  "code": "Y09-26",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Coral-V4_c739b1b7-a693-45a9-9306-ada46b913380_480x480.jpg?v=1695111425",
+  "hex": "#f78886"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Hot Pink",
+  "code": "Y09-10",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Hot_Pink-V4_30899703-ebb7-43bc-982d-ec2cb57de88d_480x480.jpg?v=1695197325",
+  "hex": "#ec3b83"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Pinks",
+  "name": "Fuchsia",
+  "code": "Y09-142",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-fuchsia-V4_480x480.jpg?v=1695263634",
+  "hex": "#8e2b59"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Sunset",
+  "code": "Y09-140",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Salmon-V4_480x480.jpg?v=1695198931",
+  "hex": "#fba78f"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Burnt Orange",
+  "code": "Y09-126",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Burnt_Orange_480x480.png?v=1695202343",
+  "hex": "#a75634"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Rusty Red",
+  "code": "Y09-49",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Rust-V4_480x480.jpg?v=1695198828",
+  "hex": "#a6453e"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Cinnamon Rose",
+  "code": "Y29-149",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Cinnamon-Rose-V4_8c66a472-15c2-424d-9073-f690a97fecc2_480x480.jpg?v=1695263991",
+  "hex": "#622a26"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Red",
+  "code": "Y09-1",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Red-V4_480x480.jpg?v=1695092426",
+  "hex": "#b80505"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Wine Red",
+  "code": "Y09-171",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Wine-Red-V4_480x480.jpg?v=1695207563",
+  "hex": "#730e30"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Burgundy",
+  "code": "Y09-155",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Burgundy-V4_62004025-4c55-4574-ae46-aacb5d47aa74_480x480.jpg?v=1695263730",
+  "hex": "#3c111b"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Oranges / Burgundies",
+  "name": "Cabernet",
+  "code": "Y09-151",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Cabernet-V4_480x480.jpg?v=1695263867",
+  "hex": "#2d0f15"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Dusty Lilac",
+  "code": "Y09-24",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Lilac-V4_480x480.jpg?v=1695093273",
+  "hex": "#cbbae6"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Dusty Purple",
+  "code": "Y09-162",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Wisteria-V4_1d90be81-d784-43c7-87ca-25a41dfa6b9f_480x480.jpg?v=1695208568",
+  "hex": "#9f91a8"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Wisteria",
+  "code": "Y09-101",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dusty_Purple-V4_480x480.jpg?v=1695093418",
+  "hex": "#8e7697"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Tahiti",
+  "code": "Y09-113",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-tahiti-V4_480x480.jpg?v=1695264930",
+  "hex": "#7c6b98"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Royal Purple",
+  "code": "Y09-111",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Purple-V4_480x480.jpg?v=1695199784",
+  "hex": "#6a4684"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Mauve",
+  "code": "Y09-152",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Mauve-V4_12aac163-4b0e-496c-8d50-672fcf79de7a_480x480.jpg?v=1695264161",
+  "hex": "#ddb3c7"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Vintage Mauve",
+  "code": "Y09-147",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Mauve-V4_480x480.jpg?v=1695199646",
+  "hex": "#a87f86"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Desert Rose",
+  "code": "Y29-186",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Desert-Rose-V4_480x480.jpg?v=1695264080",
+  "hex": "#a04f56"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Mulberry",
+  "code": "Y09-34",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Mulberry-V4_480x480.jpg?v=1695093609",
+  "hex": "#834353"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Orchid",
+  "code": "Y09-46",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Orchid-V4_480x480.jpg?v=1695199524",
+  "hex": "#6b284c"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Dusk",
+  "code": "Y09-68",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dusk-V4_480x480.jpg?v=1695264234",
+  "hex": "#7e7178"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Dark Purple",
+  "code": "Y09-115",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Grape-V4_480x480.jpg?v=1695199716",
+  "hex": "#422e4a"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Purples",
+  "name": "Plum",
+  "code": "Y09-77",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Plum-V4_480x480.jpg?v=1695094324",
+  "hex": "#3f2540"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Mist",
+  "code": "Y09-65",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light_Blue-V4_480x480.jpg?v=1695201622",
+  "hex": "#d0e2e9"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Cornflower Blue",
+  "code": "Y09-51",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Cornflower-Blue-v4_480x480.jpg?v=1701309723",
+  "hex": "#c6dce4"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Lavender",
+  "code": "Y09-40",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Lavender-V4_480x480.jpg?v=1695199939",
+  "hex": "#ced6ed"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Sky Blue",
+  "code": "Y09-22",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light_Sky_Blue-V4_480x480.jpg?v=1695200113",
+  "hex": "#b3dde9"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Light Blue",
+  "code": "Y09-17",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Sky_Blue-V4_1c0c383c-0290-4b06-84b9-812752825879_480x480.jpg?v=1695201707",
+  "hex": "#abd0e5"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Pool",
+  "code": "Y09-11",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-pool-V4_480x480.jpg?v=1695265225",
+  "hex": "#5fb7db"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Water Blue",
+  "code": "Y09-13",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Water-Blue-V4_480x480.jpg?v=1695265154",
+  "hex": "#2d75c8"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Royal Blue",
+  "code": "Y09-168",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light_Royal_Blue-V4_480x480.jpg?v=1695200934",
+  "hex": "#2d4292"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Sapphire Blue",
+  "code": "Y09-146",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Royal_Blue-V4_c87387cf-744f-446e-a35c-b03532e53532_480x480.jpg?v=1695201558",
+  "hex": "#121a87"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Dark Royal Blue",
+  "code": "Y09-28",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dark_Royal_Blue-V4_480x480.jpg?v=1695201029",
+  "hex": "#172468"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Jade",
+  "code": "Y09-56",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Aqua_Blue-V4_c24025cc-a729-4e34-9420-9b438775091e_480x480.jpg?v=1695200750",
+  "hex": "#2c9498"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Ink Blue",
+  "code": "Y09-66",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Ink-Blue-V4_480x480.jpg?v=1695265053",
+  "hex": "#182c36"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Dusty Blue",
+  "code": "Y09-170",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dusty_Blue-V4_480x480.jpg?v=1695200189",
+  "hex": "#7e92a5"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Slate Blue",
+  "code": "Y09-154",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Steel_Blue-V4_b98d70e1-353f-4bcb-bdbb-e89bec5495ee_480x480.jpg?v=1695201496",
+  "hex": "#66789b"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Stormy",
+  "code": "Y09-109",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Stormy_Blue-V4_480x480.jpg?v=1695201380",
+  "hex": "#505773"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Navy Blue",
+  "code": "Y09-159",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Navy_Blue_480x480.jpg?v=1703840262",
+  "hex": "#1b2849"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Blues",
+  "name": "Dark Navy",
+  "code": "Y09-102",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dark_Navy_480x480.png?v=1703840319",
+  "hex": "#252938"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Mint",
+  "code": "Y09-48",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Mint_Green-V4_480x480.jpg?v=1695124451",
+  "hex": "#bde2ca"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Spa",
+  "code": "Y09-134",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Spa-V4_480x480.jpg?v=1695201833",
+  "hex": "#85d3be"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Turquoise",
+  "code": "Y09-88",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Turquoise-V4_480x480.jpg?v=1695201896",
+  "hex": "#3fd2c5"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Sage Green",
+  "code": "Y09-164",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Sage-V4_fc746866-3c74-411e-9f6d-4b4046ec71e8_480x480.jpg?v=1695173227",
+  "hex": "#bac9b6"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Light Green",
+  "code": "Y09-50",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light-Green-V4_480x480.jpg?v=1695207982",
+  "hex": "#c7e2ab"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Silver Sage",
+  "code": "Y09-75",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Silver-Sage-V4_480x480.jpg?v=1695265332",
+  "hex": "#a8b389"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Basil",
+  "code": "Y09-54",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dusty_Sage-V4_480x480.jpg?v=1695124546",
+  "hex": "#85a580"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Eucalyptus",
+  "code": "Y09-19",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Eucalyptus-V4_480x480.jpg?v=1704274373",
+  "hex": "#347c66"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Green",
+  "code": "Y09-120",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Green-V4_480x480.jpg?v=1695207688",
+  "hex": "#1b582a"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Dark Green",
+  "code": "Y09-153",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Emerald-V4_480x480.jpg?v=1695123752",
+  "hex": "#1a5c39"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Emerald Green",
+  "code": "Y09-160",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Dark_Green-V4_2d4589f8-27db-4a87-a062-545650c6fea5_480x480.jpg?v=1695123856",
+  "hex": "#0e4734"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Olive",
+  "code": "Y09-94",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Olive-V4_480x480.jpg?v=1695207904",
+  "hex": "#222814"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Peacock",
+  "code": "Y09-78",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Peacock-V4_480x480.jpg?v=1695170154",
+  "hex": "#124b48"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Greens",
+  "name": "Teal",
+  "code": "Y09-106",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Teal-V4_480x480.jpg?v=1695124049",
+  "hex": "#093a4b"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Yellows",
+  "name": "Light Yellow",
+  "code": "Y09-33",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Canary-V4_480x480.jpg?v=1695124725",
+  "hex": "#f2ecb2"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Yellows",
+  "name": "Canary",
+  "code": "Y09-60",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-small-Canary.jpg?v=1705903525",
+  "hex": "#e6e68c"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Yellows",
+  "name": "Mustard Yellow",
+  "code": "Y09-124",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Mustard_Yellow-V4_480x480.jpg?v=1695101692",
+  "hex": "#f5ad57"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Neutrals",
+  "name": "Light Champagne",
+  "code": "Y09-59",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Light_Champagne-V4_480x480.jpg?v=1695202111",
+  "hex": "#eadecd"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Neutrals",
+  "name": "Champagne",
+  "code": "Y09-64",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Champagne-V4_480x480.jpg?v=1695208071",
+  "hex": "#deceb3"
+ },
+ {
+  "fabric": "Chiffon",
+  "group": "Neutrals",
+  "name": "Taupe",
+  "code": "Y09-122",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Chiffon-Taupe-V4_480x480.jpg?v=1695202049",
+  "hex": "#9e8f84"
+ },
+ {
+  "fabric": "Satin",
+  "group": "White Color Series",
+  "name": "White",
+  "code": "Y01-2",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-White_480x480.jpg?v=1703053643",
+  "hex": "#edf0f7"
+ },
+ {
+  "fabric": "Satin",
+  "group": "White Color Series",
+  "name": "Off White",
+  "code": "Y01-16",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Off-White_480x480.jpg?v=1703054924",
+  "hex": "#eff1f6"
+ },
+ {
+  "fabric": "Satin",
+  "group": "White Color Series",
+  "name": "Ivory",
+  "code": "Y01-12",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Ivory_480x480.jpg?v=1703054377",
+  "hex": "#ebece7"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Silver",
+  "code": "Y01-102",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Silver_480x480.jpg?v=1703055187",
+  "hex": "#e0e1e3"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Champagne",
+  "code": "Y01-52",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Champagne_480x480.png?v=1702974234",
+  "hex": "#eadbc9"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Light Champagne",
+  "code": "Y01-45",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Light-Champagne_480x480.jpg?v=1703054481",
+  "hex": "#e2d0af"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Taupe",
+  "code": "Y01-79",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Taupe_480x480.jpg?v=1702974352",
+  "hex": "#927f6e"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Dolphin Grey",
+  "code": "Y01-53",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Silver-Gray_480x480.jpg?v=1703055430",
+  "hex": "#747c7e"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Brown",
+  "code": "Y01-43",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Brown_480x480.jpg?v=1703053964",
+  "hex": "#352318"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Light Color Series",
+  "name": "Black",
+  "code": "Y01-17",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Black_480x480.jpg?v=1703053796",
+  "hex": "#171717"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Blushing",
+  "code": "Y01-23",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Blushing_480x480.jpg?v=1703055638",
+  "hex": "#ecd4d6"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Pearl Pink",
+  "code": "Y01-101",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Pearl-Pink_480x480.jpg?v=1703065732",
+  "hex": "#ddb6af"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Pale Rose",
+  "code": "Y01-125",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Pale-Rose_480x480.jpg?v=1703069484",
+  "hex": "#e3bec5"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Blush",
+  "code": "Y01-27",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Blush_480x480.jpg?v=1702975136",
+  "hex": "#e4bdbe"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Pink",
+  "code": "Y01-65",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Pink_480x480.jpg?v=1703069541",
+  "hex": "#eec3cb"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Candy Pink",
+  "code": "Y01-4",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Candy-Pink_480x480.jpg?v=1703065305",
+  "hex": "#efbfd8"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Dusty Pink",
+  "code": "Y01-29",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Dusty-Pink_480x480.jpg?v=1702975442",
+  "hex": "#d09188"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "English Rose",
+  "code": "Y01-9",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-English-Rose_480x480.jpg?v=1703065424",
+  "hex": "#d6a175"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Coral",
+  "code": "Y01-83",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Coral_480x480.png?v=1702975531",
+  "hex": "#f68584"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Pinks",
+  "name": "Hot Pink",
+  "code": "Y01-118",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Hot-Pink_480x480.jpg?v=1703065482",
+  "hex": "#901b5f"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Red / Orange",
+  "name": "Red",
+  "code": "Y01-1",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Red_480x480.png?v=1702975709",
+  "hex": "#df3939"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Red / Orange",
+  "name": "Burgundy",
+  "code": "Y01-22",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Burgundy_480x480.jpg?v=1703069204",
+  "hex": "#520a17"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Red / Orange",
+  "name": "Cabernet",
+  "code": "Y01-126",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Cabernet_480x480.jpg?v=1703069263",
+  "hex": "#360410"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Red / Orange",
+  "name": "Orange",
+  "code": "Y01-54",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Orange_480x480.png?v=1702975903",
+  "hex": "#ec9472"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Red / Orange",
+  "name": "Cooper",
+  "code": "Y01-49",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Cooper_480x480.jpg?v=1703065361",
+  "hex": "#6f3618"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Dusty Lilac",
+  "code": "Y01-62",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Dusty-Lilac_480x480.png?v=1702976309",
+  "hex": "#e3d9e1"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Wisteria",
+  "code": "Y01-76",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Wisteria_480x480.jpg?v=1703066002",
+  "hex": "#886677"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Dusk",
+  "code": "Y01-8",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Dusk_480x480.jpg?v=1703055730",
+  "hex": "#786169"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Dusty Purple",
+  "code": "Y01-104",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Dusty-Purple_480x480.jpg?v=1703056032",
+  "hex": "#5e527a"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Regency",
+  "code": "Y01-85",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Regency_480x480.jpg?v=1703056225",
+  "hex": "#3f317e"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Royal Purple",
+  "code": "Y01-119",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Royal-Purple_480x480.jpg?v=1703056304",
+  "hex": "#562d65"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Plum",
+  "code": "Y01-58",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Plum_480x480.png?v=1702976565",
+  "hex": "#683f5d"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Purples",
+  "name": "Orchid",
+  "code": "Y01-121",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Orchid_480x480.png?v=1702976464",
+  "hex": "#a34077"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Ice Blue",
+  "code": "Y01-14",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-lce-Blue_480x480.jpg?v=1703057264",
+  "hex": "#c3dbf1"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Lavender",
+  "code": "Y01-100",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Lavender_480x480.png?v=1702977386",
+  "hex": "#d6ddf1"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Pool",
+  "code": "Y01-6",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Pool_480x480.jpg?v=1703055106",
+  "hex": "#2ea4d2"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Ink Blue",
+  "code": "Y01-94",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Ink-Blue_480x480.jpg?v=1703065533",
+  "hex": "#193747"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Slate Blue",
+  "code": "Y01-109",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Slate-Blue_480x480.jpg?v=1703055553",
+  "hex": "#4d6495"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Light Royal Blue",
+  "code": "Y01-113",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk_Satin-Light-Royal-Blue_480x480.jpg?v=1703056717",
+  "hex": "#2957ac"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Royal Blue",
+  "code": "Y01-61",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Royal-Blue_480x480.jpg?v=1703065933",
+  "hex": "#1e3a9b"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Navy Blue",
+  "code": "Y01-114",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Navy-Blue_480x480.jpg?v=1703069421",
+  "hex": "#101527"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Blues",
+  "name": "Dark Navy",
+  "code": "Y01-98",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Dark-Navy_480x480.jpg?v=1703069351",
+  "hex": "#10141f"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Sage Green",
+  "code": "Y01-39",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Sage-Green_480x480.jpg?v=1702977912",
+  "hex": "#91a486"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Silver Sage",
+  "code": "Y01-31",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Silver-Sage_480x480.jpg?v=1703056374",
+  "hex": "#949d87"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Spa",
+  "code": "Y01-5",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Spa_480x480.png?v=1702977986",
+  "hex": "#9ad9ca"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Jade",
+  "code": "Y01-59",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Jade_480x480.jpg?v=1703056112",
+  "hex": "#2da29d"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Eucalyputs",
+  "code": "Y01-48",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Eucalyputs_480x480.jpg?v=1703057190",
+  "hex": "#3e5849"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Olive Green",
+  "code": "Y01-97",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Olive-Green_480x480.jpg?v=1703065596",
+  "hex": "#343418"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Peacock",
+  "code": "Y01-36",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Peacock_480x480.jpg?v=1702978106",
+  "hex": "#00282b"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Emerald Green",
+  "code": "Y01-93",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-Emerald-Green.png",
+  "hex": "#295244"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Greens",
+  "name": "Dark Green",
+  "code": "Y01-128",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk_Satin-Dark-Green_480x480.jpg?v=1703056599",
+  "hex": "#0e1814"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Yellows",
+  "name": "Yellow",
+  "code": "Y01-3",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk_Satin-Yellow_480x480.jpg?v=1703056808",
+  "hex": "#e8d37d"
+ },
+ {
+  "fabric": "Satin",
+  "group": "Yellows",
+  "name": "Butterscotch",
+  "code": "Y01-35",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Satin-small-Butterscotch_480x480.jpg?v=1703065106",
+  "hex": "#ac732e"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Bronzer",
+  "code": "Y70-28",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Bronzer_6da6db0e-de6f-442a-bd6d-3533ef02ba94.jpg?v=1710152972",
+  "hex": "#bc785b"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Dusty pink",
+  "code": "Y90-65",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Dusty-Pink.jpg?v=1710152748",
+  "hex": "#a1756b"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Silver Sage",
+  "code": "Y70-14",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Silver-Sage_32aac44d-82aa-4b31-be55-c3bc28b83c4a.jpg?v=1710152860",
+  "hex": "#9fab93"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Agave",
+  "code": "Y70-9",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Agave_cbad2a49-a9e0-419b-9303-409da6e4cd80.jpg?v=1710152805",
+  "hex": "#9bba94"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Olive Green",
+  "code": "Y70-30",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Olive-Green_4b2cffea-9ee3-4660-9d7a-4e9557951ab4.jpg?v=1710152892",
+  "hex": "#475139"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Emerald",
+  "code": "Y70-45",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Emerald_97b0d092-897f-4981-a383-adee9ba1e9f9.jpg?v=1710152941",
+  "hex": "#12281e"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Cornflower Blue",
+  "code": "Y70-15",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Cornflower-Blue_53800e1c-0949-4af4-ada1-2d9ceacfa01f.jpg?v=1710153058",
+  "hex": "#c0cdd9"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Slate Blue",
+  "code": "Y70-26",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Slate-Blue_1c207ae1-4234-4e8a-b760-070529bf7098.jpg?v=1710153130",
+  "hex": "#456187"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Burnt Orange",
+  "code": "Y70-69",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Burnt-Orange.jpg?v=1710153174",
+  "hex": "#864511"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Rusty Red",
+  "code": "Y70-59",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Rusty-Red.jpg?v=1710153260",
+  "hex": "#68200f"
+ },
+ {
+  "fabric": "Silk Satin",
+  "group": "",
+  "name": "Burgundy",
+  "code": "Y70-54",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Silk-Satin-Burgundy_16d6c20f-0918-4702-9265-42d4168751bc.jpg?v=1710153017",
+  "hex": "#300a15"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Whites",
+  "name": "White",
+  "code": "HF-32",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-White-32_480x480.jpg?v=1703668791",
+  "hex": "#f4f4f3"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Whites",
+  "name": "Black",
+  "code": "HF-11",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Black-11_480x480.jpg?v=1703815881",
+  "hex": "#1e1e1e"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Light Color Series",
+  "name": "Chocolate",
+  "code": "HF-64",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Chocolate-64_480x480.jpg?v=1703822071",
+  "hex": "#281001"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Light Color Series",
+  "name": "Matte Silver",
+  "code": "HF-25",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Matte-Silver-25_480x480.jpg?v=1703822113",
+  "hex": "#535f64"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Light Color Series",
+  "name": "Silver Grey",
+  "code": "HF-06",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Silve-Grey-06_480x480.jpg?v=1703822164",
+  "hex": "#d0d2d5"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Pinks",
+  "name": "Peach",
+  "code": "HF-50",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Peach-50_480x480.jpg?v=1703822215",
+  "hex": "#f9c2ad"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Pinks",
+  "name": "Pink Gold",
+  "code": "HF-34",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Pink-Gold-34_480x480.jpg?v=1703822256",
+  "hex": "#d4a3ae"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Pinks",
+  "name": "Rose Gold",
+  "code": "HF-08",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Rose-Gold-08_480x480.jpg?v=1703822304",
+  "hex": "#d7b1ad"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Pinks",
+  "name": "Candy Pink",
+  "code": "HF-40",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Candy-Pink-40_480x480.jpg?v=1703816007",
+  "hex": "#d097a5"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Pinks",
+  "name": "Hot Pink",
+  "code": "HF-15",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Hot-Pink-15_480x480.jpg?v=1703816067",
+  "hex": "#bb2b77"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Bronzer",
+  "code": "HF-17",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Bronzer-17_480x480.jpg?v=1703822377",
+  "hex": "#af856b"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Cooper",
+  "code": "HF-28",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Cooper-28_480x480.jpg?v=1703822426",
+  "hex": "#582903"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Orange",
+  "code": "HF-04",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Orange-23_480x480.jpg?v=1703822489",
+  "hex": "#c14b1b"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Wine Red",
+  "code": "HF-05",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Wine-Red-05_480x480.jpg?v=1703816223",
+  "hex": "#651e24"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Burgundy",
+  "code": "HF-14",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Burgundy-14_480x480.jpg?v=1703816477",
+  "hex": "#34090b"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Oranges / Burgundies",
+  "name": "Cabernet",
+  "code": "HF-63",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Cabernet-63_480x480.jpg?v=1703816590",
+  "hex": "#2b0b0e"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Purples",
+  "name": "Royal Purple",
+  "code": "HF-55",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Royal-Purple-55_480x480.jpg?v=1703816697",
+  "hex": "#33145f"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Blues",
+  "name": "Cornflower Blue",
+  "code": "HF-19",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Cornflower-19_480x480.jpg?v=1703829214",
+  "hex": "#4a9cb9"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Blues",
+  "name": "Nave Blue",
+  "code": "HF-10",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Nave-Blue-10_480x480.jpg?v=1703829299",
+  "hex": "#080d1d"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Blues",
+  "name": "Pool",
+  "code": "HF-20",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Pool-20_480x480.jpg?v=1703816847",
+  "hex": "#2ab6ce"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Blues",
+  "name": "Royal Blue",
+  "code": "HF-56",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Royal-BLue-56_480x480.jpg?v=1703816927",
+  "hex": "#17266b"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Greens",
+  "name": "Eucalyputs",
+  "code": "HF-46",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Eucalyputs-46_480x480.jpg?v=1703829378",
+  "hex": "#69bf97"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Greens",
+  "name": "Turquoise",
+  "code": "HF-58",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Turquoise-58_480x480.jpg?v=1703817071",
+  "hex": "#329e89"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Greens",
+  "name": "Emerald Green",
+  "code": "HF-22",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Emerald-Green-22_480x480.jpg?v=1703817190",
+  "hex": "#0f2e18"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Greens",
+  "name": "Peacock",
+  "code": "HF-31",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Peacock-31_480x480.jpg?v=1703817301",
+  "hex": "#054b48"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Yellows",
+  "name": "Gold",
+  "code": "HF-09",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Gold-09_480x480.jpg?v=1703829430",
+  "hex": "#9e874b"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Yellows",
+  "name": "Light Gold",
+  "code": "HF-04",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Light-Gold-04_480x480.jpg?v=1703829479",
+  "hex": "#c0b691"
+ },
+ {
+  "fabric": "Sequin",
+  "group": "Neutrals",
+  "name": "Champagne Gold",
+  "code": "HF-02",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Sequin-Champagne-Gold-02_480x480.jpg?v=1703829618",
+  "hex": "#b49a83"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Blush",
+  "code": "HH-060",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Blush.jpg?v=1710145018",
+  "hex": "#e1cdd3"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Pale Rose",
+  "code": "HH-073",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Pale-Rose_9e4f5d1a-96ea-48de-8970-186f9bb0ef0a.png?v=1710144962",
+  "hex": "#dabfc6"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Dusty Pink",
+  "code": "DBW-758",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Dusty-Pink-758_480x480.jpg?v=1704188199",
+  "hex": "#cb9e9b"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Mauve",
+  "code": "DBW-731",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Mauve_480x480.jpg?v=1704181997",
+  "hex": "#c2879d"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Light Dusty Purple",
+  "code": "DBW-727",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Light-Dusty-Purple_480x480.jpg?v=1704181997",
+  "hex": "#b1a6b7"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Mulberry",
+  "code": "HH-102",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Mulberry_829611a3-7816-482d-80ad-9edc75e35da1.png?v=1710144904",
+  "hex": "#883e62"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Dusty Purple",
+  "code": "HH-051",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Dusty-Purple_480x480.jpg?v=1704182107",
+  "hex": "#806e98"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Silver Grey",
+  "code": "DBW-734",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Silver-Grey_cfdd706b-9dda-4384-9f6c-15dc08c1e0d4.png?v=1710145070",
+  "hex": "#a5a8a5"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Slate Blue",
+  "code": "HH-154",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Slate-Blue_e0722be9-857d-41af-a201-5c6d96ad00d1.png?v=1710145108",
+  "hex": "#879cb1"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Dolphin",
+  "code": "DBW-717",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Dolphin.jpg?v=1710145472",
+  "hex": "#89867e"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Sage Green",
+  "code": "DBW-799",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Sage-Green_480x480.jpg?v=1704182010",
+  "hex": "#9aab9d"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Eucalyptus",
+  "code": "DBW-661",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Eucalyptus_f82e1aba-6934-496e-bfca-37198cf0812a.png?v=1710144832",
+  "hex": "#92ab93"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Dusty Blue",
+  "code": "HH-041",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Dusty-Blue_f90dacf4-07bf-4a30-9d68-c3b767e784c7.png?v=1710144717",
+  "hex": "#85a9b2"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Navy Blue",
+  "code": "DBW-775",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Navy-Blue_480x480.jpg?v=1704181999",
+  "hex": "#0f1428"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Emerald Green",
+  "code": "HH-147",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Emerald-Green_d5eb061a-a28b-434a-96c9-a4383953fcd9.png?v=1710144774",
+  "hex": "#0d261e"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Burgundy",
+  "code": "DBW-070",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Burgundy_480x480.jpg?v=1704181956",
+  "hex": "#45111e"
+ },
+ {
+  "fabric": "Tulle",
+  "group": "",
+  "name": "Plum",
+  "code": "HH-002",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Tulle-Plum_480x480.jpg?v=1704182005",
+  "hex": "#1e0918"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "White",
+  "code": "Y53-16",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-White_480x480.jpg?v=1706159646",
+  "hex": "#eae4e6"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Off White",
+  "code": "Y53-9",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Off-White_480x480.jpg?v=1706159694",
+  "hex": "#fdf7f3"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Cornflower Blue",
+  "code": "Y53-33",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Cornflower-Blue_480x480.jpg?v=1706159485",
+  "hex": "#b7cce1"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Blushing",
+  "code": "Y53-52",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Blushing_480x480.jpg?v=1706154600",
+  "hex": "#ebcebe"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Blush",
+  "code": "Y53-17",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Blush_480x480.jpg?v=1706154777",
+  "hex": "#e5c1c1"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Dusty Pink",
+  "code": "Y53-38",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Dusty-Pink_480x480.jpg?v=1706154829",
+  "hex": "#e0b4bc"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Mist",
+  "code": "Y53-39",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Mist_480x480.jpg?v=1706159439",
+  "hex": "#9bb6a2"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Silver Sage",
+  "code": "Y53-45",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Silver-Sage_480x480.jpg?v=1706159074",
+  "hex": "#a1b19d"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Silver Gray",
+  "code": "Y53-24",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Silver-Gray_480x480.jpg?v=1706159752",
+  "hex": "#b3b3b3"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Dolphin Grey",
+  "code": "Y53-32",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Dolphin-Grey_480x480.jpg?v=1706160078",
+  "hex": "#a5969b"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Eucalyptus",
+  "code": "Y53-55",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Eucalyptus_480x480.jpg?v=1706159158",
+  "hex": "#396566"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Vintage Mauve",
+  "code": "Y53-18",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Vintage-Mauve_480x480.jpg?v=1706154885",
+  "hex": "#b28395"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Desert Rose",
+  "code": "Y53-43",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Desert-Rose_480x480.jpg?v=1706154952",
+  "hex": "#ae5668"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Terracotta",
+  "code": "Y53-49",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Terracotta_480x480.jpg?v=1706155200",
+  "hex": "#743729"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Rusty Red",
+  "code": "Y53-41",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Rusty-Red_480x480.jpg?v=1706155258",
+  "hex": "#69241b"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Burnt Orange",
+  "code": "Y53-53",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Burnt-Orange_480x480.jpg?v=1706159026",
+  "hex": "#751f08"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Wine Red",
+  "code": "Y53-10",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Wine-Red_480x480.jpg?v=1706155023",
+  "hex": "#59070d"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Royal Blue",
+  "code": "Y53-2",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Royal-Blue_480x480.jpg?v=1706255059",
+  "hex": "#0e155d"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Burgundy",
+  "code": "Y53-20",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Burgundy_480x480.jpg?v=1706155084",
+  "hex": "#2e090e"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Emerald Green",
+  "code": "Y53-19",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Emerald-Green_480x480.jpg?v=1706159393",
+  "hex": "#0d231c"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Navy Blue",
+  "code": "Y53-7",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Navy-Blue_480x480.jpg?v=1706159530",
+  "hex": "#050634"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Olive Green",
+  "code": "Y53-36",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Olive-Green_480x480.jpg?v=1706159339",
+  "hex": "#121309"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Cabernet",
+  "code": "Y53-24",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Cabernet_480x480.jpg?v=1706155132",
+  "hex": "#1a0507"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Dark Navy",
+  "code": "Y53-48",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Dark-Navy_480x480.jpg?v=1706159581",
+  "hex": "#050612"
+ },
+ {
+  "fabric": "Double FDY",
+  "group": "",
+  "name": "Black",
+  "code": "Y53-8",
+  "src": "https://cdn.shopify.com/s/files/1/2246/9625/files/Double-FDY-Black_480x480.jpg?v=1706160452",
+  "hex": "#080808"
+ }
+]
