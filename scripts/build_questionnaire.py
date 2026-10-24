@@ -38,10 +38,8 @@ SECTIONS = [
   {
     "id": "shape", "title": ("Your inspiration and dress shape", "您的灵感与裙型"),
     "qs": [
-      dict(n=1, type="textarea", short=("Inspiration", "灵感参考"),
-           q=("Please send photos or links showing your ideal dress.", "请提供能体现您理想婚纱的照片或链接。"),
-           hint=("Front, back and close-up photos are especially helpful. Paste any links here; you can attach the photos themselves in the text message at the end.",
-                 "正面、背面和细节特写尤其有帮助。链接可以贴在这里,照片本身可以在最后的短信里直接附上。")),
+      dict(n=1, type="note", short=("Inspiration", "灵感参考"),
+           q=("Please send photos or links showing your ideal dress.", "请提供能体现您理想婚纱的照片或链接。")),
       dict(n=2, type="textarea", short=("What I like", "喜欢的地方"),
            q=("What do you like about each reference?", "每张参考图里,您喜欢的是什么?"),
            hint=("Please include a link to the reference wedding dress.", "请附上参考婚纱的链接。")),
@@ -152,7 +150,8 @@ for sec in SECTIONS:
     for q in sec["qs"]:
         n = q["n"]; qid = f"q{n}"
         parts.append(f'        <div class="qn-q" data-q="{n}">')
-        parts.append(f'          <label class="qn-q__label" for="{qid}"><span class="qn-q__num">{n}</span><span data-i18n="{t(f"qn.q{n}", q["q"][1])}">{esc(q["q"][0])}</span></label>')
+        tag, attr = ("p", "") if q["type"] == "note" else ("label", f' for="{qid}"')
+        parts.append(f'          <{tag} class="qn-q__label"{attr}><span class="qn-q__num">{n}</span><span data-i18n="{t(f"qn.q{n}", q["q"][1])}">{esc(q["q"][0])}</span></{tag}>')
         if q.get("hint"):
             parts.append(f'          <p class="qn-q__hint" data-i18n="{t(f"qn.h{n}", q["hint"][1])}">{esc(q["hint"][0])}</p>')
         m = {"n": n, "type": q["type"], "short": {"en": q["short"][0], "zh": q["short"][1]}}
@@ -173,12 +172,12 @@ for sec in SECTIONS:
                 parts.append(f'          <input type="text" class="qn-other" id="{qid}_other" placeholder="Please describe" data-i18n-ph="{t("qn.otherPh", "请描述")}" hidden />')
         elif q["type"] == "textarea":
             parts.append(f'          <textarea id="{qid}" rows="3"></textarea>')
-        else:
+        elif q["type"] == "text":
             parts.append(f'          <input type="text" id="{qid}" />')
         if q.get("note"):
             parts.append(f'          <p class="qn-q__note" data-i18n="{t(f"qn.n{n}", q["note"][1])}">{q["note"][0]}</p>')
         parts.append('        </div>')
-        meta_js.append(m)
+        if q["type"] != "note": meta_js.append(m)
     parts.append('      </section>')
 FORM_BODY = "\n".join(parts)
 META_JSON = json.dumps(meta_js, ensure_ascii=False)
