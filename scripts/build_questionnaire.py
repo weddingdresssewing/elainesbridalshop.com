@@ -122,8 +122,8 @@ SECTIONS = [
            q=("Where would you like the embellishments?", "您希望装饰在哪些位置?"),
            opts=[("Straps and neckline", "肩带与领口"), ("Bodice", "上身"), ("Waist", "腰部"), ("Back", "背部"),
                  ("Skirt", "裙身"), ("Train", "拖尾"), REC],
-           note=("<strong>Our recommendation:</strong> we generally suggest some beading on the bodice, kept subtle so the overall look stays elegant. A little beading at the waist, with none on the skirt, creates a beautiful balance and is also the more cost-effective option. Additional beading and detailed embellishments increase the price.",
-                 "<strong>我们的建议:</strong>一般建议上身做一些珠绣,保持低调,整体才显优雅。腰部少量珠绣、裙身不做,比例最美,也更经济。额外的珠绣和繁复装饰会增加价格。")),
+           note=("<strong>Our recommendation:</strong> we generally suggest some beading on the bodice, kept subtle so the overall look stays elegant. A little beading at the waist, with none on the skirt and train, creates a beautiful balance and is also the more cost-effective option. Additional beading and detailed embellishments increase the price.",
+                 "<strong>我们的建议:</strong>一般建议上身做一些珠绣,保持低调,整体才显优雅。腰部少量珠绣、裙身和拖尾不做,比例最美,也更经济。额外的珠绣和繁复装饰会增加价格。")),
     ],
   },
   {
