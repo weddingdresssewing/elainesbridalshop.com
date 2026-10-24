@@ -24,7 +24,6 @@ def block(src, start, end):
 NAV = block(sg, "  <!-- ===== Navigation ===== -->", "  <!-- ===== Page hero ===== -->")
 FOOTER = block(sg, "  <!-- ===== Footer ===== -->", "  <!-- Page-specific translations")
 
-CHART = "color-chart.html"
 
 # ---------------------------------------------------------------------------
 # Question data. Every string is (en, zh). type: text | textarea | chips.
@@ -88,11 +87,12 @@ SECTIONS = [
   {
     "id": "fabric", "title": ("Fabric, color and embellishments", "面料、颜色与装饰"),
     "qs": [
-      dict(n=13, type="textarea", short=("Fabric & color", "面料与颜色"), chart=True,
-           q=("What fabric and color would you like for your wedding dress?", "您希望婚纱用什么面料和颜色?"),
-           hint=("Please include the fabric type and the color name.", "请写明面料种类和颜色名称。")),
-      dict(n=14, type="textarea", short=("Fabric likes / dislikes", "喜欢 / 不喜欢的面料"),
-           q=("Are there any fabrics or textures you particularly like or dislike?", "有没有特别喜欢或不喜欢的面料、质感?"),
+      dict(n=13, type="chips", short=("Color", "颜色"), single=True,
+           q=("Which color would you like for your wedding dress?", "您希望婚纱是什么颜色?"),
+           hint=("Our custom gowns are made in these five colors.", "我们的定制婚纱提供以下五种颜色。"),
+           opts=[("White", "纯白"), ("Off White", "米白"), ("Ivory", "象牙白"), ("Nude", "裸色"), ("Black", "黑色"), NS]),
+      dict(n=14, type="textarea", short=("Fabric", "面料"),
+           q=("What fabric would you like, and are there any textures you particularly like or dislike?", "您希望用什么面料?有没有特别喜欢或不喜欢的质感?"),
            hint=("For example: lace, tulle, satin, or a smooth finish.", "例如:蕾丝、网纱、缎面,或光滑的质感。")),
       dict(n=15, type="chips", short=("Embellishments", "装饰"), other=True,
            q=("What embellishments do you like?", "您喜欢哪些装饰?"),
@@ -132,8 +132,6 @@ SECTIONS = [
   },
 ]
 
-FABRICS = [("chiffon", "Chiffon", "雪纺", 74), ("satin", "Satin", "缎面", 53), ("silk-satin", "Silk Satin", "真丝缎", 11),
-           ("sequin", "Sequin", "亮片", 28), ("tulle", "Tulle", "网纱", 17), ("double-fdy", "Double FDY", "双层 FDY", 25)]
 
 i18n = {}          # key -> zh
 def t(key, zh):
@@ -157,11 +155,6 @@ for sec in SECTIONS:
         parts.append(f'          <label class="qn-q__label" for="{qid}"><span class="qn-q__num">{n}</span><span data-i18n="{t(f"qn.q{n}", q["q"][1])}">{esc(q["q"][0])}</span></label>')
         if q.get("hint"):
             parts.append(f'          <p class="qn-q__hint" data-i18n="{t(f"qn.h{n}", q["hint"][1])}">{esc(q["hint"][0])}</p>')
-        if q.get("chart"):
-            links = " · ".join(
-                f'<a href="{CHART}#{fid}" target="_blank" rel="noopener"><span data-i18n="{t("qn.fab."+fid, zh)}">{en}</span> <small>{cnt}</small></a>'
-                for fid, en, zh, cnt in FABRICS)
-            parts.append(f'          <p class="qn-q__hint qn-q__chart"><span data-i18n="{t("qn.chartLead", "按面料浏览颜色:")}">Browse the colors by fabric:</span> {links}</p>')
         m = {"n": n, "type": q["type"], "short": {"en": q["short"][0], "zh": q["short"][1]}}
         if q["type"] == "chips":
             opts = list(q["opts"])
@@ -227,7 +220,7 @@ page = f'''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260914d" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914e" />
   <script type="application/ld+json">
   {{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}}, {{"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}}, {{"@type": "ListItem", "position": 3, "name": "Custom Gown Questionnaire", "item": "https://elainesbridalshop.com/custom-gown-questionnaire.html"}}]}}
   </script>
@@ -253,7 +246,7 @@ page = f'''<!DOCTYPE html>
       <p class="fg-hero__sub" data-i18n="qn.sub">Answer what you can below and share your inspiration photos. "Not sure" is a perfectly good answer; we can help you explore the options. When you are done, your answers go to Chloe and Elaine in one text.</p>
       <div class="fg-hero__actions">
         <a href="#shape" class="btn btn--solid" data-i18n="qn.cta1">Start the Questionnaire</a>
-        <a href="{CHART}" class="btn btn--ghost" data-i18n="qn.cta2">See the Color Chart</a>
+        <a href="wedding-dresses.html#custom" class="btn btn--ghost" data-i18n="qn.cta2">How Custom Gowns Work</a>
       </div>
     </div>
   </section>
@@ -314,7 +307,7 @@ page = f'''<!DOCTYPE html>
       "qn.title": "说说您的<br /><em>梦想婚纱。</em>",
       "qn.sub": "能答多少答多少,并分享您的灵感照片。写「还没想好」完全没问题,我们可以帮您一起探索。填完后,您的答案会通过一条短信发给 Chloe 和 Elaine。",
       "qn.cta1": "开始填写",
-      "qn.cta2": "查看颜色表",
+      "qn.cta2": "了解定制流程",
       "qn.sec.about": "关于您",
       "lbl.name": "姓名",
       "lbl.phone": "电话(用于短信回复)",
@@ -347,7 +340,7 @@ page = f'''<!DOCTYPE html>
     }}
   }};
   </script>
-  <script src="js/main.js?v=20260914d"></script>
+  <script src="js/main.js?v=20260914e"></script>
   <script src="js/i18n.js?v=20260914a"></script>
   <script>
   (function () {{

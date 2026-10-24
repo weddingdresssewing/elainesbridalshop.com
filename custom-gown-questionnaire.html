@@ -33,7 +33,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260914d" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914e" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}, {"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}, {"@type": "ListItem", "position": 3, "name": "Custom Gown Questionnaire", "item": "https://elainesbridalshop.com/custom-gown-questionnaire.html"}]}
   </script>
@@ -81,7 +81,7 @@
       <p class="fg-hero__sub" data-i18n="qn.sub">Answer what you can below and share your inspiration photos. "Not sure" is a perfectly good answer; we can help you explore the options. When you are done, your answers go to Chloe and Elaine in one text.</p>
       <div class="fg-hero__actions">
         <a href="#shape" class="btn btn--solid" data-i18n="qn.cta1">Start the Questionnaire</a>
-        <a href="color-chart.html" class="btn btn--ghost" data-i18n="qn.cta2">See the Color Chart</a>
+        <a href="wedding-dresses.html#custom" class="btn btn--ghost" data-i18n="qn.cta2">How Custom Gowns Work</a>
       </div>
     </div>
   </section>
@@ -210,13 +210,19 @@
       <section class="qn-section" id="fabric">
         <h2 class="qn-section__title" data-i18n="qn.sec.fabric">Fabric, color and embellishments</h2>
         <div class="qn-q" data-q="13">
-          <label class="qn-q__label" for="q13"><span class="qn-q__num">13</span><span data-i18n="qn.q13">What fabric and color would you like for your wedding dress?</span></label>
-          <p class="qn-q__hint" data-i18n="qn.h13">Please include the fabric type and the color name.</p>
-          <p class="qn-q__hint qn-q__chart"><span data-i18n="qn.chartLead">Browse the colors by fabric:</span> <a href="color-chart.html#chiffon" target="_blank" rel="noopener"><span data-i18n="qn.fab.chiffon">Chiffon</span> <small>74</small></a> · <a href="color-chart.html#satin" target="_blank" rel="noopener"><span data-i18n="qn.fab.satin">Satin</span> <small>53</small></a> · <a href="color-chart.html#silk-satin" target="_blank" rel="noopener"><span data-i18n="qn.fab.silk-satin">Silk Satin</span> <small>11</small></a> · <a href="color-chart.html#sequin" target="_blank" rel="noopener"><span data-i18n="qn.fab.sequin">Sequin</span> <small>28</small></a> · <a href="color-chart.html#tulle" target="_blank" rel="noopener"><span data-i18n="qn.fab.tulle">Tulle</span> <small>17</small></a> · <a href="color-chart.html#double-fdy" target="_blank" rel="noopener"><span data-i18n="qn.fab.double-fdy">Double FDY</span> <small>25</small></a></p>
-          <textarea id="q13" rows="3"></textarea>
+          <label class="qn-q__label" for="q13"><span class="qn-q__num">13</span><span data-i18n="qn.q13">Which color would you like for your wedding dress?</span></label>
+          <p class="qn-q__hint" data-i18n="qn.h13">Our custom gowns are made in these five colors.</p>
+          <div class="chips qn-chips" id="q13" role="radiogroup" data-single="true">
+            <button type="button" class="chip" data-val="0" aria-pressed="false" data-i18n="qn.q13o0">White</button>
+            <button type="button" class="chip" data-val="1" aria-pressed="false" data-i18n="qn.q13o1">Off White</button>
+            <button type="button" class="chip" data-val="2" aria-pressed="false" data-i18n="qn.q13o2">Ivory</button>
+            <button type="button" class="chip" data-val="3" aria-pressed="false" data-i18n="qn.q13o3">Nude</button>
+            <button type="button" class="chip" data-val="4" aria-pressed="false" data-i18n="qn.q13o4">Black</button>
+            <button type="button" class="chip" data-val="5" aria-pressed="false" data-i18n="qn.q13o5">Not sure</button>
+          </div>
         </div>
         <div class="qn-q" data-q="14">
-          <label class="qn-q__label" for="q14"><span class="qn-q__num">14</span><span data-i18n="qn.q14">Are there any fabrics or textures you particularly like or dislike?</span></label>
+          <label class="qn-q__label" for="q14"><span class="qn-q__num">14</span><span data-i18n="qn.q14">What fabric would you like, and are there any textures you particularly like or dislike?</span></label>
           <p class="qn-q__hint" data-i18n="qn.h14">For example: lace, tulle, satin, or a smooth finish.</p>
           <textarea id="q14" rows="3"></textarea>
         </div>
@@ -351,7 +357,7 @@
       "qn.title": "说说您的<br /><em>梦想婚纱。</em>",
       "qn.sub": "能答多少答多少,并分享您的灵感照片。写「还没想好」完全没问题,我们可以帮您一起探索。填完后,您的答案会通过一条短信发给 Chloe 和 Elaine。",
       "qn.cta1": "开始填写",
-      "qn.cta2": "查看颜色表",
+      "qn.cta2": "了解定制流程",
       "qn.sec.about": "关于您",
       "lbl.name": "姓名",
       "lbl.phone": "电话(用于短信回复)",
@@ -408,16 +414,15 @@
       "qn.q12": "在支撑、内衬或遮盖方面有需要我们注意的吗?",
       "qn.h12": "例如:内置胸垫、有骨架的上身,或需要遮住某件内衣。",
       "qn.sec.fabric": "面料、颜色与装饰",
-      "qn.q13": "您希望婚纱用什么面料和颜色?",
-      "qn.h13": "请写明面料种类和颜色名称。",
-      "qn.fab.chiffon": "雪纺",
-      "qn.fab.satin": "缎面",
-      "qn.fab.silk-satin": "真丝缎",
-      "qn.fab.sequin": "亮片",
-      "qn.fab.tulle": "网纱",
-      "qn.fab.double-fdy": "双层 FDY",
-      "qn.chartLead": "按面料浏览颜色:",
-      "qn.q14": "有没有特别喜欢或不喜欢的面料、质感?",
+      "qn.q13": "您希望婚纱是什么颜色?",
+      "qn.h13": "我们的定制婚纱提供以下五种颜色。",
+      "qn.q13o0": "纯白",
+      "qn.q13o1": "米白",
+      "qn.q13o2": "象牙白",
+      "qn.q13o3": "裸色",
+      "qn.q13o4": "黑色",
+      "qn.q13o5": "还没想好",
+      "qn.q14": "您希望用什么面料?有没有特别喜欢或不喜欢的质感?",
       "qn.h14": "例如:蕾丝、网纱、缎面,或光滑的质感。",
       "qn.q15": "您喜欢哪些装饰?",
       "qn.q15o0": "珠绣",
@@ -472,11 +477,11 @@
     }
   };
   </script>
-  <script src="js/main.js?v=20260914d"></script>
+  <script src="js/main.js?v=20260914e"></script>
   <script src="js/i18n.js?v=20260914a"></script>
   <script>
   (function () {
-    var META = [{"n": 1, "type": "textarea", "short": {"en": "Inspiration", "zh": "灵感参考"}}, {"n": 2, "type": "textarea", "short": {"en": "What I like", "zh": "喜欢的地方"}}, {"n": 3, "type": "textarea", "short": {"en": "Dislike / change", "zh": "不喜欢或想改的"}}, {"n": 4, "type": "chips", "short": {"en": "Skirt shape", "zh": "裙型"}, "single": false, "opts": [{"en": "A line", "zh": "A 字裙"}, {"en": "Ball gown", "zh": "蓬蓬裙"}, {"en": "Fitted or sheath", "zh": "贴身直裁"}, {"en": "Mermaid or fit and flare", "zh": "鱼尾或小鱼尾"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 5, "type": "chips", "short": {"en": "Skirt feel", "zh": "裙摆质感"}, "single": false, "opts": [{"en": "Soft and flowy", "zh": "柔软飘逸"}, {"en": "Full and voluminous", "zh": "蓬松饱满"}, {"en": "Structured", "zh": "挺括有型"}], "other": true}, {"n": 6, "type": "chips", "short": {"en": "Waistline", "zh": "腰线"}, "single": false, "opts": [{"en": "Natural waist", "zh": "自然腰线"}, {"en": "Basque waist, dipping into a V at the front", "zh": "前中呈 V 形的巴斯克腰"}, {"en": "Dropped waist", "zh": "低腰"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 7, "type": "textarea", "short": {"en": "Neckline", "zh": "领口"}}, {"n": 8, "type": "textarea", "short": {"en": "Straps / sleeves", "zh": "肩带 / 袖子"}}, {"n": 9, "type": "textarea", "short": {"en": "Back design", "zh": "背部设计"}}, {"n": 10, "type": "chips", "short": {"en": "Sheer areas", "zh": "透视部位"}, "single": false, "opts": [{"en": "No, I prefer full coverage", "zh": "不要,我喜欢完全遮盖"}, {"en": "Center front neckline", "zh": "前中领口"}, {"en": "Sides beneath the arms", "zh": "腋下两侧"}, {"en": "Back", "zh": "背部"}, {"en": "Sleeves", "zh": "袖子"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 11, "type": "chips", "short": {"en": "Sheer effect", "zh": "透视效果"}, "single": true, "opts": [{"en": "Clearly transparent", "zh": "明显透明"}, {"en": "Sheer with lace or embellishment for partial coverage", "zh": "透纱加蕾丝或装饰,半遮盖"}, {"en": "Not sure", "zh": "还没想好"}], "other": false}, {"n": 12, "type": "textarea", "short": {"en": "Support / lining", "zh": "支撑 / 内衬"}}, {"n": 13, "type": "textarea", "short": {"en": "Fabric & color", "zh": "面料与颜色"}}, {"n": 14, "type": "textarea", "short": {"en": "Fabric likes / dislikes", "zh": "喜欢 / 不喜欢的面料"}}, {"n": 15, "type": "chips", "short": {"en": "Embellishments", "zh": "装饰"}, "single": false, "opts": [{"en": "Beading", "zh": "珠绣"}, {"en": "Sequins or sparkle", "zh": "亮片或闪饰"}, {"en": "Pearls", "zh": "珍珠"}, {"en": "Lace appliqués", "zh": "蕾丝贴花"}, {"en": "Minimal or no embellishment", "zh": "极简或不要装饰"}], "other": true}, {"n": 16, "type": "chips", "short": {"en": "Amount", "zh": "装饰多少"}, "single": true, "opts": [{"en": "Light and subtle", "zh": "轻盈、低调"}, {"en": "Moderate", "zh": "适中"}, {"en": "Detailed and heavily embellished", "zh": "精细、华丽繁复"}, {"en": "I'd like your recommendation", "zh": "希望听听你们的建议"}], "other": false}, {"n": 17, "type": "chips", "short": {"en": "Placement", "zh": "装饰位置"}, "single": false, "opts": [{"en": "Straps and neckline", "zh": "肩带与领口"}, {"en": "Bodice", "zh": "上身"}, {"en": "Waist", "zh": "腰部"}, {"en": "Back", "zh": "背部"}, {"en": "Skirt", "zh": "裙身"}, {"en": "Train", "zh": "拖尾"}, {"en": "I'd like your recommendation", "zh": "希望听听你们的建议"}], "other": false}, {"n": 18, "type": "textarea", "short": {"en": "Train length", "zh": "拖尾长度"}}, {"n": 19, "type": "chips", "short": {"en": "Extras", "zh": "附加功能"}, "single": false, "opts": [{"en": "Skirt slit", "zh": "开衩"}, {"en": "Pockets", "zh": "口袋"}, {"en": "Detachable sleeves", "zh": "可拆卸袖子"}, {"en": "Detachable overskirt or train", "zh": "可拆卸罩裙或拖尾"}, {"en": "Bustle to lift the train for the reception", "zh": "宴会时可收起拖尾的裙撑扣"}], "other": true}, {"n": 20, "type": "text", "short": {"en": "Shoe height", "zh": "鞋跟高度"}}, {"n": 21, "type": "textarea", "short": {"en": "Top 3 details", "zh": "最重要的三点"}}, {"n": 22, "type": "textarea", "short": {"en": "Flexible on", "zh": "可以灵活调整的"}}, {"n": 23, "type": "textarea", "short": {"en": "Anything else", "zh": "其他补充"}}];
+    var META = [{"n": 1, "type": "textarea", "short": {"en": "Inspiration", "zh": "灵感参考"}}, {"n": 2, "type": "textarea", "short": {"en": "What I like", "zh": "喜欢的地方"}}, {"n": 3, "type": "textarea", "short": {"en": "Dislike / change", "zh": "不喜欢或想改的"}}, {"n": 4, "type": "chips", "short": {"en": "Skirt shape", "zh": "裙型"}, "single": false, "opts": [{"en": "A line", "zh": "A 字裙"}, {"en": "Ball gown", "zh": "蓬蓬裙"}, {"en": "Fitted or sheath", "zh": "贴身直裁"}, {"en": "Mermaid or fit and flare", "zh": "鱼尾或小鱼尾"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 5, "type": "chips", "short": {"en": "Skirt feel", "zh": "裙摆质感"}, "single": false, "opts": [{"en": "Soft and flowy", "zh": "柔软飘逸"}, {"en": "Full and voluminous", "zh": "蓬松饱满"}, {"en": "Structured", "zh": "挺括有型"}], "other": true}, {"n": 6, "type": "chips", "short": {"en": "Waistline", "zh": "腰线"}, "single": false, "opts": [{"en": "Natural waist", "zh": "自然腰线"}, {"en": "Basque waist, dipping into a V at the front", "zh": "前中呈 V 形的巴斯克腰"}, {"en": "Dropped waist", "zh": "低腰"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 7, "type": "textarea", "short": {"en": "Neckline", "zh": "领口"}}, {"n": 8, "type": "textarea", "short": {"en": "Straps / sleeves", "zh": "肩带 / 袖子"}}, {"n": 9, "type": "textarea", "short": {"en": "Back design", "zh": "背部设计"}}, {"n": 10, "type": "chips", "short": {"en": "Sheer areas", "zh": "透视部位"}, "single": false, "opts": [{"en": "No, I prefer full coverage", "zh": "不要,我喜欢完全遮盖"}, {"en": "Center front neckline", "zh": "前中领口"}, {"en": "Sides beneath the arms", "zh": "腋下两侧"}, {"en": "Back", "zh": "背部"}, {"en": "Sleeves", "zh": "袖子"}, {"en": "Not sure", "zh": "还没想好"}], "other": true}, {"n": 11, "type": "chips", "short": {"en": "Sheer effect", "zh": "透视效果"}, "single": true, "opts": [{"en": "Clearly transparent", "zh": "明显透明"}, {"en": "Sheer with lace or embellishment for partial coverage", "zh": "透纱加蕾丝或装饰,半遮盖"}, {"en": "Not sure", "zh": "还没想好"}], "other": false}, {"n": 12, "type": "textarea", "short": {"en": "Support / lining", "zh": "支撑 / 内衬"}}, {"n": 13, "type": "chips", "short": {"en": "Color", "zh": "颜色"}, "single": true, "opts": [{"en": "White", "zh": "纯白"}, {"en": "Off White", "zh": "米白"}, {"en": "Ivory", "zh": "象牙白"}, {"en": "Nude", "zh": "裸色"}, {"en": "Black", "zh": "黑色"}, {"en": "Not sure", "zh": "还没想好"}], "other": false}, {"n": 14, "type": "textarea", "short": {"en": "Fabric", "zh": "面料"}}, {"n": 15, "type": "chips", "short": {"en": "Embellishments", "zh": "装饰"}, "single": false, "opts": [{"en": "Beading", "zh": "珠绣"}, {"en": "Sequins or sparkle", "zh": "亮片或闪饰"}, {"en": "Pearls", "zh": "珍珠"}, {"en": "Lace appliqués", "zh": "蕾丝贴花"}, {"en": "Minimal or no embellishment", "zh": "极简或不要装饰"}], "other": true}, {"n": 16, "type": "chips", "short": {"en": "Amount", "zh": "装饰多少"}, "single": true, "opts": [{"en": "Light and subtle", "zh": "轻盈、低调"}, {"en": "Moderate", "zh": "适中"}, {"en": "Detailed and heavily embellished", "zh": "精细、华丽繁复"}, {"en": "I'd like your recommendation", "zh": "希望听听你们的建议"}], "other": false}, {"n": 17, "type": "chips", "short": {"en": "Placement", "zh": "装饰位置"}, "single": false, "opts": [{"en": "Straps and neckline", "zh": "肩带与领口"}, {"en": "Bodice", "zh": "上身"}, {"en": "Waist", "zh": "腰部"}, {"en": "Back", "zh": "背部"}, {"en": "Skirt", "zh": "裙身"}, {"en": "Train", "zh": "拖尾"}, {"en": "I'd like your recommendation", "zh": "希望听听你们的建议"}], "other": false}, {"n": 18, "type": "textarea", "short": {"en": "Train length", "zh": "拖尾长度"}}, {"n": 19, "type": "chips", "short": {"en": "Extras", "zh": "附加功能"}, "single": false, "opts": [{"en": "Skirt slit", "zh": "开衩"}, {"en": "Pockets", "zh": "口袋"}, {"en": "Detachable sleeves", "zh": "可拆卸袖子"}, {"en": "Detachable overskirt or train", "zh": "可拆卸罩裙或拖尾"}, {"en": "Bustle to lift the train for the reception", "zh": "宴会时可收起拖尾的裙撑扣"}], "other": true}, {"n": 20, "type": "text", "short": {"en": "Shoe height", "zh": "鞋跟高度"}}, {"n": 21, "type": "textarea", "short": {"en": "Top 3 details", "zh": "最重要的三点"}}, {"n": 22, "type": "textarea", "short": {"en": "Flexible on", "zh": "可以灵活调整的"}}, {"n": 23, "type": "textarea", "short": {"en": "Anything else", "zh": "其他补充"}}];
     var form = document.getElementById("gownForm");
     var KEY = "ebs-gown-questionnaire";
     function zh() { return document.documentElement.lang === "zh-CN"; }

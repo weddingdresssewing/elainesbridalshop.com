@@ -1839,9 +1839,6 @@ em { font-style: italic; }
 }
 .field input[type="date"]::-webkit-calendar-picker-indicator { margin-left: auto; }
 
-/* ============================================================
-   Color chart page (color-chart.html)
-   ============================================================ */
 .fg-hero--short { min-height: 54vh; }
 .fg-crumbs {
   display: flex; flex-wrap: wrap; gap: .6rem;
@@ -1851,103 +1848,7 @@ em { font-style: italic; }
 .fg-crumbs a { color: inherit; }
 .fg-crumbs a:hover { color: var(--gold-soft); }
 
-/* sticky fabric jump bar, pinned just under the fixed site nav */
-.cc-nav {
-  position: sticky; top: var(--navh, 90px); z-index: 50;
-  background: rgba(251,248,243,.94);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
-}
-.cc-nav__inner {
-  max-width: var(--maxw); margin: 0 auto; padding: .65rem 2rem;
-  display: flex; gap: .4rem; overflow-x: auto; scrollbar-width: none;
-}
-.cc-nav__inner::-webkit-scrollbar { display: none; }
-.cc-nav__link {
-  flex-shrink: 0; white-space: nowrap;
-  font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
-  padding: .55rem 1rem; border: 1px solid transparent; border-radius: 999px;
-  color: var(--ink); transition: all .3s var(--ease);
-}
-.cc-nav__link small { color: var(--gold); font-size: .68rem; margin-left: .2rem; }
-.cc-nav__link:hover, .cc-nav__link.is-active { border-color: var(--gold-soft); background: var(--cream); color: var(--charcoal); }
-
-.cc-fabric { padding: clamp(3.5rem, 7vw, 5.5rem) 2rem; scroll-margin-top: calc(var(--navh, 90px) + 52px); }
-.cc-fabric--cream { background: var(--cream); }
-.cc-fabric__inner { max-width: var(--maxw); margin: 0 auto; }
-.cc-fabric__head { margin-bottom: 1.6rem; max-width: 40rem; }
-.cc-fabric__desc { color: var(--ink); margin-top: .9rem; }
-.cc-group {
-  font-family: var(--sans); font-weight: 500;
-  font-size: .76rem; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold-dark);
-  margin: 2.2rem 0 1rem; padding-bottom: .45rem; border-bottom: 1px solid var(--line);
-}
-.cc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(124px, 1fr)); gap: 1.2rem .9rem; }
-
-.cc-swatch {
-  background: none; border: 0; padding: 0; cursor: pointer; text-align: left;
-  font-family: var(--sans); color: var(--charcoal);
-  display: flex; flex-direction: column; gap: .45rem; border-radius: 4px;
-}
-.cc-swatch__chip {
-  display: block; width: 100%; aspect-ratio: 1; border-radius: 4px;
-  background: var(--c); position: relative; overflow: hidden;
-  box-shadow: inset 0 0 0 1px rgba(42,38,34,.08), 0 1px 2px rgba(42,38,34,.08);
-  transition: transform .3s var(--ease), box-shadow .3s var(--ease);
-}
-.cc-swatch--light .cc-swatch__chip { box-shadow: inset 0 0 0 1px rgba(42,38,34,.2), 0 1px 2px rgba(42,38,34,.06); }
-.cc-swatch:hover .cc-swatch__chip { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(42,38,34,.18); }
-.cc-swatch.is-selected .cc-swatch__chip { box-shadow: 0 0 0 2px var(--ivory), 0 0 0 4px var(--gold); }
-.cc-swatch:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-.cc-swatch__name { font-size: .88rem; line-height: 1.25; }
-
-/* a hint of each fabric's surface */
-.cc-swatch__chip::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
-.cc-swatch--chiffon .cc-swatch__chip::after { background: linear-gradient(160deg, rgba(255,255,255,.18), rgba(255,255,255,0) 50%, rgba(0,0,0,.04)); }
-.cc-swatch--satin .cc-swatch__chip::after { background: linear-gradient(135deg, rgba(255,255,255,.38) 0%, rgba(255,255,255,0) 45%, rgba(0,0,0,.07) 100%); }
-.cc-swatch--silk-satin .cc-swatch__chip::after { background: linear-gradient(135deg, rgba(255,255,255,.5) 0%, rgba(255,255,255,0) 40%, rgba(0,0,0,.12) 100%); }
-.cc-swatch--sequin .cc-swatch__chip::after {
-  background-image: radial-gradient(rgba(255,255,255,.6) 18%, transparent 21%), radial-gradient(rgba(255,255,255,.35) 18%, transparent 21%);
-  background-size: 9px 9px; background-position: 0 0, 4.5px 4.5px;
-  mix-blend-mode: soft-light;
-}
-.cc-swatch--tulle .cc-swatch__chip::after {
-  background-image:
-    repeating-linear-gradient(45deg, rgba(255,255,255,.26) 0 1px, transparent 1px 4px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,.26) 0 1px, transparent 1px 4px);
-}
-.cc-swatch--double-fdy .cc-swatch__chip::after { background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(0,0,0,.05)); }
-
-/* selection bar */
-.cc-bar {
-  position: fixed; left: 50%; bottom: 1.2rem; transform: translateX(-50%); z-index: 60;
-  width: min(calc(100% - 2rem), 720px);
-  background: var(--charcoal); color: var(--ivory);
-  border-radius: 6px; box-shadow: 0 14px 40px rgba(0,0,0,.28);
-  display: flex; align-items: center; gap: .9rem; padding: .8rem .6rem .8rem 1rem;
-}
-.cc-bar[hidden] { display: none; }
-.cc-bar__chip { width: 36px; height: 36px; border-radius: 4px; flex-shrink: 0; box-shadow: inset 0 0 0 1px rgba(255,255,255,.3); }
-.cc-bar__text { flex: 1; min-width: 0; font-size: .92rem; line-height: 1.3; }
-.cc-bar__meta { color: rgba(255,255,255,.7); font-size: .8rem; }
-.cc-bar__btn { padding: .8rem 1.3rem; font-size: .72rem; white-space: nowrap; background: var(--gold); border-color: var(--gold); }
-.cc-bar__btn:hover { background: var(--gold-soft); border-color: var(--gold-soft); color: var(--charcoal); }
-.cc-bar__close { background: none; border: 0; color: rgba(255,255,255,.7); font-size: 1.6rem; line-height: 1; cursor: pointer; padding: .2rem .5rem; }
-.cc-bar__close:hover { color: #fff; }
-body.cc-bar-open { padding-bottom: 6rem; }
-
-@media (max-width: 760px) {
-  .cc-fabric { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .cc-nav__inner { padding: .55rem 1.25rem; }
-  .cc-grid { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 1rem .7rem; }
-  .cc-swatch__name { font-size: .8rem; }
-  .cc-bar { flex-wrap: wrap; gap: .7rem; padding: .8rem; }
-  .cc-bar__text { flex-basis: calc(100% - 112px); }
-  .cc-bar__close { margin-left: auto; }
-  .cc-bar__btn { flex: 1 1 100%; text-align: center; order: 3; }
-}
-/* "Browse the color chart" line under the custom-gown lede */
+/* Short note line under the custom-gown lede */
 .mg__lede--link { margin-top: .9rem; font-size: .95rem; }
 .mg__lede--link a { color: var(--gold); border-bottom: 1px solid var(--gold-soft); transition: color .3s var(--ease); }
 .mg__lede--link a:hover { color: var(--gold-dark); }
@@ -1977,9 +1878,6 @@ body.cc-bar-open { padding-bottom: 6rem; }
   flex-shrink: 0; font-family: var(--serif); font-size: 1.1rem; color: var(--gold); min-width: 1.3rem;
 }
 .qn-q__hint { font-size: .86rem; color: var(--ink); margin: -.1rem 0 .6rem 2rem; line-height: 1.5; }
-.qn-q__chart a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); white-space: nowrap; }
-.qn-q__chart a small { color: var(--gold); font-size: .75em; }
-.qn-q__chart a:hover { color: var(--gold); }
 .qn-q textarea, .qn-q input[type="text"], .qn-other {
   width: 100%; font: inherit; font-size: .95rem; color: var(--charcoal);
   background: var(--ivory); border: 1px solid var(--line); border-radius: 4px;
