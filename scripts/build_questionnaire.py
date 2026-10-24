@@ -1,0 +1,455 @@
+#!/usr/bin/env python3
+"""Generate custom-gown-questionnaire.html.
+
+The questionnaire has no backend: when the bride taps the button, her answers
+are compiled into one text message addressed to Chloe and Elaine (same
+two-recipient SMS helper the contact form uses, window.ebsSmsHref from
+js/main.js) and her Messages app opens so she can attach inspiration photos.
+
+Run from anywhere:  python3 scripts/build_questionnaire.py
+"""
+import html
+import os
+import json
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sg = open(os.path.join(ROOT, "silhouette-guide.html"), encoding="utf-8").read()
+
+
+def block(src, start, end):
+    i = src.index(start); j = src.index(end, i)
+    return src[i:j]
+
+
+NAV = block(sg, "  <!-- ===== Navigation ===== -->", "  <!-- ===== Page hero ===== -->")
+FOOTER = block(sg, "  <!-- ===== Footer ===== -->", "  <!-- Page-specific translations")
+
+CHART = "color-chart.html"
+
+# ---------------------------------------------------------------------------
+# Question data. Every string is (en, zh). type: text | textarea | chips.
+# chips: options list; "other" adds an Other chip with a text box; single=True
+# makes the group single-choice. short = label used in the text message.
+# ---------------------------------------------------------------------------
+NS = ("Not sure", "还没想好")
+OTHER = ("Other", "其他")
+REC = ("I'd like your recommendation", "希望听听你们的建议")
+
+SECTIONS = [
+  {
+    "id": "shape", "title": ("Your inspiration and dress shape", "您的灵感与裙型"),
+    "qs": [
+      dict(n=1, type="textarea", short=("Inspiration", "灵感参考"),
+           q=("Please send photos or links showing your ideal dress.", "请提供能体现您理想婚纱的照片或链接。"),
+           hint=("Front, back and close-up photos are especially helpful. Paste any links here; you can attach the photos themselves in the text message at the end.",
+                 "正面、背面和细节特写尤其有帮助。链接可以贴在这里,照片本身可以在最后的短信里直接附上。")),
+      dict(n=2, type="textarea", short=("What I like", "喜欢的地方"),
+           q=("What do you like about each reference?", "每张参考图里,您喜欢的是什么?"),
+           hint=("Please include a link to the reference wedding dress.", "请附上参考婚纱的链接。")),
+      dict(n=3, type="textarea", short=("Dislike / change", "不喜欢或想改的"),
+           q=("Are there any details you dislike or want changed?", "有没有不喜欢、或想改动的细节?")),
+      dict(n=4, type="chips", short=("Skirt shape", "裙型"), other=True,
+           q=("Which skirt shape do you prefer?", "您偏好哪种裙型?"),
+           opts=[("A line", "A 字裙"), ("Ball gown", "蓬蓬裙"), ("Fitted or sheath", "贴身直裁"),
+                 ("Mermaid or fit and flare", "鱼尾或小鱼尾"), NS]),
+      dict(n=5, type="chips", short=("Skirt feel", "裙摆质感"), other=True,
+           q=("How would you like the skirt to feel?", "您希望裙摆是什么感觉?"),
+           opts=[("Soft and flowy", "柔软飘逸"), ("Full and voluminous", "蓬松饱满"), ("Structured", "挺括有型")]),
+      dict(n=6, type="chips", short=("Waistline", "腰线"), other=True,
+           q=("What waistline would you like?", "您想要哪种腰线?"),
+           opts=[("Natural waist", "自然腰线"), ("Basque waist, dipping into a V at the front", "前中呈 V 形的巴斯克腰"),
+                 ("Dropped waist", "低腰"), NS]),
+    ],
+  },
+  {
+    "id": "bodice", "title": ("Neckline, bodice and back", "领口、上身与背部"),
+    "qs": [
+      dict(n=7, type="textarea", short=("Neckline", "领口"),
+           q=("What neckline would you like, and how deep should it be?", "您想要什么领口?开多深?"),
+           hint=("Please say whether you want more or less coverage than your reference photos.", "请说明您希望比参考图遮得更多还是更少。")),
+      dict(n=8, type="textarea", short=("Straps / sleeves", "肩带 / 袖子"),
+           q=("What straps or sleeves would you like?", "您想要什么样的肩带或袖子?"),
+           hint=("Please include your preferred width, length, or a reference photo.", "请说明偏好的宽度、长度,或附上参考图。")),
+      dict(n=9, type="textarea", short=("Back design", "背部设计"),
+           q=("What back design would you like?", "您想要什么样的背部设计?"),
+           hint=("Please describe the shape, coverage, and any buttons, zipper or corset details.", "请描述形状、遮盖程度,以及纽扣、拉链或系带等细节。")),
+      dict(n=10, type="chips", short=("Sheer areas", "透视部位"), other=True,
+           q=("Would you like any sheer or transparent areas?", "您想要透视或半透明的部位吗?"),
+           opts=[("No, I prefer full coverage", "不要,我喜欢完全遮盖"), ("Center front neckline", "前中领口"),
+                 ("Sides beneath the arms", "腋下两侧"), ("Back", "背部"), ("Sleeves", "袖子"), NS]),
+      dict(n=11, type="chips", short=("Sheer effect", "透视效果"), single=True,
+           q=("For any sheer areas, what effect would you prefer?", "透视部位您希望是什么效果?"),
+           opts=[("Clearly transparent", "明显透明"), ("Sheer with lace or embellishment for partial coverage", "透纱加蕾丝或装饰,半遮盖"), NS]),
+      dict(n=12, type="textarea", short=("Support / lining", "支撑 / 内衬"),
+           q=("Are there any support, lining or coverage preferences we should know about?", "在支撑、内衬或遮盖方面有需要我们注意的吗?"),
+           hint=("For example: built-in cups, a structured bodice, or coverage for a particular undergarment.", "例如:内置胸垫、有骨架的上身,或需要遮住某件内衣。")),
+    ],
+  },
+  {
+    "id": "fabric", "title": ("Fabric, color and embellishments", "面料、颜色与装饰"),
+    "qs": [
+      dict(n=13, type="textarea", short=("Fabric & color", "面料与颜色"), chart=True,
+           q=("What fabric and color would you like for your wedding dress?", "您希望婚纱用什么面料和颜色?"),
+           hint=("Please include the fabric type and the color name.", "请写明面料种类和颜色名称。")),
+      dict(n=14, type="textarea", short=("Fabric likes / dislikes", "喜欢 / 不喜欢的面料"),
+           q=("Are there any fabrics or textures you particularly like or dislike?", "有没有特别喜欢或不喜欢的面料、质感?"),
+           hint=("For example: lace, tulle, satin, or a smooth finish.", "例如:蕾丝、网纱、缎面,或光滑的质感。")),
+      dict(n=15, type="chips", short=("Embellishments", "装饰"), other=True,
+           q=("What embellishments do you like?", "您喜欢哪些装饰?"),
+           opts=[("Beading", "珠绣"), ("Sequins or sparkle", "亮片或闪饰"), ("Pearls", "珍珠"),
+                 ("Lace appliqués", "蕾丝贴花"), ("Minimal or no embellishment", "极简或不要装饰")]),
+      dict(n=16, type="chips", short=("Amount", "装饰多少"), single=True,
+           q=("How much embellishment would you like?", "您希望装饰的多少?"),
+           opts=[("Light and subtle", "轻盈、低调"), ("Moderate", "适中"), ("Detailed and heavily embellished", "精细、华丽繁复"), REC]),
+      dict(n=17, type="chips", short=("Placement", "装饰位置"),
+           q=("Where would you like the embellishments?", "您希望装饰在哪些位置?"),
+           opts=[("Straps and neckline", "肩带与领口"), ("Bodice", "上身"), ("Waist", "腰部"), ("Back", "背部"),
+                 ("Skirt", "裙身"), ("Train", "拖尾"), REC],
+           note=("<strong>Our recommendation:</strong> we generally suggest some beading on the bodice, kept subtle so the overall look stays elegant. A little beading at the waist, with none on the skirt, creates a beautiful balance and is also the more cost-effective option. Additional beading and detailed embellishments increase the price.",
+                 "<strong>我们的建议:</strong>一般建议上身做一些珠绣,保持低调,整体才显优雅。腰部少量珠绣、裙身不做,比例最美,也更经济。额外的珠绣和繁复装饰会增加价格。")),
+    ],
+  },
+  {
+    "id": "finish", "title": ("Skirt, train and finishing details", "裙摆、拖尾与收尾细节"),
+    "qs": [
+      dict(n=18, type="textarea", short=("Train length", "拖尾长度"),
+           q=("How long would you like the train?", "您希望拖尾多长?"),
+           hint=("Share a reference photo if you are unsure of the length.", "不确定长度的话,附一张参考图即可。")),
+      dict(n=19, type="chips", short=("Extras", "附加功能"), other=True,
+           q=("Would you like any additional features?", "需要其他附加设计吗?"),
+           opts=[("Skirt slit", "开衩"), ("Pockets", "口袋"), ("Detachable sleeves", "可拆卸袖子"),
+                 ("Detachable overskirt or train", "可拆卸罩裙或拖尾"), ("Bustle to lift the train for the reception", "宴会时可收起拖尾的裙撑扣")]),
+      dict(n=20, type="text", short=("Shoe height", "鞋跟高度"),
+           q=("What shoe height do you expect to wear?", "您预计穿多高的鞋?"),
+           hint=("It's fine if you haven't decided yet.", "还没决定也没关系。")),
+      dict(n=21, type="textarea", short=("Top 3 details", "最重要的三点"),
+           q=("What are your three most important dress details?", "对您来说最重要的三个细节是什么?")),
+      dict(n=22, type="textarea", short=("Flexible on", "可以灵活调整的"),
+           q=("Which details are you flexible about if changes would help with your budget or timeline?", "如果有助于预算或时间,哪些细节您可以灵活调整?")),
+      dict(n=23, type="textarea", short=("Anything else", "其他补充"),
+           q=("Is there anything else you'd like us to know?", "还有什么想让我们知道的吗?")),
+    ],
+  },
+]
+
+FABRICS = [("chiffon", "Chiffon", "雪纺", 74), ("satin", "Satin", "缎面", 53), ("silk-satin", "Silk Satin", "真丝缎", 11),
+           ("sequin", "Sequin", "亮片", 28), ("tulle", "Tulle", "网纱", 17), ("double-fdy", "Double FDY", "双层 FDY", 25)]
+
+i18n = {}          # key -> zh
+def t(key, zh):
+    i18n[key] = zh
+    return key
+
+def esc(s): return html.escape(s, quote=True)
+
+# ---------------------------------------------------------------------------
+# Build the form body
+# ---------------------------------------------------------------------------
+parts = []
+meta_js = []   # per question: {n, type, short:{en,zh}, opts:[{en,zh}], other, single}
+
+for sec in SECTIONS:
+    parts.append(f'      <section class="qn-section" id="{sec["id"]}">')
+    parts.append(f'        <h2 class="qn-section__title" data-i18n="{t("qn.sec."+sec["id"], sec["title"][1])}">{esc(sec["title"][0])}</h2>')
+    for q in sec["qs"]:
+        n = q["n"]; qid = f"q{n}"
+        parts.append(f'        <div class="qn-q" data-q="{n}">')
+        parts.append(f'          <label class="qn-q__label" for="{qid}"><span class="qn-q__num">{n}</span><span data-i18n="{t(f"qn.q{n}", q["q"][1])}">{esc(q["q"][0])}</span></label>')
+        if q.get("hint"):
+            parts.append(f'          <p class="qn-q__hint" data-i18n="{t(f"qn.h{n}", q["hint"][1])}">{esc(q["hint"][0])}</p>')
+        if q.get("chart"):
+            links = " · ".join(
+                f'<a href="{CHART}#{fid}" target="_blank" rel="noopener"><span data-i18n="{t("qn.fab."+fid, zh)}">{en}</span> <small>{cnt}</small></a>'
+                for fid, en, zh, cnt in FABRICS)
+            parts.append(f'          <p class="qn-q__hint qn-q__chart"><span data-i18n="{t("qn.chartLead", "按面料浏览颜色:")}">Browse the colors by fabric:</span> {links}</p>')
+        m = {"n": n, "type": q["type"], "short": {"en": q["short"][0], "zh": q["short"][1]}}
+        if q["type"] == "chips":
+            opts = list(q["opts"])
+            single = q.get("single", False)
+            m["single"] = single
+            m["opts"] = [{"en": o[0], "zh": o[1]} for o in opts]
+            m["other"] = bool(q.get("other"))
+            role = "radiogroup" if single else "group"
+            parts.append(f'          <div class="chips qn-chips" id="{qid}" role="{role}" data-single="{str(single).lower()}">')
+            for i, (en, zh) in enumerate(opts):
+                parts.append(f'            <button type="button" class="chip" data-val="{i}" aria-pressed="false" data-i18n="{t(f"qn.q{n}o{i}", zh)}">{esc(en)}</button>')
+            if q.get("other"):
+                parts.append(f'            <button type="button" class="chip chip--other" data-val="other" aria-pressed="false" data-i18n="{t("qn.other", OTHER[1])}">{OTHER[0]}</button>')
+            parts.append('          </div>')
+            if q.get("other"):
+                parts.append(f'          <input type="text" class="qn-other" id="{qid}_other" placeholder="Please describe" data-i18n-ph="{t("qn.otherPh", "请描述")}" hidden />')
+        elif q["type"] == "textarea":
+            parts.append(f'          <textarea id="{qid}" rows="3"></textarea>')
+        else:
+            parts.append(f'          <input type="text" id="{qid}" />')
+        if q.get("note"):
+            parts.append(f'          <p class="qn-q__note" data-i18n="{t(f"qn.n{n}", q["note"][1])}">{q["note"][0]}</p>')
+        parts.append('        </div>')
+        meta_js.append(m)
+    parts.append('      </section>')
+FORM_BODY = "\n".join(parts)
+META_JSON = json.dumps(meta_js, ensure_ascii=False)
+
+I18N_LINES = "\n".join(f'      {json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)},' for k, v in i18n.items())
+
+page = f'''<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18298272582"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){{dataLayer.push(arguments);}}
+    gtag('js', new Date());
+    gtag('config', 'AW-18298272582');
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Custom Wedding Gown Questionnaire | Elaine's Bridal Shop</title>
+  <meta name="description" content="Tell us about your dream wedding dress: silhouette, neckline, fabric, color and embellishments. Your answers go straight to Chloe and Elaine by text, and we send back design images and a quote." />
+
+  <link rel="canonical" href="https://elainesbridalshop.com/custom-gown-questionnaire.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Elaine's Bridal Shop" />
+  <meta property="og:title" content="Custom Wedding Gown Questionnaire | Elaine's Bridal Shop" />
+  <meta property="og:description" content="Tell us about your dream wedding dress and we will send back design images and a quote." />
+  <meta property="og:url" content="https://elainesbridalshop.com/custom-gown-questionnaire.html" />
+  <meta property="og:image" content="https://elainesbridalshop.com/assets/images/og-image-bottom.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://elainesbridalshop.com/assets/images/og-image-bottom.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&family=Noto+Serif+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914d" />
+  <script type="application/ld+json">
+  {{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}}, {{"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}}, {{"@type": "ListItem", "position": 3, "name": "Custom Gown Questionnaire", "item": "https://elainesbridalshop.com/custom-gown-questionnaire.html"}}]}}
+  </script>
+</head>
+<body>
+
+{NAV}  <!-- ===== Page hero ===== -->
+  <section class="fg-hero fg-hero--short">
+    <div class="fg-hero__media">
+      <img src="assets/images/full/dresses-hero.jpg" alt="A satin ball gown wedding dress with lace sleeves from the collection" width="1800" height="1013" />
+    </div>
+    <div class="fg-hero__overlay"></div>
+    <div class="fg-hero__content">
+      <nav class="fg-crumbs" aria-label="Breadcrumb">
+        <a href="index.html" data-i18n="wd.crumbHome">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="wedding-dresses.html#custom" data-i18n="wnav.custom">Custom Gowns</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page" data-i18n="qn.crumb">Questionnaire</span>
+      </nav>
+      <p class="eyebrow eyebrow--light" data-i18n="qn.eyebrow">Custom Wedding Gown</p>
+      <h1 class="fg-hero__title" data-i18n="qn.title">Tell us about<br /><em>your dream dress.</em></h1>
+      <p class="fg-hero__sub" data-i18n="qn.sub">Answer what you can below and share your inspiration photos. "Not sure" is a perfectly good answer; we can help you explore the options. When you are done, your answers go to Chloe and Elaine in one text.</p>
+      <div class="fg-hero__actions">
+        <a href="#shape" class="btn btn--solid" data-i18n="qn.cta1">Start the Questionnaire</a>
+        <a href="{CHART}" class="btn btn--ghost" data-i18n="qn.cta2">See the Color Chart</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Questionnaire ===== -->
+  <section class="qn">
+    <form class="qn__form" id="gownForm" novalidate>
+      <section class="qn-section" id="about">
+        <h2 class="qn-section__title" data-i18n="qn.sec.about">About you</h2>
+        <div class="field-row">
+          <div class="field">
+            <label for="qName" data-i18n="lbl.name">Name</label>
+            <input type="text" id="qName" required placeholder="Your name" data-i18n-ph="ph.name" autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="qPhone" data-i18n="lbl.phone">Phone (for text replies)</label>
+            <input type="tel" id="qPhone" required placeholder="(916) 555-1234" autocomplete="tel" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="qEmail" data-i18n="lbl.email">Email (optional)</label>
+            <input type="email" id="qEmail" placeholder="you@email.com" autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="qDate" data-i18n="lbl.date">Wedding date (optional)</label>
+            <input type="date" id="qDate" />
+          </div>
+        </div>
+      </section>
+
+{FORM_BODY}
+
+      <section class="qn-section qn-section--next">
+        <h2 class="qn-section__title" data-i18n="qn.nextTitle">What happens next</h2>
+        <p class="qn-next" data-i18n="qn.nextP">We will generate images of your wedding dress based on your preferences. If you are happy with the proposed design and quote, we schedule a free consultation to take your measurements. We look forward to helping you create your wedding gown!</p>
+        <button type="submit" class="btn btn--solid btn--full" data-i18n="qn.submit">Text My Answers to Chloe &amp; Elaine</button>
+        <p class="contact__hint" data-i18n="qn.hint">Tap the button to open your Messages app with your answers filled in, addressed to Chloe &amp; Elaine. Attach your inspiration photos and hit send.</p>
+        <p class="contact__success" id="qnSuccess" hidden role="status" data-i18n="qn.success">Your Messages app should now be open with your answers filled in. Attach your inspiration photos and tap send. If nothing opened, use the copy button below and text us at Chloe <a href="sms:+14157341832">(415) 734-1832</a> or Elaine <a href="sms:+14158139302">(415) 813-9302</a>.</p>
+        <p class="qn-copy"><button type="button" class="qn-copy__btn" id="qnCopy" data-i18n="qn.copy">On a computer? Copy my answers instead</button><span class="qn-copy__done" id="qnCopied" hidden data-i18n="qn.copied">Copied. Paste them into a text or email to us.</span></p>
+      </section>
+    </form>
+  </section>
+
+{FOOTER}  <!-- Page-specific translations, merged into the shared dictionary by i18n.js -->
+  <script>
+  window.PAGE_I18N = {{
+    zh: {{
+      "wnav.alt": "改衣服务",
+      "wnav.collection": "婚纱系列",
+      "wnav.custom": "定制婚纱",
+      "wnav.videos": "效果预览",
+      "wnav.faq": "常见问题",
+      "nav.book": "获取估价",
+      "wd.crumbHome": "首页",
+      "qn.crumb": "定制问卷",
+      "qn.eyebrow": "定制婚纱",
+      "qn.title": "说说您的<br /><em>梦想婚纱。</em>",
+      "qn.sub": "能答多少答多少,并分享您的灵感照片。写「还没想好」完全没问题,我们可以帮您一起探索。填完后,您的答案会通过一条短信发给 Chloe 和 Elaine。",
+      "qn.cta1": "开始填写",
+      "qn.cta2": "查看颜色表",
+      "qn.sec.about": "关于您",
+      "lbl.name": "姓名",
+      "lbl.phone": "电话(用于短信回复)",
+      "lbl.email": "邮箱(选填)",
+      "lbl.date": "婚礼日期(选填)",
+      "qn.nextTitle": "接下来会怎样",
+      "qn.nextP": "我们会根据您的偏好生成婚纱效果图。如果您满意设计方案和报价,我们再预约免费咨询,为您量体。期待为您打造专属婚纱!",
+      "qn.submit": "短信发送给 Chloe 和 Elaine",
+      "qn.hint": "点击按钮会打开您的短信 App,答案已自动填好,收件人是 Chloe 和 Elaine。附上灵感照片后发送即可。",
+      "qn.success": "您的短信 App 应该已经打开,答案已填好。附上灵感照片后点发送即可。如果没有打开,请用下方的复制按钮,然后短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a> 或 Elaine <a href='sms:+14158139302'>(415) 813-9302</a>。",
+      "qn.copy": "在电脑上?改为复制我的答案",
+      "qn.copied": "已复制。粘贴到短信或邮件发给我们即可。",
+{I18N_LINES}
+      "footer.tag": "「您的梦想婚纱在这里等您」· 加州萨克拉门托家庭工作室",
+      "footer.rights": "版权所有。"
+    }},
+    ph: {{
+      "ph.name": "您的姓名",
+      "qn.otherPh": "请描述"
+    }},
+    meta: {{
+      en: {{
+        title: "Custom Wedding Gown Questionnaire | Elaine's Bridal Shop",
+        desc: "Tell us about your dream wedding dress: silhouette, neckline, fabric, color and embellishments. Your answers go straight to Chloe and Elaine by text, and we send back design images and a quote."
+      }},
+      zh: {{
+        title: "定制婚纱问卷 | Elaine's Bridal Shop",
+        desc: "告诉我们您的梦想婚纱:裙型、领口、面料、颜色与装饰。答案直接短信发给 Chloe 和 Elaine,我们回复效果图和报价。"
+      }}
+    }}
+  }};
+  </script>
+  <script src="js/main.js?v=20260914d"></script>
+  <script src="js/i18n.js?v=20260914a"></script>
+  <script>
+  (function () {{
+    var META = {META_JSON};
+    var form = document.getElementById("gownForm");
+    var KEY = "ebs-gown-questionnaire";
+    function zh() {{ return document.documentElement.lang === "zh-CN"; }}
+    function el(id) {{ return document.getElementById(id); }}
+    function val(id) {{ var e = el(id); return e ? e.value.trim() : ""; }}
+
+    /* ---- chips: multi or single select, Other reveals a text box ---- */
+    form.addEventListener("click", function (e) {{
+      var chip = e.target.closest(".chip");
+      if (!chip) return;
+      var group = chip.parentNode;
+      var on = chip.getAttribute("aria-pressed") === "true";
+      if (group.getAttribute("data-single") === "true") {{
+        Array.prototype.forEach.call(group.querySelectorAll(".chip"), function (c) {{ c.setAttribute("aria-pressed", "false"); }});
+        chip.setAttribute("aria-pressed", on ? "false" : "true");
+      }} else {{
+        chip.setAttribute("aria-pressed", on ? "false" : "true");
+      }}
+      var other = el(group.id + "_other");
+      if (other && chip.classList.contains("chip--other")) {{
+        other.hidden = chip.getAttribute("aria-pressed") !== "true";
+        if (!other.hidden) other.focus();
+      }}
+      save();
+    }});
+
+    /* ---- draft autosave (per browser) so a half-finished form survives ---- */
+    function snapshot() {{
+      var d = {{ f: {{}}, c: {{}} }};
+      Array.prototype.forEach.call(form.querySelectorAll("input[id], textarea[id]"), function (i) {{ if (i.value) d.f[i.id] = i.value; }});
+      Array.prototype.forEach.call(form.querySelectorAll(".chip[aria-pressed='true']"), function (c) {{
+        var g = c.parentNode.id; (d.c[g] = d.c[g] || []).push(c.getAttribute("data-val"));
+      }});
+      return d;
+    }}
+    function save() {{ try {{ localStorage.setItem(KEY, JSON.stringify(snapshot())); }} catch (e) {{}} }}
+    function restore() {{
+      var d; try {{ d = JSON.parse(localStorage.getItem(KEY) || "null"); }} catch (e) {{}}
+      if (!d) return;
+      Object.keys(d.f || {{}}).forEach(function (id) {{ var i = el(id); if (i) i.value = d.f[id]; }});
+      Object.keys(d.c || {{}}).forEach(function (g) {{
+        d.c[g].forEach(function (v) {{
+          var c = document.querySelector("#" + g + " .chip[data-val='" + v + "']");
+          if (c) c.setAttribute("aria-pressed", "true");
+          if (v === "other") {{ var o = el(g + "_other"); if (o) o.hidden = false; }}
+        }});
+      }});
+    }}
+    form.addEventListener("input", save);
+    restore();
+
+    /* ---- compile the answers into one text message ---- */
+    function answerFor(m) {{
+      var id = "q" + m.n, L = zh() ? "zh" : "en";
+      if (m.type !== "chips") return val(id);
+      var picked = [];
+      Array.prototype.forEach.call(document.querySelectorAll("#" + id + " .chip[aria-pressed='true']"), function (c) {{
+        var v = c.getAttribute("data-val");
+        if (v === "other") {{ var o = val(id + "_other"); picked.push((zh() ? "其他" : "Other") + (o ? ": " + o : "")); }}
+        else picked.push(m.opts[+v][L]);
+      }});
+      return picked.join(zh() ? "、" : ", ");
+    }}
+    function compose() {{
+      var Z = zh(), lines = [];
+      lines.push(Z ? "定制婚纱问卷 — Elaine's Bridal Shop" : "Custom gown questionnaire — Elaine's Bridal Shop");
+      lines.push((Z ? "姓名: " : "Name: ") + val("qName"));
+      lines.push((Z ? "电话: " : "Phone: ") + val("qPhone"));
+      if (val("qEmail")) lines.push((Z ? "邮箱: " : "Email: ") + val("qEmail"));
+      if (val("qDate"))  lines.push((Z ? "婚礼日期: " : "Wedding date: ") + val("qDate"));
+      META.forEach(function (m) {{
+        var a = answerFor(m);
+        if (a) lines.push(m.n + ". " + m.short[Z ? "zh" : "en"] + ": " + a);
+      }});
+      lines.push(Z ? "灵感照片:" : "Inspiration photos:");
+      return lines.join("\\n");
+    }}
+
+    form.addEventListener("submit", function (e) {{
+      e.preventDefault();
+      if (!form.checkValidity()) {{ form.reportValidity(); return; }}
+      if (typeof gtag === "function") gtag("event", "custom_gown_questionnaire", {{}});
+      var ok = el("qnSuccess"); if (ok) ok.hidden = false;
+      window.location.href = window.ebsSmsHref ? window.ebsSmsHref(compose()) : "sms:+14157341832,+14158139302?&body=" + encodeURIComponent(compose());
+    }});
+
+    /* ---- desktop fallback: copy to clipboard ---- */
+    el("qnCopy").addEventListener("click", function () {{
+      var text = compose(), done = el("qnCopied");
+      function show() {{ done.hidden = false; setTimeout(function () {{ done.hidden = true; }}, 4000); }}
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(show, function () {{ window.prompt("Copy your answers:", text); }});
+      else window.prompt("Copy your answers:", text);
+    }});
+  }})();
+  </script>
+</body>
+</html>
+'''
+out = os.path.join(ROOT, "custom-gown-questionnaire.html")
+open(out, "w", encoding="utf-8").write(page)
+print("wrote custom-gown-questionnaire.html", len(page), "bytes;", len(meta_js), "questions;", len(i18n), "zh keys")

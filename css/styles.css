@@ -1951,3 +1951,63 @@ body.cc-bar-open { padding-bottom: 6rem; }
 .mg__lede--link { margin-top: .9rem; font-size: .95rem; }
 .mg__lede--link a { color: var(--gold); border-bottom: 1px solid var(--gold-soft); transition: color .3s var(--ease); }
 .mg__lede--link a:hover { color: var(--gold-dark); }
+
+/* ============================================================
+   Custom gown questionnaire (custom-gown-questionnaire.html)
+   ============================================================ */
+.qn { background: var(--cream); padding: clamp(3rem, 6vw, 5rem) 2rem; }
+.qn__form {
+  max-width: 46rem; margin: 0 auto;
+  background: var(--ivory); padding: clamp(1.6rem, 4vw, 3rem);
+  box-shadow: 0 20px 60px var(--shadow);
+}
+.qn-section + .qn-section { margin-top: 2.6rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
+.qn-section__title {
+  font-family: var(--serif); font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 1.9rem); line-height: 1.2;
+  margin-bottom: 1.4rem;
+}
+.qn-q { margin-bottom: 1.7rem; }
+.qn-q__label {
+  display: flex; gap: .7rem; align-items: baseline;
+  font-size: 1rem; line-height: 1.45; color: var(--charcoal); margin-bottom: .45rem;
+  text-transform: none; letter-spacing: 0;
+}
+.qn-q__num {
+  flex-shrink: 0; font-family: var(--serif); font-size: 1.1rem; color: var(--gold); min-width: 1.3rem;
+}
+.qn-q__hint { font-size: .86rem; color: var(--ink); margin: -.1rem 0 .6rem 2rem; line-height: 1.5; }
+.qn-q__chart a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); white-space: nowrap; }
+.qn-q__chart a small { color: var(--gold); font-size: .75em; }
+.qn-q__chart a:hover { color: var(--gold); }
+.qn-q textarea, .qn-q input[type="text"], .qn-other {
+  width: 100%; font: inherit; font-size: .95rem; color: var(--charcoal);
+  background: var(--ivory); border: 1px solid var(--line); border-radius: 4px;
+  padding: .8rem .95rem; margin-left: 2rem; width: calc(100% - 2rem);
+  transition: border-color .25s var(--ease);
+}
+.qn-q textarea { resize: vertical; min-height: 84px; }
+.qn-q textarea:focus, .qn-q input:focus, .qn-other:focus { outline: none; border-color: var(--gold); }
+.qn-chips { margin-left: 2rem; }
+.qn-other { margin-top: .6rem; }
+.qn-q__note {
+  margin: .9rem 0 0 2rem; padding: .9rem 1.1rem;
+  background: var(--cream); border-left: 2px solid var(--gold-soft);
+  font-size: .88rem; line-height: 1.55; color: var(--ink);
+}
+.qn-q__note strong { color: var(--charcoal); font-weight: 500; }
+.qn-next { color: var(--ink); margin-bottom: 1.6rem; line-height: 1.6; }
+.qn-copy { text-align: center; margin-top: 1rem; font-size: .85rem; }
+.qn-copy__btn {
+  background: none; border: 0; cursor: pointer; font: inherit; font-size: .85rem;
+  color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); padding: 0 0 .1rem;
+}
+.qn-copy__btn:hover { color: var(--gold); }
+.qn-copy__done { display: block; margin-top: .5rem; color: var(--gold); }
+@media (max-width: 560px) {
+  .qn { padding-left: 0; padding-right: 0; }
+  .qn__form { box-shadow: none; }
+  .qn-q__hint, .qn-chips, .qn-q__note { margin-left: 0; }
+  .qn-q textarea, .qn-q input[type="text"], .qn-other { margin-left: 0; width: 100%; }
+  .qn .field-row { grid-template-columns: 1fr; }
+}

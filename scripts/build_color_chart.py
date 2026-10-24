@@ -129,7 +129,7 @@ page = f'''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260914c" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914d" />
   <script type="application/ld+json">
   {{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}}, {{"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}}, {{"@type": "ListItem", "position": 3, "name": "Color Chart", "item": "https://elainesbridalshop.com/color-chart.html"}}]}}
   </script>
@@ -183,7 +183,7 @@ page = f'''<!DOCTYPE html>
     <p class="fg-cta__sub" data-i18n="cc.ctaSub">Tell us the fabric and the color name, along with a photo of the dress you love. Our custom-gown consultation is free, and you see a preview video before anything is sewn.</p>
     <div class="fg-cta__actions">
       <a href="wedding-dresses.html#contact" class="btn btn--solid" data-i18n="nav.book">Get a Quote</a>
-      <a href="wedding-dresses.html#custom" class="btn btn--ghost" data-i18n="cc.ctaBtn2">How Custom Gowns Work</a>
+      <a href="custom-gown-questionnaire.html" class="btn btn--ghost" data-i18n="cc.ctaBtn2">Fill Out the Questionnaire</a>
     </div>
   </section>
 
@@ -207,7 +207,7 @@ page = f'''<!DOCTYPE html>
       "cc.ask": "咨询这个颜色",
       "cc.ctaTitle": "找到您的颜色了?<br /><em>把名称发给我们。</em>",
       "cc.ctaSub": "告诉我们面料和颜色名称,再附上您喜欢的礼服照片。定制婚纱首次咨询免费,一针未缝之前先看效果预览视频。",
-      "cc.ctaBtn2": "了解定制流程",
+      "cc.ctaBtn2": "填写定制问卷",
 {chr(10).join(f'      "{k}": "{v}",' for k, v in i18n.items())}
       "footer.tag": "「您的梦想婚纱在这里等您」· 加州萨克拉门托家庭工作室",
       "footer.rights": "版权所有。"

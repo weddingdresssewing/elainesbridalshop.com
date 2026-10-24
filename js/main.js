@@ -282,6 +282,27 @@
     });
   }
 
+  /* ---------- Text-us helper (shared by the contact form, the sticky
+     mobile CTA and the custom-gown questionnaire) ----------
+     Multi-recipient sms: links are platform-specific. iOS ignores every
+     recipient after the first in the generic "sms:a,b?body=" form and
+     wants "sms://open?addresses=a,b&body="; Android (Google + Samsung
+     Messages) takes "sms:a;b?body=". */
+  var SMS_NUMBERS = ["+14157341832", "+14158139302"];   // Chloe, Elaine (group text)
+  function smsHref(numbers, body) {
+    var ua = navigator.userAgent || "";
+    var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var q = body ? encodeURIComponent(body) : "";
+    if (ios) return "sms://open?addresses=" + numbers.join(",") + (q ? "&body=" + q : "");
+    if (/Android/.test(ua)) return "sms:" + numbers.join(";") + (q ? "?body=" + q : "");
+    return "sms:" + numbers.join(",") + (q ? "?&body=" + q : "");
+  }
+  window.ebsSmsHref = function (body) { return smsHref(SMS_NUMBERS, body); };
+  // The sticky mobile "Text Photos" link gets the platform-correct two-recipient href
+  Array.prototype.forEach.call(document.querySelectorAll('.mobile-cta__btn[href^="sms:"]'), function (a) {
+    a.href = smsHref(SMS_NUMBERS, "");
+  });
+
   /* ---------- Contact form ----------
      No email backend. The submit button builds an SMS to Chloe & Elaine
      pre-filled with everything the bride typed, then opens her Messages app
@@ -363,23 +384,6 @@
       box.hidden = false;
     }
 
-    var SMS_NUMBERS = ["+14157341832", "+14158139302"];   // Chloe, Elaine (group text)
-    // Multi-recipient sms: links are platform-specific. iOS ignores every
-    // recipient after the first in the generic "sms:a,b?body=" form and
-    // wants "sms://open?addresses=a,b&body="; Android (Google + Samsung
-    // Messages) takes "sms:a;b?body=".
-    function smsHref(numbers, body) {
-      var ua = navigator.userAgent || "";
-      var ios = /iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
-      var q = body ? encodeURIComponent(body) : "";
-      if (ios) return "sms://open?addresses=" + numbers.join(",") + (q ? "&body=" + q : "");
-      if (/Android/.test(ua)) return "sms:" + numbers.join(";") + (q ? "?body=" + q : "");
-      return "sms:" + numbers.join(",") + (q ? "?&body=" + q : "");
-    }
-    // Sticky mobile "Text Photos" link: same recipients, same platform rules.
-    Array.prototype.forEach.call(document.querySelectorAll('.mobile-cta__btn[href^="sms:"]'), function (a) {
-      a.href = smsHref(SMS_NUMBERS, "");
-    });
     function buildSmsHref() {
       var zh = zhUI();
       function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
