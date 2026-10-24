@@ -83,11 +83,10 @@ for fi, (f, m) in enumerate(FABRICS.items()):
             light = " cc-swatch--light" if lum(it["hex"]) > 0.82 else ""
             out.append(
               f'        <button type="button" class="cc-swatch cc-swatch--{m["id"]}{light}" style="--c:{it["hex"]}" '
-              f'data-name="{html.escape(it["name"])}" data-code="{html.escape(it["code"])}" data-fabric="{f}" '
-              f'aria-label="{html.escape(it["name"])}, {html.escape(it["code"])}, {f}">'
+              f'data-name="{html.escape(it["name"])}" data-fabric="{f}" '
+              f'aria-label="{html.escape(it["name"])}, {f}">'
               f'<span class="cc-swatch__chip" aria-hidden="true"></span>'
-              f'<span class="cc-swatch__name">{html.escape(it["name"])}</span>'
-              f'<span class="cc-swatch__code">{html.escape(it["code"])}</span></button>')
+              f'<span class="cc-swatch__name">{html.escape(it["name"])}</span></button>')
         out.append('      </div>')
     out += ['    </div>', '  </section>', '']
     secs.append("\n".join(out))
@@ -130,7 +129,7 @@ page = f'''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20260914b" />
+  <link rel="stylesheet" href="css/styles.css?v=20260914c" />
   <script type="application/ld+json">
   {{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}}, {{"@type": "ListItem", "position": 2, "name": "Wedding Dresses", "item": "https://elainesbridalshop.com/wedding-dresses.html"}}, {{"@type": "ListItem", "position": 3, "name": "Color Chart", "item": "https://elainesbridalshop.com/color-chart.html"}}]}}
   </script>
@@ -153,7 +152,7 @@ page = f'''<!DOCTYPE html>
       </nav>
       <p class="eyebrow eyebrow--light" data-i18n="cc.eyebrow">Custom Gown Colors</p>
       <h1 class="fg-hero__title" data-i18n="cc.title">{TOTAL} fabric colors.<br /><em>Which one is yours?</em></h1>
-      <p class="fg-hero__sub" data-i18n="cc.sub">Every custom gown we make can be sewn in the color you choose. Browse by fabric below, tap a swatch to select it, and send us the name and code with your quote request.</p>
+      <p class="fg-hero__sub" data-i18n="cc.sub">Every custom gown we make can be sewn in the color you choose. Browse by fabric below, tap a swatch to select it, and send us the color name with your quote request.</p>
       <div class="fg-hero__actions">
         <a href="#chiffon" class="btn btn--solid" data-i18n="cc.cta1">Browse the Colors</a>
         <a href="wedding-dresses.html#contact" class="btn btn--ghost" data-i18n="nav.book">Get a Quote</a>
@@ -180,8 +179,8 @@ page = f'''<!DOCTYPE html>
 
   <!-- ===== CTA ===== -->
   <section class="fg-cta">
-    <h2 class="fg-cta__title" data-i18n="cc.ctaTitle">Found your color?<br /><em>Send us the name and code.</em></h2>
-    <p class="fg-cta__sub" data-i18n="cc.ctaSub">Tell us the fabric, the color name and its code, along with a photo of the dress you love. Our custom-gown consultation is free, and you see a preview video before anything is sewn.</p>
+    <h2 class="fg-cta__title" data-i18n="cc.ctaTitle">Found your color?<br /><em>Send us the name.</em></h2>
+    <p class="fg-cta__sub" data-i18n="cc.ctaSub">Tell us the fabric and the color name, along with a photo of the dress you love. Our custom-gown consultation is free, and you see a preview video before anything is sewn.</p>
     <div class="fg-cta__actions">
       <a href="wedding-dresses.html#contact" class="btn btn--solid" data-i18n="nav.book">Get a Quote</a>
       <a href="wedding-dresses.html#custom" class="btn btn--ghost" data-i18n="cc.ctaBtn2">How Custom Gowns Work</a>
@@ -202,12 +201,12 @@ page = f'''<!DOCTYPE html>
       "cc.crumb": "颜色表",
       "cc.eyebrow": "定制婚纱颜色",
       "cc.title": "{TOTAL} 种面料颜色,<br /><em>哪一种属于您?</em>",
-      "cc.sub": "我们定制的每一件礼服都可以按您选的颜色制作。先按面料浏览,点一下色块选中它,然后把颜色名称和色号连同询价一起发给我们。",
+      "cc.sub": "我们定制的每一件礼服都可以按您选的颜色制作。先按面料浏览,点一下色块选中它,然后把颜色名称连同询价一起发给我们。",
       "cc.cta1": "浏览颜色",
       "cc.selected": "已选择:",
       "cc.ask": "咨询这个颜色",
-      "cc.ctaTitle": "找到您的颜色了?<br /><em>把名称和色号发给我们。</em>",
-      "cc.ctaSub": "告诉我们面料、颜色名称和色号,再附上您喜欢的礼服照片。定制婚纱首次咨询免费,一针未缝之前先看效果预览视频。",
+      "cc.ctaTitle": "找到您的颜色了?<br /><em>把名称发给我们。</em>",
+      "cc.ctaSub": "告诉我们面料和颜色名称,再附上您喜欢的礼服照片。定制婚纱首次咨询免费,一针未缝之前先看效果预览视频。",
       "cc.ctaBtn2": "了解定制流程",
 {chr(10).join(f'      "{k}": "{v}",' for k, v in i18n.items())}
       "footer.tag": "「您的梦想婚纱在这里等您」· 加州萨克拉门托家庭工作室",
@@ -239,11 +238,11 @@ page = f'''<!DOCTYPE html>
     function select(sw) {{
       if (current) current.classList.remove("is-selected");
       current = sw; sw.classList.add("is-selected");
-      var name = sw.getAttribute("data-name"), code = sw.getAttribute("data-code"), fabric = sw.getAttribute("data-fabric");
+      var name = sw.getAttribute("data-name"), fabric = sw.getAttribute("data-fabric");
       chip.style.background = getComputedStyle(sw).getPropertyValue("--c");
       nameEl.textContent = name;
-      metaEl.textContent = "· " + fabric + " · " + code;
-      btn.href = "wedding-dresses.html?color=" + encodeURIComponent(name + " (" + code + "), " + fabric) + "#contact";
+      metaEl.textContent = "· " + fabric;
+      btn.href = "wedding-dresses.html?color=" + encodeURIComponent(name + ", " + fabric) + "#contact";
       bar.hidden = false;
       document.body.classList.add("cc-bar-open");
     }}

@@ -1901,7 +1901,6 @@ em { font-style: italic; }
 .cc-swatch.is-selected .cc-swatch__chip { box-shadow: 0 0 0 2px var(--ivory), 0 0 0 4px var(--gold); }
 .cc-swatch:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
 .cc-swatch__name { font-size: .88rem; line-height: 1.25; }
-.cc-swatch__code { font-size: .7rem; letter-spacing: .06em; color: var(--ink); opacity: .75; }
 
 /* a hint of each fabric's surface */
 .cc-swatch__chip::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
