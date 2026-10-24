@@ -39,7 +39,7 @@ SECTIONS = [
     "id": "shape", "title": ("Your inspiration and dress shape", "您的灵感与裙型"),
     "qs": [
       dict(n=1, type="note", short=("Inspiration", "灵感参考"),
-           q=("Please send photos or links showing your ideal dress.", "请提供能体现您理想婚纱的照片或链接。")),
+           q=("Please send photos of your ideal dress, showing the front, back and side.", "请发来您理想婚纱的照片,包含正面、背面和侧面。")),
       dict(n=2, type="textarea", short=("Reference link", "参考链接"),
            q=("Please include a link to the reference wedding dress.", "请附上参考婚纱的链接。")),
       dict(n=3, type="chips", short=("Change", "想改的地方"), other=True,
