@@ -93,16 +93,6 @@
             <input type="text" id="qName" required placeholder="Your name" data-i18n-ph="ph.name" autocomplete="name" />
           </div>
           <div class="field">
-            <label for="qPhone" data-i18n="lbl.phone">Phone (for text replies)</label>
-            <input type="tel" id="qPhone" required placeholder="(916) 555-1234" autocomplete="tel" />
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field">
-            <label for="qEmail" data-i18n="lbl.email">Email (optional)</label>
-            <input type="email" id="qEmail" placeholder="you@email.com" autocomplete="email" />
-          </div>
-          <div class="field">
             <label for="qDate" data-i18n="qn.date">Wedding date</label>
             <input type="date" id="qDate" required />
           </div>
@@ -446,8 +436,6 @@
       "qn.sub": "能答多少答多少,并分享您的灵感照片。写「还没想好」完全没问题,我们可以帮您一起探索。填完后,您的答案会通过一条短信发给 Chloe 和 Elaine。",
       "qn.sec.about": "关于您",
       "lbl.name": "姓名",
-      "lbl.phone": "电话(用于短信回复)",
-      "lbl.email": "邮箱(选填)",
       "qn.date": "婚礼日期",
       "qn.nextTitle": "接下来会怎样",
       "qn.nextP": "我们会根据您的偏好生成婚纱效果图。如果您满意设计方案和报价,我们再预约免费咨询,为您量体。期待为您打造专属婚纱!",
@@ -705,8 +693,6 @@
       var Z = zh(), lines = [];
       lines.push(Z ? "定制婚纱问卷 — Elaine's Bridal Shop" : "Custom gown questionnaire — Elaine's Bridal Shop");
       lines.push((Z ? "姓名: " : "Name: ") + val("qName"));
-      lines.push((Z ? "电话: " : "Phone: ") + val("qPhone"));
-      if (val("qEmail")) lines.push((Z ? "邮箱: " : "Email: ") + val("qEmail"));
       lines.push((Z ? "婚礼日期: " : "Wedding date: ") + val("qDate"));
       META.forEach(function (m) {
         var a = answerFor(m);
