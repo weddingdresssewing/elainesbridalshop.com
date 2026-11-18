@@ -13,9 +13,8 @@ Flow (no server of our own):
        - the seller gets the contract by email (FormSubmit's _autoresponse).
      Photos are shrunk in the browser first so the email stays small.
   4. FormSubmit sends the seller back here with ?sent=1, showing "Check your
-     email". The seller's preferred drop-off times arrive with the submission;
-     the shop checks them against its Google Calendar and emails a confirmed
-     time (or suggests open times if none fit).
+     email" and a "Book My Drop-Off Time" button that opens the shop's Google
+     Calendar booking page (BOOKING_URL). The same link is in the seller's email.
 
 One-time setup: the very first submission makes FormSubmit email SHOP_EMAIL
 an activation link. Click it once, and every later submission goes through.
@@ -28,6 +27,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sg = open(os.path.join(ROOT, "silhouette-guide.html"), encoding="utf-8").read()
 
 SHOP_EMAIL = "weddingdresssewing@gmail.com"
+# Google Calendar appointment schedule (30 min, every day 9am-5pm, shop calendar)
+BOOKING_URL = "https://calendar.google.com/calendar/appointments/schedules/AcZssZ3dQYE1RkirUt3GlBX0slOZm-UdjLb75CXu038MCeJIXBB8dClqonjlxELKbuVPAk8Kl5t2BZaf"
 COMMISSION = 20          # percent, charged only if the dress sells
 MAX_PHOTOS = 8
 
@@ -105,9 +106,10 @@ __NAV__  <!-- ===== Page hero ===== -->
     <div class="qn__form cs-done" id="csDone" hidden>
       <h2 class="qn-section__title" data-i18n="cs.doneTitle">Your contract is on its way.</h2>
       <p class="cs-status" id="csStatus" role="status" hidden></p>
-      <p class="qn-next" data-i18n="cs.doneP">Check your email for your consignment contract (look in spam if you don't see it in a few minutes), or save a PDF copy below. We'll check our calendar against the times you gave us and email you a confirmed drop-off time at our home studio in Sacramento. If none of your times work, we'll suggest a few that do.</p>
+      <p class="qn-next" data-i18n="cs.doneP">Check your email for your consignment contract (look in spam if you don't see it in a few minutes), or save a PDF copy below. Next, pick a time to bring your dress to our home studio in Sacramento.</p>
+      <p class="cs-book"><a class="btn btn--solid btn--full" href="__BOOK__" target="_blank" rel="noopener" data-i18n="cs.book">Book My Drop-Off Time</a></p>
       <div class="cs-contract" id="csDoneContract" hidden></div>
-      <p class="cs-save" id="csSaveWrap" hidden><button type="button" class="btn btn--solid btn--full" id="csSave" data-i18n="cs.save">Save My Contract as PDF</button></p>
+      <p class="cs-save" id="csSaveWrap" hidden><button type="button" class="btn btn--outline btn--full" id="csSave" data-i18n="cs.save">Save My Contract as PDF</button></p>
       <p class="cs-questions"><span data-i18n="cs.q">Questions?</span> <a class="btn btn--outline cs-textus" href="sms:+14157341832,+14158139302" data-i18n="cs.textus">Text Chloe &amp; Elaine</a></p>
     </div>
 
@@ -131,7 +133,7 @@ __NAV__  <!-- ===== Page hero ===== -->
         <ol class="cs-howlist">
           <li data-i18n="cs.how1">Fill in your details, your asking price and photos of your dress.</li>
           <li data-i18n="cs.how2">Review your contract below and send it. A copy goes to your email.</li>
-          <li data-i18n="cs.how3">Tell us a few times you could drop off your dress. We'll email you a confirmed time at our home studio.</li>
+          <li data-i18n="cs.how3">Book a 30-minute drop-off time online and bring your dress to our home studio.</li>
         </ol>
         <p class="qn-q__note cs-note" data-i18n="cs.noGuarantee"><strong>Please note:</strong> we'll do our best to sell your dress, but we can't guarantee a sale. If it hasn't sold by your sell-by date, you are responsible for picking it up.</p>
       </section>
@@ -177,14 +179,6 @@ __NAV__  <!-- ===== Page hero ===== -->
         </div>
       </section>
 
-      <section class="qn-section" id="dropoff">
-        <h2 class="qn-section__title" data-i18n="cs.sec.drop">Drop-off times</h2>
-        <div class="field">
-          <label for="csTimes" data-i18n="cs.times">When could you bring your dress to our studio?</label>
-          <textarea id="csTimes" name="Preferred drop-off times" rows="3" placeholder="e.g. Sat Nov 21 after 2pm, or weekday evenings after 6pm" data-i18n-ph="cs.timesPh"></textarea>
-          <p class="cs-hint" data-i18n="cs.timesHint">List a few days and times that work for you. We'll confirm one by email, or suggest other times if these don't work.</p>
-        </div>
-      </section>
 
       <section class="qn-section" id="contract">
         <h2 class="qn-section__title" data-i18n="cs.sec.contract">Your consignment contract</h2>
@@ -199,7 +193,7 @@ __NAV__  <!-- ===== Page hero ===== -->
       <section class="qn-section qn-section--next">
         <p class="contact__success" id="csError" hidden role="alert"></p>
         <button type="submit" class="btn btn--solid btn--full" id="csSubmit" data-i18n="cs.submit">Send My Contract</button>
-        <p class="contact__hint" data-i18n="cs.hint">We'll email you a copy of your contract. Nothing is charged now, and you only pay our __PCT__% if your dress sells. Once we have received your request, we will schedule some time with you to bring your dress in.</p>
+        <p class="contact__hint" data-i18n="cs.hint">We'll email you a copy of your contract. Nothing is charged now, and you only pay our __PCT__% if your dress sells. After you send it, you can book a time to bring your dress in.</p>
         <p class="cs-questions"><span data-i18n="cs.q">Questions?</span> <a class="btn btn--outline cs-textus" href="sms:+14157341832,+14158139302" data-i18n="cs.textus">Text Chloe &amp; Elaine</a></p>
       </section>
     </form>
@@ -227,10 +221,7 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
       "cs.term3": "没卖出不收费,也没有预付费用",
       "cs.how1": "填写您的信息、期望售价并上传婚纱照片。",
       "cs.how2": "查看下方合同并发送,合同副本会发到您的邮箱。",
-      "cs.how3": "告诉我们几个方便送婚纱的时间,我们会通过邮件确认送衣时间。",
-      "cs.sec.drop": "送衣时间",
-      "cs.times": "您什么时候方便把婚纱送到工作室?",
-      "cs.timesHint": "列出几个方便的日期和时间。我们会通过邮件确认其中一个;如果都不行,会再建议其他时间。",
+      "cs.how3": "在线预约 30 分钟的送衣时间,把婚纱送到我们的家庭工作室。",
       "cs.noGuarantee": "<strong>请注意:</strong>我们会尽力帮您出售婚纱,但不能保证一定卖出。如果到期仍未售出,需要由您自行取回婚纱。",
       "cs.sec.you": "您的信息",
       "cs.name": "姓名",
@@ -246,9 +237,10 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
       "cs.agree": "我已阅读并同意这份寄卖合同。",
       "cs.sign": "输入您的全名作为签名",
       "cs.submit": "发送我的合同",
-      "cs.hint": "合同副本会发到您的邮箱。现在不收取任何费用,只有婚纱卖出时才收取 __PCT__%。收到您的申请后,我们会与您约定时间把婚纱送来。",
+      "cs.hint": "合同副本会发到您的邮箱。现在不收取任何费用,只有婚纱卖出时才收取 __PCT__%。发送后即可预约送衣时间。",
       "cs.doneTitle": "您的合同已发出。",
-      "cs.doneP": "请查看邮箱里的寄卖合同(几分钟内没收到请看垃圾邮件),也可以在下方保存 PDF 副本。我们会根据您给的时间查看日历,通过邮件确认送到萨克拉门托家庭工作室的时间。如果您的时间都不行,我们会建议其他时间。",
+      "cs.doneP": "请查看邮箱里的寄卖合同(几分钟内没收到请看垃圾邮件),也可以在下方保存 PDF 副本。接下来请预约把婚纱送到我们萨克拉门托家庭工作室的时间。",
+      "cs.book": "预约送衣时间",
       "cs.save": "把合同保存为 PDF",
       "cs.q": "有问题?",
       "cs.textus": "短信联系 Chloe 和 Elaine",
@@ -256,7 +248,6 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
       "footer.rights": "版权所有。"
     },
     ph: {
-      "cs.timesPh": "例如:11 月 21 日周六下午 2 点后,或工作日晚上 6 点后"
     },
     meta: {
       en: {
@@ -345,7 +336,7 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
           ["不保证售出", "本店会尽力展示和推广婚纱,但不保证一定能卖出,也不保证售出价格或时间。"],
           ["寄卖期限与取回", "寄卖期从婚纱送到本店起,至 " + by + " 止。如到期仍未售出,卖方须自行到本店取回婚纱。"],
           ["付款", "婚纱卖出、本店收到买家全款后,本店会联系卖方并支付卖方应得部分。"],
-          ["送衣", "卖方决定寄卖后,本店会通过邮件与卖方确认送衣时间,卖方在约定时间把婚纱送到本店的家庭工作室。"]
+          ["送衣", "卖方通过本店的在线预约页面选定送衣时间,并在预约时间把婚纱送到本店的家庭工作室。"]
         ],
         sign: "卖方签名:" + (sig || "__________") + "  日期:" + when
       };
@@ -360,7 +351,7 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
           ["No guarantee", "The Shop will show and promote the dress but does not guarantee that it will sell, or the price or timing of a sale."],
           ["Consignment period and pick-up", "The consignment period runs from drop-off until " + by + ". If the dress has not sold by then, the Seller is responsible for picking it up from the Shop."],
           ["Payment", "When the dress sells and the Shop has received the buyer's full payment, the Shop will contact the Seller and pay the Seller's share."],
-          ["Drop-off", "If the Seller decides to proceed, the Shop will confirm a drop-off time with the Seller by email, and the Seller brings the dress to the home studio at that time."]
+          ["Drop-off", "The Seller books a drop-off time on the Shop's online booking page and brings the dress to the home studio at that time."]
         ],
         sign: "Seller's signature: " + (sig || "__________") + "    Date: " + when
       };
@@ -428,8 +419,8 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
       el("csContractField").value = en;
       var first = val("csName").split(/\s+/)[0];
       el("csAuto").value = Z
-        ? "您好 " + val("csName") + ",\n\n我是 Elaine's Bridal Shop 的 Chloe Chen。非常感谢您选择我们帮您出售您的婚纱!\n\n您的寄卖合同附在下方,请留存。提交后在我们网站上也可以把合同保存为 PDF。\n\n我们会尽快查看日历,联系您约定把婚纱送到我们萨克拉门托家庭工作室的时间。\n\n如有任何问题,欢迎随时短信联系我 (415) 734-1832 或 Elaine (415) 813-9302。\n\n祝好,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text
-        : "Hi " + first + ",\n\nMy name is Chloe Chen, and thank you so much for choosing Elaine's Bridal Shop to help sell your wedding dress!\n\nYour consignment contract is below for your records. You can also save it as a PDF from our website right after you send it.\n\nWe'll check our calendar and reach out soon to schedule a time for you to drop off your dress at our home studio in Sacramento.\n\nIf you have any questions, just text me at (415) 734-1832 or Elaine at (415) 813-9302.\n\nWarmly,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text;
+        ? "您好 " + val("csName") + ",\n\n我是 Elaine's Bridal Shop 的 Chloe Chen。非常感谢您选择我们帮您出售您的婚纱!\n\n您的寄卖合同附在下方,请留存。提交后在我们网站上也可以把合同保存为 PDF。\n\n请在这里预约把婚纱送到我们萨克拉门托家庭工作室的时间(每次 30 分钟):\n__BOOK__\n\n如有任何问题,欢迎随时短信联系我 (415) 734-1832 或 Elaine (415) 813-9302。\n\n祝好,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text
+        : "Hi " + first + ",\n\nMy name is Chloe Chen, and thank you so much for choosing Elaine's Bridal Shop to help sell your wedding dress!\n\nYour consignment contract is below for your records. You can also save it as a PDF from our website right after you send it.\n\nWhen you're ready, please book a time to drop off your dress at our home studio in Sacramento here:\n__BOOK__\n\nIf you have any questions, just text me at (415) 734-1832 or Elaine at (415) 813-9302.\n\nWarmly,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text;
       try { sessionStorage.setItem("ebs-consign-contract", JSON.stringify({ html: contractHTML(), name: val("csName") })); } catch (err) {}
       el("csNext").value = location.href.split(/[?#]/)[0] + "?sent=1" + (Z ? "&lang=zh" : "");
 
@@ -481,7 +472,7 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
 
 page = (PAGE.replace("__NAV__", NAV).replace("__FOOTER__", FOOTER)
             .replace("__SHOP__", SHOP_EMAIL).replace("__PCT__", str(COMMISSION))
-            .replace("__MAX__", str(MAX_PHOTOS)))
+            .replace("__MAX__", str(MAX_PHOTOS)).replace("__BOOK__", BOOKING_URL))
 out = os.path.join(ROOT, "sell-your-wedding-dress.html")
 open(out, "w", encoding="utf-8").write(page)
 print("wrote sell-your-wedding-dress.html", len(page), "chars")
