@@ -1970,3 +1970,6 @@ em { font-style: italic; }
   .cs-print body, .cs-print .qn, .cs-print .qn__form { background: none !important; box-shadow: none !important; padding: 0 !important; margin: 0 !important; }
   .cs-print #csDoneContract { border: 0; padding: 0; margin: 0; font-size: 11pt; }
 }
+.cs-status { background: var(--cream); border-left: 2px solid var(--gold-soft); padding: .8rem 1rem; text-align: left; font-size: .92rem; color: var(--ink); margin-bottom: 1.2rem; }
+.cs-status--ok { border-left-color: #4f7a52; color: #2f5a33; }
+.cs-status--err { border-left-color: #9b3a2f; color: #9b3a2f; }
