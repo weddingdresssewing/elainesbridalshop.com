@@ -75,7 +75,7 @@ PAGE = r'''<!DOCTYPE html>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="css/styles.css?v=20261118b" />
+  <link rel="stylesheet" href="css/styles.css?v=20261118d" />
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://elainesbridalshop.com/"}, {"@type": "ListItem", "position": 2, "name": "Sell Your Dress", "item": "https://elainesbridalshop.com/sell-your-wedding-dress.html"}]}
   </script>
@@ -104,8 +104,10 @@ __NAV__  <!-- ===== Page hero ===== -->
     <!-- ===== Shown after FormSubmit sends the seller back with ?sent=1 ===== -->
     <div class="qn__form cs-done" id="csDone" hidden>
       <h2 class="qn-section__title" data-i18n="cs.doneTitle">Your contract is on its way.</h2>
-      <p class="qn-next" data-i18n="cs.doneP">Check your email for your consignment contract (look in spam if you don't see it in a few minutes). We'll check our calendar against the times you gave us and email you a confirmed drop-off time at our home studio in Sacramento. If none of your times work, we'll suggest a few that do.</p>
-      <p class="contact__hint" data-i18n="cs.bookHint">Questions? Text Chloe <a href="sms:+14157341832">(415) 734-1832</a> or Elaine <a href="sms:+14158139302">(415) 813-9302</a>.</p>
+      <p class="qn-next" data-i18n="cs.doneP">Check your email for your consignment contract (look in spam if you don't see it in a few minutes), or save a PDF copy below. We'll check our calendar against the times you gave us and email you a confirmed drop-off time at our home studio in Sacramento. If none of your times work, we'll suggest a few that do.</p>
+      <div class="cs-contract" id="csDoneContract" hidden></div>
+      <p class="cs-save" id="csSaveWrap" hidden><button type="button" class="btn btn--solid btn--full" id="csSave" data-i18n="cs.save">Save My Contract as PDF</button></p>
+      <p class="cs-questions"><span data-i18n="cs.q">Questions?</span> <a class="btn btn--outline cs-textus" href="sms:+14157341832,+14158139302" data-i18n="cs.textus">Text Chloe &amp; Elaine</a></p>
     </div>
 
     <!-- ===== Consignment form ===== -->
@@ -197,6 +199,7 @@ __NAV__  <!-- ===== Page hero ===== -->
         <p class="contact__success" id="csError" hidden role="alert"></p>
         <button type="submit" class="btn btn--solid btn--full" id="csSubmit" data-i18n="cs.submit">Send My Contract</button>
         <p class="contact__hint" data-i18n="cs.hint">We'll email you a copy of your contract. Nothing is charged now, and you only pay our __PCT__% if your dress sells. Once we have received your request, we will schedule some time with you to bring your dress in.</p>
+        <p class="cs-questions"><span data-i18n="cs.q">Questions?</span> <a class="btn btn--outline cs-textus" href="sms:+14157341832,+14158139302" data-i18n="cs.textus">Text Chloe &amp; Elaine</a></p>
       </section>
     </form>
   </section>
@@ -244,8 +247,10 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
       "cs.submit": "发送我的合同",
       "cs.hint": "合同副本会发到您的邮箱。现在不收取任何费用,只有婚纱卖出时才收取 __PCT__%。收到您的申请后,我们会与您约定时间把婚纱送来。",
       "cs.doneTitle": "您的合同已发出。",
-      "cs.doneP": "请查看邮箱里的寄卖合同(几分钟内没收到请看垃圾邮件)。我们会根据您给的时间查看日历,通过邮件确认送到萨克拉门托家庭工作室的时间。如果您的时间都不行,我们会建议其他时间。",
-      "cs.bookHint": "有问题?短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a> 或 Elaine <a href='sms:+14158139302'>(415) 813-9302</a>。",
+      "cs.doneP": "请查看邮箱里的寄卖合同(几分钟内没收到请看垃圾邮件),也可以在下方保存 PDF 副本。我们会根据您给的时间查看日历,通过邮件确认送到萨克拉门托家庭工作室的时间。如果您的时间都不行,我们会建议其他时间。",
+      "cs.save": "把合同保存为 PDF",
+      "cs.q": "有问题?",
+      "cs.textus": "短信联系 Chloe 和 Elaine",
       "footer.tag": "「您的梦想婚纱在这里等您」· 加州萨克拉门托家庭工作室",
       "footer.rights": "版权所有。"
     },
@@ -282,10 +287,28 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
                : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
     }
 
+    /* ---- "Text Chloe & Elaine": one group text to both (platform-correct href from main.js) ---- */
+    Array.prototype.forEach.call(document.querySelectorAll(".cs-textus"), function (b) {
+      if (window.ebsSmsHref) b.href = window.ebsSmsHref(zh() ? "您好!我想咨询婚纱寄卖的问题。" : "Hi! I have a question about selling my wedding dress.");
+      b.addEventListener("click", function () { if (typeof gtag === "function") gtag("event", "dress_consignment_text", {}); });
+    });
+
     /* ---- after FormSubmit redirects back ---- */
     if (/[?&]sent=1/.test(location.search)) {
       form.hidden = true;
       el("csDone").hidden = false;
+      /* her signed contract, kept in this tab when she pressed Send, so she can save a PDF copy */
+      var saved = null; try { saved = JSON.parse(sessionStorage.getItem("ebs-consign-contract") || "null"); } catch (err) {}
+      if (saved && saved.html) {
+        el("csDoneContract").innerHTML = saved.html; el("csDoneContract").hidden = false; el("csSaveWrap").hidden = false;
+        el("csSave").addEventListener("click", function () {
+          var t = document.title;
+          document.title = (zh() ? "寄卖合同 - " : "Consignment Contract - ") + (saved.name || "Elaine's Bridal Shop");
+          document.documentElement.classList.add("cs-print");
+          window.print();
+          setTimeout(function () { document.documentElement.classList.remove("cs-print"); document.title = t; }, 500);
+        });
+      }
       if (typeof gtag === "function") gtag("event", "dress_consignment_sent", {});
       return;
     }
@@ -397,8 +420,11 @@ __FOOTER__  <!-- Page-specific translations, merged into the shared dictionary b
 
       var text = contractText(Z), en = Z ? contractText(false) : text;
       el("csContractField").value = en;
-      el("csAuto").value = (Z ? "您好 " + val("csName") + ",\n\n感谢您选择 Elaine's Bridal Shop 寄卖婚纱。以下是您的寄卖合同。我们会查看日历,尽快通过邮件确认您的送衣时间。有问题可以短信联系 Chloe (415) 734-1832 或 Elaine (415) 813-9302。\n\n"
-                                  : "Hi " + val("csName") + ",\n\nThank you for choosing Elaine's Bridal Shop to sell your wedding dress. Your consignment contract is below. We'll check our calendar and email you a confirmed drop-off time shortly. Questions? Text Chloe (415) 734-1832 or Elaine (415) 813-9302.\n\n") + text;
+      var first = val("csName").split(/\s+/)[0];
+      el("csAuto").value = Z
+        ? "您好 " + val("csName") + ",\n\n我是 Elaine's Bridal Shop 的 Chloe Chen。非常感谢您选择我们帮您出售您的婚纱!\n\n您的寄卖合同附在下方,请留存。提交后在我们网站上也可以把合同保存为 PDF。\n\n我们会尽快查看日历,联系您约定把婚纱送到我们萨克拉门托家庭工作室的时间。\n\n如有任何问题,欢迎随时短信联系我 (415) 734-1832 或 Elaine (415) 813-9302。\n\n祝好,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text
+        : "Hi " + first + ",\n\nMy name is Chloe Chen, and thank you so much for choosing Elaine's Bridal Shop to help sell your wedding dress!\n\nYour consignment contract is below for your records. You can also save it as a PDF from our website right after you send it.\n\nWe'll check our calendar and reach out soon to schedule a time for you to drop off your dress at our home studio in Sacramento.\n\nIf you have any questions, just text me at (415) 734-1832 or Elaine at (415) 813-9302.\n\nWarmly,\nChloe Chen\nElaine's Bridal Shop\nelainesbridalshop.com\n\n————————————\n\n" + text;
+      try { sessionStorage.setItem("ebs-consign-contract", JSON.stringify({ html: contractHTML(), name: val("csName") })); } catch (err) {}
       el("csNext").value = location.href.split(/[?#]/)[0] + "?sent=1" + (Z ? "&lang=zh" : "");
 
       var btn = el("csSubmit"); btn.disabled = true; btn.textContent = Z ? "发送中…" : "Sending…";
