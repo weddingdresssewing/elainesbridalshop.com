@@ -1910,3 +1910,53 @@ em { font-style: italic; }
   .qn .field-row { grid-template-columns: 1fr; }
 }
 .qn-copy__done a { color: var(--gold-dark); border-bottom: 1px solid var(--gold-soft); }
+
+/* ============================================================
+   Dress consignment (sell-your-wedding-dress.html)
+   Built on the questionnaire (.qn) styles above.
+   ============================================================ */
+.cs-terms {
+  list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: .9rem;
+  margin: 0 0 1.8rem;
+}
+.cs-terms li {
+  background: var(--cream); padding: 1.1rem 1rem; text-align: center;
+  font-size: .9rem; line-height: 1.45; color: var(--ink);
+}
+.cs-terms strong {
+  display: block; font-family: var(--serif); font-weight: 500;
+  font-size: 2rem; line-height: 1.1; color: var(--gold-dark); margin-bottom: .3rem;
+}
+.cs-howlist { margin: 0 0 0 1.2rem; color: var(--ink); line-height: 1.6; }
+.cs-howlist li { margin-bottom: .5rem; padding-left: .3rem; }
+.cs-note { margin-left: 0; margin-top: 1.2rem; }
+.cs-hint { font-size: .86rem; color: var(--ink); margin: -.6rem 0 1.2rem; line-height: 1.5; }
+.field .cs-hint { margin: .5rem 0 0; }
+.field input[type="file"] {
+  width: 100%; font: inherit; font-size: .9rem; color: var(--charcoal); height: auto;
+  background: var(--ivory); border: 1px dashed var(--gold-soft); border-radius: 4px; padding: .9rem;
+}
+.cs-thumbs { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
+.cs-thumbs img { width: 72px; height: 96px; object-fit: cover; border: 1px solid var(--line); }
+.cs-contract {
+  background: #fff; border: 1px solid var(--line); padding: clamp(1.1rem, 3vw, 1.8rem);
+  font-size: .92rem; line-height: 1.6; color: var(--charcoal); margin-bottom: 1.4rem;
+}
+.cs-contract h3 { font-family: var(--serif); font-weight: 500; font-size: 1.4rem; margin: 0 0 .8rem; text-align: center; }
+.cs-contract ol { margin: .8rem 0 1rem 1.2rem; }
+.cs-contract li { margin-bottom: .55rem; }
+.cs-contract strong { font-weight: 500; }
+.cs-contract__sign { border-top: 1px solid var(--line); padding-top: .8rem; margin: 0; font-style: italic; }
+.cs-agree {
+  display: flex; gap: .8rem; align-items: flex-start; margin-bottom: 1.2rem;
+  font-size: .95rem; line-height: 1.5; color: var(--charcoal); cursor: pointer;
+  text-transform: none; letter-spacing: 0;
+}
+.cs-agree input { flex-shrink: 0; width: 18px; height: 18px; margin-top: .2rem; accent-color: var(--gold-dark); }
+.cs-honey { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.cs-done { text-align: center; }
+#csError { color: #9b3a2f; margin-bottom: 1rem; }
+#csSubmit[disabled] { opacity: .7; cursor: wait; }
+@media (max-width: 560px) {
+  .cs-terms { grid-template-columns: 1fr; }
+}

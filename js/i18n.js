@@ -18,6 +18,7 @@
     "nav.sil": "裙型指南",
     "nav.measure": "量体指南",
     "nav.book": "获取估价",
+    "wnav.sell": "出售婚纱",
 
     /* hero */
     "hero.eyebrow": "萨克拉门托婚纱改制",

@@ -330,7 +330,7 @@ page = f'''<!DOCTYPE html>
   }};
   </script>
   <script src="js/main.js?v=20260914e"></script>
-  <script src="js/i18n.js?v=20260914a"></script>
+  <script src="js/i18n.js?v=20261118a"></script>
   <script>
   (function () {{
     var META = {META_JSON};
