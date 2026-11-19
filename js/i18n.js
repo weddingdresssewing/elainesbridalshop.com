@@ -156,7 +156,7 @@
     "lbl.referral": "您是怎么找到我们的?",
     "ref.default": "请选择…",
     "ref.friend": "朋友推荐",
-    "more.summary": "补充你方便的时间和从哪知道我们 <span>(选填)</span>",
+    "more.summary": "告诉我们您是怎么找到我们的 <span>(选填)</span>",
     "btn.submit": "短信发送试衣申请",
     "contact.hint": "点击按钮会打开您的短信 App,资料已自动填好,收件人是 Chloe 和 Elaine。附上婚纱照片(正面、背面、侧面)发送即可。",
     "contact.success": "您的短信 App 应该已经打开,资料已填好。附上婚纱照片后点发送即可。如果没有打开,请直接短信联系 Chloe <a href='sms:+14157341832'>(415) 734-1832</a> 或 Elaine <a href='sms:+14158139302'>(415) 813-9302</a>。",
